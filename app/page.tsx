@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
+import { MobileLoadingBar } from '@/components/MobileLoadingBar'
 import { LoadingScreen } from '@/components/LoadingScreen'
 import { Hero } from '@/components/Hero'
 import { About } from '@/components/About'
@@ -32,6 +33,7 @@ export default function Home() {
       </AnimatePresence>
 
       <Navbar />
+      <MobileLoadingBar />
 
       {/* Page Content */}
       <div className="pt-20">
