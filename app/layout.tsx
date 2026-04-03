@@ -1,0 +1,28 @@
+import type { Metadata } from 'next'
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: 'My Portfolio - Aswath S A',
+  description: 'A professional portfolio website showcasing design and development work. Modern, fast, and beautiful.',
+  viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23FACC15" width="100" height="100"/><text y="75" font-size="60" font-weight="bold" fill="%23111111" x="50" text-anchor="middle">AS</text></svg>',
+  },
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#0d0d0d" />
+      </head>
+      <body>
+        {children}
+      </body>
+    </html>
+  )
+}
