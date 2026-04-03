@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     description: 'A professional portfolio website showcasing design and development work. Modern, fast, and beautiful.',
     images: [
       {
-        url: '/profile.png',
-        width: 600,
-        height: 600,
-        alt: 'Aswath S A - Portfolio Preview',
+        url: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630"><rect fill="%23111111" width="1200" height="630"/><rect fill="%23FACC15" x="50" y="50" width="200" height="200" rx="10"/><text y="180" font-size="120" font-weight="bold" fill="%23111111" x="150" text-anchor="middle" font-family="Arial">AS</text><text y="380" font-size="80" font-weight="bold" fill="%23FACC15" x="600" text-anchor="middle" font-family="Arial" letter-spacing="4">PORTFOLIO</text><text y="480" font-size="40" fill="%23FACC15" x="600" text-anchor="middle" font-family="Arial">Aswath S A</text></svg>',
+        width: 1200,
+        height: 630,
+        alt: 'Portfolio Preview',
       },
     ],
     type: 'website',
