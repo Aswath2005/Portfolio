@@ -7,6 +7,19 @@ export const metadata: Metadata = {
   icons: {
     icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23FACC15" width="100" height="100"/><text y="75" font-size="60" font-weight="bold" fill="%23111111" x="50" text-anchor="middle">AS</text></svg>',
   },
+  openGraph: {
+    title: 'My Portfolio - Aswath S A',
+    description: 'A professional portfolio website showcasing design and development work. Modern, fast, and beautiful.',
+    images: [
+      {
+        url: '/profile.png',
+        width: 600,
+        height: 600,
+        alt: 'Aswath S A - Portfolio Preview',
+      },
+    ],
+    type: 'website',
+  },
 }
 
 export const viewport: Viewport = {
