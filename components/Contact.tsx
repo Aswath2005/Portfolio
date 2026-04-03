@@ -102,19 +102,19 @@ export function Contact() {
               className="space-y-3"
             >
               <p className="font-bold text-white font-bebas tracking-widest">SOCIAL</p>
-              <div className="flex gap-4">
+              <div className="flex gap-6">
                 {socialLinks.map((social, idx) => (
                   <motion.a
                     key={idx}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.15 }}
+                    whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-3 border-2 border-dark-border hover:border-accent-yellow hover:text-accent-yellow transition-all rounded-none"
+                    className="text-text-muted hover:text-accent-yellow transition-colors duration-300"
                     aria-label={social.label}
                   >
-                    <social.icon className="w-5 h-5" />
+                    <social.icon className="w-6 h-6" />
                   </motion.a>
                 ))}
               </div>
