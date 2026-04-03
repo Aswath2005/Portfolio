@@ -35,7 +35,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-dark-bg"
+      className="relative overflow-hidden bg-dark-bg pt-24 lg:pt-0"
     >
       {/* Subtle yellow glow background - left side only */}
       <motion.div
@@ -54,7 +54,7 @@ export function Hero() {
       />
 
       <div className="relative z-10 px-6 lg:px-12 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full max-w-7xl mx-auto">
+        <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12 items-center w-full max-w-7xl mx-auto">
           {/* Left Column */}
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8">
             {/* Small tag */}
@@ -70,6 +70,36 @@ export function Hero() {
             >
               Aswath S A
             </motion.h1>
+
+            {/* Mobile Profile Image - appears between name and role */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative lg:hidden py-6"
+            >
+              <div className="relative w-40 h-40 aspect-square mx-auto">
+                {/* Yellow fade around border */}
+                <div className="absolute -inset-3 rounded-full blur-lg bg-accent-yellow/40" />
+                
+                {/* Profile image with circle frame */}
+                <div 
+                  className="relative w-full h-full rounded-full overflow-hidden bg-dark-secondary border-2 border-accent-yellow"
+                >
+                  <Image
+                    src="/profile.png"
+                    alt="Profile"
+                    fill
+                    className="object-cover w-full h-full"
+                    style={{ 
+                      objectPosition: '45% 55%',
+                      objectFit: 'cover'
+                    }}
+                    priority
+                  />
+                </div>
+              </div>
+            </motion.div>
 
             {/* Yellow subtitle */}
             <motion.p
@@ -123,12 +153,12 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Profile Image with Circle Frame and Yellow Glow */}
+          {/* Right Column - Profile Image with Circle Frame and Yellow Glow (Desktop only) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             <div className="relative w-full aspect-square max-w-sm mx-auto">
               {/* Yellow fade around border */}
