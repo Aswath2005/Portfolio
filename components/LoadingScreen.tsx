@@ -31,7 +31,8 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         className="text-6xl md:text-7xl font-bold text-accent-yellow font-bebas leading-tight text-center mb-6"
         style={{ letterSpacing: '0.08em' }}
       >
-        Just loading
+        Welcome to<br />
+        My Portfolio
       </motion.h1>
 
       {/* Subtitle */}
@@ -41,7 +42,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         transition={{ duration: 0.8, delay: 0.6 }}
         className="text-text-light text-sm md:text-base tracking-widest font-dm-sans"
       >
-        Hold tight
+        Just loading
       </motion.p>
 
       {/* Loading indicator - simple line */}
