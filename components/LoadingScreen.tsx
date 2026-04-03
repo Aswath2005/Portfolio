@@ -50,7 +50,10 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.5, delay: 1, ease: 'easeInOut' }}
-        className="absolute bottom-0 left-0 right-0 h-1 bg-accent-yellow origin-left"
+        className="absolute bottom-0 left-0 right-0 h-1.5 bg-accent-yellow origin-left shadow-lg"
+        style={{
+          boxShadow: '0 0 20px rgba(250, 204, 21, 0.6)'
+        }}
       />
     </motion.div>
   )
