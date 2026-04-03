@@ -14,10 +14,8 @@ export function CustomCursor() {
     // Check if it's a touch device
     const isTouchDevice = () => {
       return (
-        (typeof window !== 'undefined' &&
-          navigator.maxTouchPoints > 0) ||
-        (typeof window !== 'undefined' &&
-          navigator.msMaxTouchPoints > 0)
+        typeof window !== 'undefined' &&
+        navigator.maxTouchPoints > 0
       )
     }
 
