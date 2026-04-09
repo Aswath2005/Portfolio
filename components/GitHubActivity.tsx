@@ -2,19 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { GitBranch } from 'lucide-react'
+import { Star, GitBranch, ExternalLink } from 'lucide-react'
 
-interface GitHubEvent {
-  id: string
-  type: string
-  repo: {
-    name: string
-  }
-  payload: {
-    commits?: Array<{ message: string }>
-    ref?: string
-  }
-  created_at: string
+interface Repository {
+  id: number
+  name: string
+  description: string | null
+  url: string
+  stars: number
+  language: string | null
 }
 
 interface GitHubUser {
@@ -24,7 +20,7 @@ interface GitHubUser {
 }
 
 export function GitHubActivity() {
-  const [events, setEvents] = useState<GitHubEvent[]>([])
+  const [repos, setRepos] = useState<Repository[]>([])
   const [stats, setStats] = useState<GitHubUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -34,17 +30,22 @@ export function GitHubActivity() {
       try {
         setLoading(true)
 
-        // Fetch events
-        const eventsRes = await fetch(
-          'https://api.github.com/users/Aswath2005/events?per_page=10'
+        // Fetch repositories
+        const reposRes = await fetch(
+          'https://api.github.com/users/Aswath2005/repos?sort=stars&direction=desc&per_page=6'
         )
-        const eventsData = await eventsRes.json()
+        const reposData = await reposRes.json()
 
-        const pushEvents = eventsData
-          .filter((e: GitHubEvent) => e.type === 'PushEvent')
-          .slice(0, 6)
+        const formattedRepos = reposData.map((repo: any) => ({
+          id: repo.id,
+          name: repo.name,
+          description: repo.description,
+          url: repo.html_url,
+          stars: repo.stargazers_count,
+          language: repo.language,
+        }))
 
-        setEvents(pushEvents)
+        setRepos(formattedRepos)
 
         // Fetch user stats
         const userRes = await fetch('https://api.github.com/users/Aswath2005')
@@ -53,7 +54,7 @@ export function GitHubActivity() {
 
         setError(null)
       } catch (err) {
-        setError('Failed to load GitHub activity')
+        setError('Failed to load GitHub repositories')
         console.error(err)
       } finally {
         setLoading(false)
@@ -63,16 +64,20 @@ export function GitHubActivity() {
     fetchGitHubData()
   }, [])
 
-  const formatTimeAgo = (dateString: string) => {
-    const date = new Date(dateString)
-    const now = new Date()
-    const seconds = Math.floor((now.getTime() - date.getTime()) / 1000)
-
-    if (seconds < 60) return 'just now'
-    if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`
-    if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`
-    if (seconds < 604800) return `${Math.floor(seconds / 86400)}d ago`
-    return date.toLocaleDateString()
+  const getLanguageColor = (language: string): string => {
+    const colors: { [key: string]: string } = {
+      TypeScript: '#2b7a0b',
+      JavaScript: '#f1e05a',
+      Python: '#3572A5',
+      React: '#61dafb',
+      'C++': '#f34b7d',
+      Java: '#b07219',
+      Go: '#00ADD8',
+      Rust: '#ce422b',
+      CSS: '#563d7c',
+      HTML: '#e34c26',
+    }
+    return colors[language] || '#858585'
   }
 
   return (
@@ -152,8 +157,8 @@ export function GitHubActivity() {
               ))}
             </motion.div>
 
-            {/* Recent Commits */}
-            {!loading && events.length > 0 && (
+            {/* Repositories Grid */}
+            {!loading && repos.length > 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -161,41 +166,53 @@ export function GitHubActivity() {
                 viewport={{ once: true }}
               >
                 <h3 className="text-2xl font-bold font-bebas text-[var(--text-primary)] mb-6">
-                  Recent Commits
+                  Featured Repositories
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {events.map((event, idx) => (
-                    <motion.div
-                      key={event.id}
-                      className="p-4 bg-[var(--bg-card)] border border-[var(--border)] rounded-lg"
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {repos.map((repo, idx) => (
+                    <motion.a
+                      key={repo.id}
+                      href={repo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group p-6 bg-[var(--bg-card)] border border-[var(--border)] rounded-lg transition-all hover:border-[var(--accent-color)]"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1, duration: 0.6 }}
                       viewport={{ once: true }}
                       whileHover={{ y: -4 }}
                     >
-                      <div className="flex items-start gap-3">
-                        <div className="w-3 h-3 rounded-full bg-green-500 mt-1 flex-shrink-0" />
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-bold text-[var(--text-primary)] truncate">
-                            {event.repo.name}
-                          </h4>
-                          <p className="text-sm text-[var(--text-muted)] mt-1 line-clamp-2">
-                            {event.payload.commits?.[0]?.message || 'Commit made'}
-                          </p>
-                          <div className="flex items-center gap-2 mt-2 text-xs text-[var(--text-muted)]">
-                            {event.payload.ref && (
-                              <span className="flex items-center gap-1">
-                                <GitBranch className="w-3 h-3" />
-                                {event.payload.ref.split('/').pop()}
-                              </span>
-                            )}
-                            <span>·</span>
-                            <span>{formatTimeAgo(event.created_at)}</span>
-                          </div>
-                        </div>
+                      <div className="flex items-start justify-between mb-3">
+                        <h4 className="font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors truncate flex-1">
+                          {repo.name}
+                        </h4>
+                        <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-color)] transition-colors ml-2 flex-shrink-0" />
                       </div>
-                    </motion.div>
+                      
+                      <p className="text-sm text-[var(--text-muted)] mb-4 line-clamp-2 h-10">
+                        {repo.description || 'No description'}
+                      </p>
+
+                      <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
+                        {repo.language && (
+                          <span className="flex items-center gap-1">
+                            <div
+                              className="w-2.5 h-2.5 rounded-full"
+                              style={{
+                                backgroundColor: getLanguageColor(repo.language),
+                              }}
+                            />
+                            {repo.language}
+                          </span>
+                        )}
+                        {repo.stars > 0 && (
+                          <span className="flex items-center gap-1">
+                            <Star className="w-3 h-3" />
+                            {repo.stars}
+                          </span>
+                        )}
+                      </div>
+                    </motion.a>
                   ))}
                 </div>
               </motion.div>
