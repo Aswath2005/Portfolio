@@ -28,7 +28,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="text-6xl md:text-7xl font-bold text-accent-yellow font-bebas leading-tight text-center mb-6"
+        className="text-6xl md:text-7xl font-bold text-white font-bebas leading-tight text-center mb-6"
         style={{ letterSpacing: '0.08em' }}
       >
         Welcome to<br />
@@ -40,7 +40,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="text-text-light text-sm md:text-base tracking-widest font-dm-sans"
+        className="text-text-muted text-sm md:text-base tracking-widest font-dm-sans"
       >
         Just loading
       </motion.p>
@@ -50,9 +50,9 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.5, delay: 1, ease: 'easeInOut' }}
-        className="absolute bottom-0 left-0 right-0 h-1.5 bg-accent-yellow origin-left shadow-lg"
+        className="absolute bottom-0 left-0 right-0 h-1.5 bg-accent-color origin-left shadow-lg"
         style={{
-          boxShadow: '0 0 20px rgba(250, 204, 21, 0.6)'
+          boxShadow: '0 0 20px rgba(228,228,231,0.12)'
         }}
       />
     </motion.div>

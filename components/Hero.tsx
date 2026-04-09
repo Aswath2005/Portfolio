@@ -37,11 +37,11 @@ export function Hero() {
       id="home"
       className="relative overflow-hidden bg-dark-bg pt-24 lg:pt-0"
     >
-      {/* Subtle yellow glow background - left side only */}
+      {/* Subtle white glow background - left side only */}
       <motion.div
         className="absolute top-1/2 left-0 w-96 h-96 rounded-full opacity-5 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(250, 204, 21, 1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 1) 0%, transparent 70%)',
         }}
         animate={{
           y: [0, 50, 0],
@@ -58,7 +58,7 @@ export function Hero() {
           {/* Left Column */}
           <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8">
             {/* Small tag */}
-            <motion.p variants={itemVariants} className="text-accent-yellow font-dm-sans text-sm uppercase tracking-widest">
+            <motion.p variants={itemVariants} className="text-accent-color font-dm-sans text-sm uppercase tracking-widest">
               Hello, I'm
             </motion.p>
 
@@ -78,13 +78,16 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative lg:hidden py-6"
             >
-              <div className="relative w-40 h-40 aspect-square mx-auto">
-                {/* Yellow fade around border */}
-                <div className="absolute -inset-3 rounded-full blur-lg bg-accent-yellow/40" />
+              <div className="relative w-full max-w-xs mx-auto h-80">
+                {/* Background layer - offset rectangle */}
+                <div className="absolute w-full h-full rounded-2xl bg-dark-secondary" style={{ bottom: '-10px', right: '-10px' }} />
                 
-                {/* Profile image with circle frame */}
+                {/* Profile image with portrait frame */}
                 <div 
-                  className="relative w-full h-full rounded-full overflow-hidden bg-dark-secondary border-2 border-accent-yellow"
+                  className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color"
+                  style={{
+                    boxShadow: '0 25px 50px rgba(255,255,255,0.05)'
+                  }}
                 >
                   <Image
                     src="/profile.png"
@@ -92,7 +95,7 @@ export function Hero() {
                     fill
                     className="object-cover w-full h-full"
                     style={{ 
-                      objectPosition: '45% 55%',
+                      objectPosition: 'center top',
                       objectFit: 'cover'
                     }}
                     priority
@@ -104,7 +107,7 @@ export function Hero() {
             {/* Yellow subtitle */}
             <motion.p
               variants={itemVariants}
-              className="text-2xl text-accent-yellow font-bebas"
+              className="text-2xl text-accent-color font-bebas"
               style={{ letterSpacing: '0.05em' }}
             >
               Developer • Designer • Community Leader
@@ -153,20 +156,23 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Profile Image with Circle Frame and Yellow Glow (Desktop only) */}
+          {/* Right Column - Profile Image with Portrait Frame (Desktop only) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex items-center justify-center"
           >
-            <div className="relative w-full aspect-square max-w-sm mx-auto">
-              {/* Yellow fade around border */}
-              <div className="absolute -inset-3 rounded-full blur-lg bg-accent-yellow/40" />
+            <div className="relative" style={{ width: '320px', height: '420px' }}>
+              {/* Background layer - offset rectangle */}
+              <div className="absolute w-full h-full rounded-2xl bg-card-bg" style={{ bottom: '-10px', right: '-10px' }} />
               
-              {/* Profile image with circle frame */}
+              {/* Profile image with portrait frame */}
               <div 
-                className="relative w-full h-full rounded-full overflow-hidden bg-dark-secondary border-2 border-accent-yellow"
+                className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color"
+                style={{
+                  boxShadow: '0 25px 50px rgba(255,255,255,0.05)'
+                }}
               >
                 <Image
                   src="/profile.png"
@@ -174,7 +180,7 @@ export function Hero() {
                   fill
                   className="object-cover w-full h-full"
                   style={{ 
-                    objectPosition: '45% 55%',
+                    objectPosition: 'center top',
                     objectFit: 'cover'
                   }}
                   priority

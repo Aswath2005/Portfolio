@@ -41,8 +41,9 @@ export function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'py-3 backdrop-blur-md bg-dark-bg/80' : 'py-6 bg-dark-bg/50 backdrop-blur-sm'
+        isScrolled ? 'py-3 backdrop-blur-md' : 'py-6 bg-dark-bg/50 backdrop-blur-sm'
       }`}
+      style={isScrolled ? { background: 'rgba(10,10,10,0.85)' } : {}}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -52,7 +53,7 @@ export function Navbar() {
           onClick={() => handleNavClick('home')}
           className="flex-shrink-0"
         >
-          <span className="text-3xl font-bold text-accent-yellow font-bebas tracking-widest">
+          <span className="text-3xl font-bold text-accent-strong font-bebas tracking-widest">
             PORTFOLIO
           </span>
         </motion.button>
@@ -65,10 +66,10 @@ export function Navbar() {
               onClick={() => handleNavClick(link.href)}
               className={`text-sm font-medium transition-colors font-dm-sans cursor-pointer ${
                 activeSection === link.href
-                  ? 'text-accent-yellow'
-                  : 'text-text-light hover:text-accent-yellow'
+                  ? 'text-accent-strong'
+                  : 'text-text-muted hover:text-accent-strong'
               }`}
-              whileHover={{ color: 'var(--accent-yellow)' }}
+              whileHover={{ color: '#ffffff' }}
             >
               {link.label}
             </motion.button>
@@ -96,7 +97,7 @@ export function Navbar() {
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? 'auto' : 0 }}
         transition={{ duration: 0.3 }}
-        className={`md:hidden overflow-hidden bg-dark-secondary/90 backdrop-blur ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        className={`md:hidden overflow-hidden bg-dark-bg/90 backdrop-blur ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
       >
         <div className="px-6 py-8 space-y-4">
           {navLinks.map((link, i) => (
@@ -112,8 +113,8 @@ export function Navbar() {
               onClick={() => handleNavClick(link.href)}
               className={`block w-full text-left text-lg font-medium py-3 px-2 font-bebas cursor-pointer transition-colors rounded ${
                 activeSection === link.href
-                  ? 'text-accent-yellow'
-                  : 'text-text-light hover:text-accent-yellow'
+                  ? 'text-accent-strong'
+                  : 'text-text-light hover:text-accent-strong'
               }`}
             >
               {link.label}

@@ -10,9 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         dark: {
-          bg: '#111111',
-          secondary: '#1a1a1a',
-          border: '#2a2a2a',
+          bg: '#0a0a0a',
+          secondary: '#111111',
+          border: '#27272a',
         },
         light: {
           bg: '#f9f9f9',
@@ -21,12 +21,17 @@ const config: Config = {
           text: '#1a1a1a',
         },
         accent: {
-          yellow: '#FACC15',
+          color: '#e4e4e7',
+          strong: '#ffffff',
         },
         text: {
-          light: '#e5e5e5',
-          muted: '#a0a0a0',
+          light: '#ffffff',
+          muted: '#a1a1aa',
+          'muted-dark': '#71717a',
           dark: '#1a1a1a',
+        },
+        card: {
+          bg: '#1a1a1a',
         },
       },
       fontFamily: {

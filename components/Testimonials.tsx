@@ -76,14 +76,14 @@ export function Testimonials() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1, duration: 0.6 }}
                     viewport={{ once: false }}
-                    className="card-hover h-full p-8 rounded-2xl bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-yellow"
+                    className="card-hover h-full p-8 rounded-2xl bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-color"
                   >
                     {/* Star Rating */}
                     <div className="flex gap-1 mb-4">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
                         <Star
                           key={i}
-                          className="w-4 h-4 fill-accent-yellow text-accent-yellow"
+                          className="w-4 h-4 fill-accent-color text-accent-color"
                         />
                       ))}
                     </div>
@@ -123,19 +123,19 @@ export function Testimonials() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePrevious}
-              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-yellow hover:bg-accent-yellow/10 transition-all"
+              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-color hover:bg-accent-color/10 transition-all"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-5 h-5 text-accent-yellow" />
+              <ChevronLeft className="w-5 h-5 text-accent-color" />
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleNext}
-              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-yellow hover:bg-accent-yellow/10 transition-all"
+              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-color hover:bg-accent-color/10 transition-all"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-5 h-5 text-accent-yellow" />
+              <ChevronRight className="w-5 h-5 text-accent-color" />
             </motion.button>
           </div>
 
@@ -147,7 +147,7 @@ export function Testimonials() {
                 onClick={() => setCurrentIndex(idx)}
                 className={`w-2 h-2 rounded-full transition-all ${
                   idx === currentIndex
-                    ? 'bg-accent-yellow w-8'
+                    ? 'bg-accent-color w-8'
                     : 'bg-dark-border dark:bg-light-border'
                 }`}
               />

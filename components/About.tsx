@@ -23,7 +23,7 @@ export function About() {
           <h2 className="text-5xl font-bold font-bebas text-white" style={{ letterSpacing: '0.08em' }}>
             ABOUT
           </h2>
-          <div className="w-24 h-1 bg-accent-yellow mt-4" />
+          <div className="w-24 h-1 bg-accent-color mt-4" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -75,7 +75,7 @@ export function About() {
                 {/* Progress bar line */}
                 <div className="h-1 bg-dark-border rounded-full overflow-hidden">
                   <motion.div
-                    className="h-full bg-accent-yellow"
+                    className="h-full bg-accent-color"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.proficiency}%` }}
                     transition={{ delay: idx * 0.1 + 0.3, duration: 1 }}

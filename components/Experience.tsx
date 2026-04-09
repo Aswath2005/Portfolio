@@ -50,7 +50,7 @@ export function Experience() {
           <h2 className="text-5xl font-bold font-bebas text-white" style={{ letterSpacing: '0.08em' }}>
             EXPERIENCE
           </h2>
-          <div className="w-24 h-1 bg-accent-yellow mt-4" />
+          <div className="w-24 h-1 bg-accent-color mt-4" />
         </motion.div>
 
         {/* Experience Grid */}
@@ -65,9 +65,9 @@ export function Experience() {
               transition={{ delay: idx * 0.1, duration: 0.6 }}
               viewport={{ once: false }}
               whileHover={{ y: -5 }}
-              className="p-6 border-2 border-dark-border hover:border-accent-yellow transition-all rounded-none"
+              className="p-6 border-2 border-dark-border hover:border-accent-color transition-all rounded-none"
             >
-              <h3 className="text-xl font-bold font-bebas text-accent-yellow tracking-wider mb-2">
+              <h3 className="text-xl font-bold font-bebas text-white tracking-wider mb-2">
                 {exp.role}
               </h3>
               <p className="text-text-muted text-sm mb-3 font-dm-sans">

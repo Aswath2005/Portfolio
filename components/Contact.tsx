@@ -57,7 +57,7 @@ export function Contact() {
           <h2 className="text-5xl font-bold font-bebas text-white" style={{ letterSpacing: '0.08em' }}>
             CONTACT
           </h2>
-          <div className="w-24 h-1 bg-accent-yellow mt-4" />
+          <div className="w-24 h-1 bg-accent-color mt-4" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -87,7 +87,7 @@ export function Contact() {
               viewport={{ once: false }}
               className="flex items-center gap-3"
             >
-              <MapPin className="w-5 h-5 text-accent-yellow flex-shrink-0" />
+              <MapPin className="w-5 h-5 text-accent-color flex-shrink-0" />
               <p className="text-text-muted font-dm-sans">
                 Kerala, India
               </p>
@@ -111,7 +111,7 @@ export function Contact() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="text-text-muted hover:text-accent-yellow transition-colors duration-300"
+                    className="text-text-muted hover:text-accent-color transition-colors duration-300"
                     aria-label={social.label}
                   >
                     <social.icon className="w-6 h-6" />
@@ -127,10 +127,10 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
               viewport={{ once: false }}
-              className="inline-flex items-center gap-3 hover:text-accent-yellow transition-colors group"
+              className="inline-flex items-center gap-3 hover:text-accent-color transition-colors group"
             >
-              <Mail className="w-5 h-5 text-accent-yellow flex-shrink-0" />
-              <p className="text-text-muted font-dm-sans group-hover:text-accent-yellow transition-colors">
+              <Mail className="w-5 h-5 text-accent-color flex-shrink-0" />
+              <p className="text-text-muted font-dm-sans group-hover:text-accent-color transition-colors">
                 aswathsa24@gmail.com
               </p>
             </motion.a>
@@ -161,7 +161,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-dark-secondary border-2 border-dark-border text-white placeholder-text-muted focus:outline-none focus:border-accent-yellow transition-all font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color transition-all font-dm-sans"
                   placeholder="Your Name"
                 />
               </motion.div>
@@ -182,7 +182,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-dark-secondary border-2 border-dark-border text-white placeholder-text-muted focus:outline-none focus:border-accent-yellow transition-all font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color transition-all font-dm-sans"
                   placeholder="your@email.com"
                 />
               </motion.div>
@@ -203,7 +203,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-none bg-dark-secondary border-2 border-dark-border text-white placeholder-text-muted focus:outline-none focus:border-accent-yellow transition-all resize-none font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color transition-all resize-none font-dm-sans"
                   placeholder="Tell me about your project..."
                 />
               </motion.div>
@@ -230,7 +230,7 @@ export function Contact() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="text-accent-yellow text-sm font-medium text-center font-dm-sans"
+                  className="text-accent-color text-sm font-medium text-center font-dm-sans"
                 >
                   {submitMessage}
                 </motion.p>

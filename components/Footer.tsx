@@ -15,7 +15,7 @@ export function Footer() {
           viewport={{ once: false }}
           className="flex flex-col sm:flex-row justify-between items-center gap-4"
         >
-          <p className="text-text-muted text-sm font-dm-sans">
+          <p className="text-text-muted-dark text-sm font-dm-sans">
             © {currentYear} Aswath. Built with passion for design, development, and community.
           </p>
 
@@ -23,7 +23,7 @@ export function Footer() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-text-muted hover:text-accent-yellow transition-colors text-sm font-dm-sans"
+            className="text-text-muted hover:text-accent-color transition-colors text-sm font-dm-sans"
           >
             Back to top ↑
           </motion.button>
