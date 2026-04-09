@@ -12,8 +12,12 @@ const portfolioText = 'PORTFOLIO'
 
 export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   useEffect(() => {
+    // Ensure we start at top of page
+    window.scrollTo(0, 0)
+    
     // Complete loading after 1.8 seconds
     const timer = setTimeout(() => {
+      window.scrollTo(0, 0)
       onLoadingComplete()
     }, 1800)
 
@@ -33,7 +37,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
         className="text-6xl md:text-7xl font-bold font-bebas leading-tight text-center mb-6"
         style={{
           letterSpacing: '0.08em',
@@ -49,11 +53,11 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
           <motion.span
             key={idx}
             className="text-6xl md:text-7xl font-bold font-bebas"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{
-              delay: 0.4 + idx * 0.12,
-              duration: 0.5,
+              delay: 0.35 + idx * 0.08,
+              duration: 0.4,
               ease: 'easeOut',
             }}
             style={{
@@ -73,8 +77,8 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
         transition={{
-          delay: 1.35,
-          duration: 0.9,
+          delay: 1.0,
+          duration: 0.7,
           ease: 'easeOut',
         }}
         style={{
@@ -89,8 +93,8 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
-          duration: 0.8,
-          delay: 1.1,
+          duration: 0.6,
+          delay: 1.3,
           ease: 'easeOut',
         }}
         className="text-sm md:text-base tracking-widest font-dm-sans"
@@ -104,8 +108,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{
-          duration: 1.3,
-          delay: 0.5,
+          duration: 1.5,
           ease: 'easeInOut',
         }}
         className="absolute bottom-0 left-0 right-0 h-1.5 origin-left"
