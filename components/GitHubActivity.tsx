@@ -10,7 +10,10 @@ interface Repository {
   description: string | null
   url: string
   stars: number
+  forks: number
   language: string | null
+  updated_at: string
+  topics: string[]
 }
 
 interface GitHubUser {
@@ -42,7 +45,10 @@ export function GitHubActivity() {
           description: repo.description,
           url: repo.html_url,
           stars: repo.stargazers_count,
+          forks: repo.forks_count,
           language: repo.language,
+          updated_at: repo.updated_at,
+          topics: repo.topics || [],
         }))
 
         setRepos(formattedRepos)
@@ -78,6 +84,18 @@ export function GitHubActivity() {
       HTML: '#e34c26',
     }
     return colors[language] || '#858585'
+  }
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    const now = new Date()
+    const days = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24))
+
+    if (days === 0) return 'Today'
+    if (days === 1) return 'Yesterday'
+    if (days < 30) return `${days}d ago`
+    if (days < 365) return `${Math.floor(days / 30)}mo ago`
+    return `${Math.floor(days / 365)}y ago`
   }
 
   return (
@@ -189,11 +207,30 @@ export function GitHubActivity() {
                         <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-color)] transition-colors ml-2 flex-shrink-0" />
                       </div>
                       
-                      <p className="text-sm text-[var(--text-muted)] mb-4 line-clamp-2 h-10">
-                        {repo.description || 'No description'}
+                      <p className="text-sm text-[var(--text-muted)] mb-3 line-clamp-2">
+                        {repo.description || 'No description available'}
                       </p>
 
-                      <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
+                      {/* Topics */}
+                      {repo.topics.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {repo.topics.slice(0, 3).map((topic) => (
+                            <span
+                              key={topic}
+                              className="inline-block px-2.5 py-1 text-xs font-medium bg-[var(--accent-color)]/10 text-[var(--accent-color)] rounded-full border border-[var(--accent-color)]/20"
+                            >
+                              {topic}
+                            </span>
+                          ))}
+                          {repo.topics.length > 3 && (
+                            <span className="inline-block px-2.5 py-1 text-xs text-[var(--text-muted)]">
+                              +{repo.topics.length - 3} more
+                            </span>
+                          )}
+                        </div>
+                      )}
+
+                      <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--text-muted)] border-t border-[var(--border)] pt-3">
                         {repo.language && (
                           <span className="flex items-center gap-1">
                             <div
@@ -211,6 +248,15 @@ export function GitHubActivity() {
                             {repo.stars}
                           </span>
                         )}
+                        {repo.forks > 0 && (
+                          <span className="flex items-center gap-1">
+                            <GitBranch className="w-3 h-3" />
+                            {repo.forks}
+                          </span>
+                        )}
+                        <span className="ml-auto text-[var(--text-muted)]">
+                          Updated {formatDate(repo.updated_at)}
+                        </span>
                       </div>
                     </motion.a>
                   ))}
