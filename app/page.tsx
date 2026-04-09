@@ -16,10 +16,10 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate initial page load
+    // Show loading screen briefly
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 2500)
+    }, 1800)
 
     return () => clearTimeout(timer)
   }, [])

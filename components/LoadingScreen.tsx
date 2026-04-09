@@ -12,10 +12,10 @@ const portfolioText = 'PORTFOLIO'
 
 export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
   useEffect(() => {
-    // Complete loading after 2.5 seconds
+    // Complete loading after 1.8 seconds
     const timer = setTimeout(() => {
       onLoadingComplete()
-    }, 2500)
+    }, 1800)
 
     return () => {
       clearTimeout(timer)
@@ -24,17 +24,21 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
 
   return (
     <motion.div
-      className="fixed inset-0 bg-dark-bg z-[9999] flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -100, transition: { duration: 0.6 } }}
+      exit={{ opacity: 0, y: -100, transition: { duration: 0.6, ease: 'easeInOut' } }}
+      style={{ backgroundColor: 'var(--bg-primary)' }}
     >
-      {/* Main heading with typing animation */}
+      {/* Main heading */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-6xl md:text-7xl font-bold text-white font-bebas leading-tight text-center mb-6"
-        style={{ letterSpacing: '0.08em' }}
+        transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
+        className="text-6xl md:text-7xl font-bold font-bebas leading-tight text-center mb-6"
+        style={{
+          letterSpacing: '0.08em',
+          color: 'var(--text-primary)',
+        }}
       >
         Welcome to
       </motion.div>
@@ -45,13 +49,17 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
           <motion.span
             key={idx}
             className="text-6xl md:text-7xl font-bold font-bebas"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 + idx * 0.1, duration: 0.4 }}
-            style={{ 
+            transition={{
+              delay: 0.4 + idx * 0.12,
+              duration: 0.5,
+              ease: 'easeOut',
+            }}
+            style={{
               letterSpacing: '0.08em',
               color: 'var(--text-primary)',
-              textShadow: '0 0 40px rgba(255,255,255,0.08), 0 0 80px rgba(255,255,255,0.04)'
+              textShadow: '0 0 40px var(--accent-color)',
             }}
           >
             {letter}
@@ -61,12 +69,18 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
 
       {/* Sweep line animation */}
       <motion.div
-        className="relative w-32 h-1 bg-white mb-8 origin-left"
+        className="relative h-1 mb-8 origin-left"
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1.3, ease: 'easeOut' }}
+        transition={{
+          delay: 1.35,
+          duration: 0.9,
+          ease: 'easeOut',
+        }}
         style={{
-          boxShadow: '0 0 20px rgba(255,255,255,0.3)'
+          width: '128px',
+          backgroundColor: 'var(--accent-color)',
+          boxShadow: '0 0 30px var(--accent-color)',
         }}
       />
 
@@ -74,20 +88,30 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       <motion.p
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
-        className="text-text-muted text-sm md:text-base tracking-widest font-dm-sans"
+        transition={{
+          duration: 0.8,
+          delay: 1.1,
+          ease: 'easeOut',
+        }}
+        className="text-sm md:text-base tracking-widest font-dm-sans"
+        style={{ color: 'var(--text-muted)' }}
       >
         Just loading
       </motion.p>
 
-      {/* Loading indicator - progress line */}
+      {/* Loading progress bar at bottom */}
       <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{ duration: 1.2, delay: 1.2, ease: 'easeInOut' }}
-        className="absolute bottom-0 left-0 right-0 h-1.5 bg-accent-color origin-left shadow-lg"
+        transition={{
+          duration: 1.3,
+          delay: 0.5,
+          ease: 'easeInOut',
+        }}
+        className="absolute bottom-0 left-0 right-0 h-1.5 origin-left"
         style={{
-          boxShadow: '0 0 20px rgba(228,228,231,0.12)'
+          backgroundColor: 'var(--accent-color)',
+          boxShadow: '0 0 20px var(--accent-color)',
         }}
       />
     </motion.div>
