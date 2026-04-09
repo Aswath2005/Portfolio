@@ -315,11 +315,4 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: 2.25s;
 }
 
-/* Cursor styles - hide default */
-html {
-  cursor: none;
-}
 
-html.hide-custom-cursor {
-  cursor: auto;
-}

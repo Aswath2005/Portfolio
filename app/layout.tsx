@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { ScrollProgress } from '@/components/ScrollProgress'
-import { Cursor } from '@/components/Cursor'
 import { ThemeProvider } from '@/context/ThemeContext'
 
 export const metadata: Metadata = {
@@ -49,7 +48,6 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <Cursor />
           <ScrollProgress />
           {children}
         </ThemeProvider>

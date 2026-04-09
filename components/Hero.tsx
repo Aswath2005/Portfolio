@@ -113,7 +113,7 @@ export function Hero() {
               style={{
                 color: 'var(--text-primary)',
                 letterSpacing: '0.05em',
-                textShadow: '0 0 40px rgba(255,255,255,0.08), 0 0 80px rgba(255,255,255,0.04)',
+                textShadow: '0 0 40px var(--accent-color)',
               }}
             >
               Aswath S A
