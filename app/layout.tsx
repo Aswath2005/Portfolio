@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/profile.png',
+        url: '/IMG_20260404_122553.jpg',
         width: 600,
         height: 600,
         alt: 'Aswath S A - Portfolio',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'My Portfolio - Aswath S A',
     description: 'A professional portfolio website showcasing design and development work. Modern, fast, and beautiful.',
-    images: ['/profile.png'],
+    images: ['/IMG_20260404_122553.jpg'],
   },
 }
 

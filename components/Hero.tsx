@@ -175,8 +175,8 @@ export function Hero() {
                   />
 
                   <Image
-                    src="/profile.png"
-                    alt="Profile"
+                  src="/IMG_20260404_122553.jpg"
+                  alt="Profile"
                     fill
                     className="object-cover w-full h-full"
                     style={{
@@ -343,7 +343,7 @@ export function Hero() {
                 />
 
                 <Image
-                  src="/profile.png"
+                  src="/IMG_20260404_122553.jpg"
                   alt="Profile"
                   fill
                   className="object-cover w-full h-full"
