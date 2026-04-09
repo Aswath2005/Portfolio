@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { TiltCard } from './TiltCard'
 
 const projects = [
   {
@@ -72,29 +73,32 @@ export function Projects() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {projects.map((project, idx) => (
-            <motion.a
-              key={project.id}
-              href={project.link}
-              target={project.link !== '#' ? '_blank' : undefined}
-              rel={project.link !== '#' ? 'noopener noreferrer' : undefined}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.12, duration: 0.6 }}
-              viewport={{ once: true, margin: '-50px' }}
-              whileHover={{ y: -8 }}
-              className="p-6 border-2 border-dark-border hover:border-accent-color transition-all rounded-none hover:shadow-lg"
-              style={{
-                backgroundColor: '#1a1a1a',
-                boxShadow: '0 0 0px rgba(255,255,255,0)'
-              }}
-            >
-              <h3 className="text-xl font-bold font-bebas text-white tracking-wider mb-2 group-hover:text-accent-color transition-colors">
-                {project.title}
-              </h3>
-              <p className="text-text-muted text-sm leading-relaxed font-dm-sans">
-                {project.description}
-              </p>
-            </motion.a>
+            <TiltCard key={project.id}>
+              <motion.a
+                href={project.link}
+                target={project.link !== '#' ? '_blank' : undefined}
+                rel={project.link !== '#' ? 'noopener noreferrer' : undefined}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.12, duration: 0.6 }}
+                viewport={{ once: true, margin: '-50px' }}
+                whileHover={{ y: -8 }}
+                className="p-6 border-2 border-dark-border hover:border-accent-color transition-all rounded-none hover:shadow-lg block w-full h-full"
+                style={{
+                  backgroundColor: '#1a1a1a',
+                  boxShadow: '0 0 0px rgba(255,255,255,0)',
+                  textDecoration: 'none',
+                  color: 'inherit'
+                }}
+              >
+                <h3 className="text-xl font-bold font-bebas text-white tracking-wider mb-2 group-hover:text-accent-color transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-text-muted text-sm leading-relaxed font-dm-sans">
+                  {project.description}
+                </p>
+              </motion.a>
+            </TiltCard>
           ))}
         </motion.div>
       </div>

@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { TypeWriter } from './TypeWriter'
+import { StatsCounter } from './StatsCounter'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -181,6 +182,11 @@ export function Hero() {
             >
               Explore my projects and contributions on GitHub.
             </motion.p>
+
+            {/* Stats Counter */}
+            <motion.div variants={itemVariants}>
+              <StatsCounter />
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div

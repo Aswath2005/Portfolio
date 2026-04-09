@@ -4,17 +4,35 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --dark-bg: #0a0a0a;
-  --dark-secondary: #111111;
-  --card-bg: #1a1a1a;
-  --dark-border: #27272a;
+:root,
+:root.dark {
+  --bg-primary: #0a0a0a;
+  --bg-surface: #111111;
+  --bg-card: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border: #27272a;
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
   --accent-color: #e4e4e7;
   --accent-strong: #ffffff;
-  --text-light: #ffffff;
-  --text-muted: #a1a1aa;
-  --text-muted-dark: #71717a;
   --navbar-bg: rgba(10,10,10,0.85);
+}
+
+:root.light {
+  --bg-primary: #ffffff;
+  --bg-surface: #f4f4f5;
+  --bg-card: #fafafa;
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --border: #e4e4e7;
+  --btn-bg: #09090b;
+  --btn-text: #ffffff;
+  --accent-color: #71717a;
+  --accent-strong: #000000;
+  --navbar-bg: rgba(244,244,245,0.85);
 }
 
 * {
@@ -29,9 +47,10 @@ html {
 
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: var(--dark-bg);
-  color: var(--text-light);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -45,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--dark-bg);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -82,8 +101,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Button styles */
 .btn-primary {
   padding: 0.875rem 1.75rem;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
   font-weight: 700;
   border-radius: 0;
   border: none;
@@ -95,7 +114,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  background-color: #e4e4e7;
+  background-color: var(--accent-color);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(255,255,255,0.1);
 }
@@ -103,9 +122,9 @@ h1, h2, h3, h4, h5, h6 {
 .btn-outline {
   padding: 0.875rem 1.75rem;
   background-color: transparent;
-  color: #ffffff;
+  color: var(--btn-bg);
   font-weight: 700;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--btn-bg);
   border-radius: 0;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -115,8 +134,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline:hover {
-  background-color: #e4e4e7;
-  color: #000000;
+  background-color: var(--accent-color);
+  color: var(--btn-text);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(255,255,255,0.1);
 }
@@ -196,8 +215,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glow text effect */
 .glow-text {
-  text-shadow: 0 0 40px rgba(255, 255, 255, 0.3),
-               0 0 80px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 40px var(--accent-color);
+  color: var(--text-primary);
 }
 
 /* Glow border effect */

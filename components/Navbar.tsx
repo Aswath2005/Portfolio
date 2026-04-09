@@ -4,11 +4,13 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useActiveSection } from '@/hooks/useActiveSection'
+import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
   { href: 'home', label: 'Home' },
   { href: 'about', label: 'About' },
   { href: 'projects', label: 'Projects' },
+  { href: 'github', label: 'GitHub' },
   { href: 'experience', label: 'Experience' },
   { href: 'contact', label: 'Contact' },
 ]
@@ -28,10 +30,15 @@ export function Navbar() {
   }, [])
 
   const handleNavClick = (href: string) => {
-    const element = document.getElementById(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (href === 'github') {
+      window.open('https://github.com/Aswath2005', '_blank')
       setIsOpen(false)
+    } else {
+      const element = document.getElementById(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+        setIsOpen(false)
+      }
     }
   }
 
@@ -79,6 +86,9 @@ export function Navbar() {
               />
             </motion.button>
           ))}
+          
+          {/* Theme Toggle */}
+          <ThemeToggle />
         </div>
 
         {/* Hamburger Menu */}
