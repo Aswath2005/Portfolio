@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { TypeWriter } from './TypeWriter'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -24,7 +26,16 @@ const itemVariants = {
   },
 }
 
+interface Particle {
+  id: number
+  x: number
+  y: number
+  duration: number
+}
+
 export function Hero() {
+  const [particles, setParticles] = useState<Particle[]>([])
+
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
@@ -32,11 +43,47 @@ export function Hero() {
     }
   }
 
+  useEffect(() => {
+    // Generate floating particles
+    const generateParticles = () => {
+      const newParticles = Array.from({ length: 20 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        duration: Math.random() * 3 + 3,
+      }))
+      setParticles(newParticles)
+    }
+
+    generateParticles()
+  }, [])
+
   return (
     <section
       id="home"
       className="relative overflow-hidden bg-dark-bg pt-24 lg:pt-0"
     >
+      {/* Floating particles background */}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="floating-particle w-1 h-1"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            opacity: Math.random() * 0.2 + 0.1,
+          }}
+          animate={{
+            y: [0, -100],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+
       {/* Subtle white glow background - left side only */}
       <motion.div
         className="absolute top-1/2 left-0 w-96 h-96 rounded-full opacity-5 pointer-events-none"
@@ -65,7 +112,7 @@ export function Hero() {
             {/* Large name heading */}
             <motion.h1
               variants={itemVariants}
-              className="text-6xl lg:text-7xl xl:text-8xl font-bold font-bebas text-white leading-tight"
+              className="text-6xl lg:text-7xl xl:text-8xl font-bold font-bebas text-white leading-tight glow-text"
               style={{ letterSpacing: '0.05em' }}
             >
               Aswath S A
@@ -79,12 +126,15 @@ export function Hero() {
               className="relative lg:hidden py-6"
             >
               <div className="relative w-full max-w-xs mx-auto h-80">
+                {/* Glow background */}
+                <div className="absolute inset-0 rounded-2xl bg-white opacity-0 blur-2xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)' }} />
+                
                 {/* Background layer - offset rectangle */}
                 <div className="absolute w-full h-full rounded-2xl bg-dark-secondary" style={{ bottom: '-10px', right: '-10px' }} />
                 
                 {/* Profile image with portrait frame */}
                 <div 
-                  className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color"
+                  className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color transition-all duration-300 hover:shadow-lg"
                   style={{
                     boxShadow: '0 25px 50px rgba(255,255,255,0.05)'
                   }}
@@ -104,13 +154,16 @@ export function Hero() {
               </div>
             </motion.div>
 
-            {/* Yellow subtitle */}
+            {/* Typing animation for roles */}
             <motion.p
               variants={itemVariants}
               className="text-2xl text-accent-color font-bebas"
               style={{ letterSpacing: '0.05em' }}
             >
-              Developer • Designer • Community Leader
+              <TypeWriter
+                words={['Developer', 'Designer', 'Community Leader']}
+                className="text-accent-color font-bebas"
+              />
             </motion.p>
 
             {/* Bio paragraph */}
@@ -164,12 +217,15 @@ export function Hero() {
             className="relative hidden lg:flex items-center justify-center"
           >
             <div className="relative" style={{ width: '320px', height: '420px' }}>
+              {/* Glow background */}
+              <div className="absolute inset-0 rounded-2xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)', transform: 'scale(1.1)' }} />
+              
               {/* Background layer - offset rectangle */}
               <div className="absolute w-full h-full rounded-2xl bg-card-bg" style={{ bottom: '-10px', right: '-10px' }} />
               
               {/* Profile image with portrait frame */}
               <div 
-                className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color"
+                className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color transition-all duration-300 hover:shadow-lg"
                 style={{
                   boxShadow: '0 25px 50px rgba(255,255,255,0.05)'
                 }}

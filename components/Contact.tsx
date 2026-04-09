@@ -51,13 +51,19 @@ export function Contact() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: false, margin: '-100px' }}
+          viewport={{ once: true, margin: '-100px' }}
           className="mb-16"
         >
-          <h2 className="text-5xl font-bold font-bebas text-white" style={{ letterSpacing: '0.08em' }}>
+          <h2 className="text-5xl font-bold font-bebas text-white glow-text" style={{ letterSpacing: '0.08em' }}>
             CONTACT
           </h2>
-          <div className="w-24 h-1 bg-accent-color mt-4" />
+          <motion.div 
+            className="w-24 h-1 bg-accent-color mt-4"
+            initial={{ width: 0 }}
+            whileInView={{ width: '96px' }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
@@ -161,7 +167,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color transition-all font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color focus:shadow-[0_0_15px_rgba(228,228,231,0.08)] transition-all font-dm-sans"
                   placeholder="Your Name"
                 />
               </motion.div>
@@ -182,7 +188,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color transition-all font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color focus:shadow-[0_0_15px_rgba(228,228,231,0.08)] transition-all font-dm-sans"
                   placeholder="your@email.com"
                 />
               </motion.div>
@@ -203,7 +209,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color transition-all resize-none font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color focus:shadow-[0_0_15px_rgba(228,228,231,0.08)] transition-all resize-none font-dm-sans"
                   placeholder="Tell me about your project..."
                 />
               </motion.div>
@@ -213,12 +219,12 @@ export function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                viewport={{ once: false }}
-                whileHover={{ scale: 1.05 }}
+                viewport={{ once: true, margin: '-50px' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(255,255,255,0.2)' }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-primary w-full inline-flex items-center justify-center gap-2 group disabled:opacity-50 font-bebas tracking-wider"
+                className="btn-primary w-full inline-flex items-center justify-center gap-2 group disabled:opacity-50 font-bebas tracking-wider transition-all"
               >
                 {isSubmitting ? 'SENDING...' : 'SEND'}
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

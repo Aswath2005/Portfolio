@@ -29,6 +29,8 @@ const projects = [
   },
 ]
 
+const headingText = 'PROJECTS'
+
 export function Projects() {
   return (
     <section id="projects" className="py-20 px-6 relative">
@@ -38,13 +40,31 @@ export function Projects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: false, margin: '-100px' }}
+          viewport={{ once: true, margin: '-100px' }}
           className="mb-16"
         >
-          <h2 className="text-5xl font-bold font-bebas text-white" style={{ letterSpacing: '0.08em' }}>
-            PROJECTS
-          </h2>
-          <div className="w-24 h-1 bg-accent-color mt-4" />
+          <div className="flex gap-1">
+            {headingText.split('').map((letter, idx) => (
+              <motion.span
+                key={idx}
+                className="text-5xl font-bold font-bebas text-white glow-text inline-block"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                viewport={{ once: true }}
+                style={{ letterSpacing: '0.08em' }}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </div>
+          <motion.div 
+            className="w-24 h-1 bg-accent-color mt-4"
+            initial={{ width: 0 }}
+            whileInView={{ width: '96px' }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+          />
         </motion.div>
 
         {/* Projects Grid */}
@@ -59,12 +79,16 @@ export function Projects() {
               rel={project.link !== '#' ? 'noopener noreferrer' : undefined}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              viewport={{ once: false }}
-              whileHover={{ y: -5 }}
-              className="p-6 border-2 border-dark-border hover:border-accent-color transition-all rounded-none"
+              transition={{ delay: idx * 0.12, duration: 0.6 }}
+              viewport={{ once: true, margin: '-50px' }}
+              whileHover={{ y: -8 }}
+              className="p-6 border-2 border-dark-border hover:border-accent-color transition-all rounded-none hover:shadow-lg"
+              style={{
+                backgroundColor: '#1a1a1a',
+                boxShadow: '0 0 0px rgba(255,255,255,0)'
+              }}
             >
-              <h3 className="text-xl font-bold font-bebas text-white tracking-wider mb-2">
+              <h3 className="text-xl font-bold font-bebas text-white tracking-wider mb-2 group-hover:text-accent-color transition-colors">
                 {project.title}
               </h3>
               <p className="text-text-muted text-sm leading-relaxed font-dm-sans">

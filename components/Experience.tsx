@@ -44,13 +44,19 @@ export function Experience() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: false, margin: '-100px' }}
+          viewport={{ once: true, margin: '-100px' }}
           className="mb-16"
         >
-          <h2 className="text-5xl font-bold font-bebas text-white" style={{ letterSpacing: '0.08em' }}>
+          <h2 className="text-5xl font-bold font-bebas text-white glow-text" style={{ letterSpacing: '0.08em' }}>
             EXPERIENCE
           </h2>
-          <div className="w-24 h-1 bg-accent-color mt-4" />
+          <motion.div 
+            className="w-24 h-1 bg-accent-color mt-4"
+            initial={{ width: 0 }}
+            whileInView={{ width: '96px' }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          />
         </motion.div>
 
         {/* Experience Grid */}
@@ -60,12 +66,15 @@ export function Experience() {
           {experiences.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1, duration: 0.6 }}
-              viewport={{ once: false }}
-              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.12, duration: 0.6 }}
+              viewport={{ once: true, margin: '-50px' }}
+              whileHover={{ y: -6, boxShadow: '0 0 25px rgba(255,255,255,0.1)' }}
               className="p-6 border-2 border-dark-border hover:border-accent-color transition-all rounded-none"
+              style={{
+                backgroundColor: '#1a1a1a',
+              }}
             >
               <h3 className="text-xl font-bold font-bebas text-white tracking-wider mb-2">
                 {exp.role}

@@ -51,9 +51,9 @@ export function Navbar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleNavClick('home')}
-          className="flex-shrink-0"
+          className="flex-shrink-0 group"
         >
-          <span className="text-3xl font-bold text-accent-strong font-bebas tracking-widest">
+          <span className="text-3xl font-bold text-accent-strong font-bebas tracking-widest transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">
             PORTFOLIO
           </span>
         </motion.button>
@@ -64,7 +64,7 @@ export function Navbar() {
             <motion.button
               key={link.href}
               onClick={() => handleNavClick(link.href)}
-              className={`text-sm font-medium transition-colors font-dm-sans cursor-pointer ${
+              className={`relative text-sm font-medium transition-colors font-dm-sans cursor-pointer group ${
                 activeSection === link.href
                   ? 'text-accent-strong'
                   : 'text-text-muted hover:text-accent-strong'
@@ -72,6 +72,11 @@ export function Navbar() {
               whileHover={{ color: '#ffffff' }}
             >
               {link.label}
+              <span 
+                className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ${
+                  activeSection === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}
+              />
             </motion.button>
           ))}
         </div>
