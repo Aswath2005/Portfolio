@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Globe, Github, ExternalLink } from 'lucide-react'
+import Image from 'next/image'
 
 interface ProjectCardProps {
   title: string
@@ -10,6 +11,7 @@ interface ProjectCardProps {
   url: string
   tags: string[]
   github?: string
+  screenshot?: string
   index?: number
 }
 
@@ -19,6 +21,7 @@ export function ProjectCard({
   url,
   tags,
   github,
+  screenshot,
   index = 0,
 }: ProjectCardProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false)
@@ -64,8 +67,17 @@ export function ProjectCard({
       </div>
 
       {/* iframe preview area */}
-      <div className="relative w-full" style={{ height: '200px', overflow: 'hidden' }}>
-        {!iframeError ? (
+      <div className="relative w-full" style={{ height: '200px', overflow: 'hidden', backgroundColor: 'var(--bg-surface)' }}>
+        {screenshot ? (
+          /* Screenshot image preview */
+          <Image
+            src={screenshot}
+            alt={title}
+            fill
+            className="object-cover w-full h-full"
+            style={{ objectPosition: 'top center' }}
+          />
+        ) : !iframeError ? (
           <>
             {/* Loading skeleton */}
             {!iframeLoaded && (

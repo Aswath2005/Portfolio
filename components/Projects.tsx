@@ -9,6 +9,7 @@ const projects = [
     title: 'Calorify',
     description: 'A comprehensive calorie tracking application built with modern web technologies.',
     url: 'http://calorify-1.vercel.app/',
+    screenshot: '/calorify-preview.png',
     tags: ['Next.js', 'React', 'Web App'],
     github: 'https://github.com/Aswath2005',
   },
