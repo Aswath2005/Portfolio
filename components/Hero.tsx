@@ -7,31 +7,12 @@ import { useEffect, useState } from 'react'
 import { TypeWriter } from './TypeWriter'
 import { StatsCounter } from './StatsCounter'
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8 },
-  },
-}
-
 interface Particle {
   id: number
   x: number
   y: number
   duration: number
+  delay: number
 }
 
 export function Hero() {
@@ -51,7 +32,8 @@ export function Hero() {
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        duration: Math.random() * 3 + 3,
+        duration: Math.random() * 4 + 3,
+        delay: Math.random() * 2,
       }))
       setParticles(newParticles)
     }
@@ -62,34 +44,40 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden bg-dark-bg pt-24 lg:pt-0"
+      className="relative overflow-hidden pt-24 lg:pt-0"
+      style={{ backgroundColor: 'var(--bg-primary)' }}
     >
       {/* Floating particles background */}
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="floating-particle w-1 h-1"
+          className="floating-particle fixed w-1 h-1 rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-            opacity: Math.random() * 0.2 + 0.1,
+            opacity: Math.random() * 0.1 + 0.05,
+            backgroundColor: 'rgba(255,255,255,0.8)',
           }}
           animate={{
-            y: [0, -100],
+            y: [0, -80],
+            opacity: [Math.random() * 0.1 + 0.05, 0],
           }}
           transition={{
             duration: particle.duration,
+            delay: particle.delay,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
         />
       ))}
 
-      {/* Subtle white glow background - left side only */}
+      {/* Subtle background glow blob */}
       <motion.div
-        className="absolute top-1/2 left-0 w-96 h-96 rounded-full opacity-5 pointer-events-none"
+        className="absolute top-1/2 left-0 w-96 h-96 rounded-full pointer-events-none"
         style={{
           background: 'radial-gradient(circle, rgba(255, 255, 255, 1) 0%, transparent 70%)',
+          opacity: 0.03,
+          zIndex: -2,
         }}
         animate={{
           y: [0, 50, 0],
@@ -104,17 +92,29 @@ export function Hero() {
       <div className="relative z-10 px-6 lg:px-12 min-h-screen flex items-center">
         <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12 items-center w-full max-w-7xl mx-auto">
           {/* Left Column */}
-          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             {/* Small tag */}
-            <motion.p variants={itemVariants} className="text-accent-color font-dm-sans text-sm uppercase tracking-widest">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-sm uppercase tracking-widest font-dm-sans"
+              style={{ color: 'var(--accent-color)' }}
+            >
               Hello, I'm
             </motion.p>
 
             {/* Large name heading */}
             <motion.h1
-              variants={itemVariants}
-              className="text-6xl lg:text-7xl xl:text-8xl font-bold font-bebas text-white leading-tight glow-text"
-              style={{ letterSpacing: '0.05em' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-6xl lg:text-7xl xl:text-8xl font-bold font-bebas leading-tight"
+              style={{
+                color: 'var(--text-primary)',
+                letterSpacing: '0.05em',
+                textShadow: '0 0 40px rgba(255,255,255,0.08), 0 0 80px rgba(255,255,255,0.04)',
+              }}
             >
               Aswath S A
             </motion.h1>
@@ -123,74 +123,146 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               className="relative lg:hidden py-6"
             >
               <div className="relative w-full max-w-xs mx-auto h-80">
-                {/* Glow background */}
-                <div className="absolute inset-0 rounded-2xl bg-white opacity-0 blur-2xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)' }} />
-                
-                {/* Background layer - offset rectangle */}
-                <div className="absolute w-full h-full rounded-2xl bg-dark-secondary" style={{ bottom: '-10px', right: '-10px' }} />
-                
-                {/* Profile image with portrait frame */}
-                <div 
-                  className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color transition-all duration-300 hover:shadow-lg"
+                {/* Primary rotating ring */}
+                <div
+                  className="hero-photo-primary-ring absolute inset-0 rounded-3xl z-0"
                   style={{
-                    boxShadow: '0 25px 50px rgba(255,255,255,0.05)'
+                    width: 'calc(100% + 40px)',
+                    height: 'calc(100% + 40px)',
+                    left: '-20px',
+                    top: '-20px',
+                    borderRadius: '24px',
+                    background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.15), transparent 30%, rgba(255,255,255,0.15) 60%, transparent)',
+                    backgroundClip: 'border-box',
+                  }}
+                />
+
+                {/* Secondary dashed ring */}
+                <div
+                  className="hero-photo-secondary-ring absolute rounded-3xl z-0"
+                  style={{
+                    width: 'calc(100% + 70px)',
+                    height: 'calc(100% + 70px)',
+                    left: '-35px',
+                    top: '-35px',
+                    borderRadius: '28px',
+                    border: `1px dashed rgba(255,255,255,0.06)`,
+                  }}
+                />
+
+                {/* Background glow */}
+                <div className="absolute inset-0 rounded-3xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
+
+                {/* Profile image with portrait frame */}
+                <div
+                  className="relative w-full h-full rounded-2xl overflow-hidden border z-10"
+                  style={{
+                    backgroundColor: 'var(--bg-card)',
+                    borderColor: 'rgba(255,255,255,0.15)',
+                    boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
                   }}
                 >
+                  {/* Dark gradient overlay */}
+                  <div
+                    className="absolute inset-0 pointer-events-none z-20"
+                    style={{
+                      background: 'linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%)',
+                    }}
+                  />
+
                   <Image
                     src="/profile.png"
                     alt="Profile"
                     fill
                     className="object-cover w-full h-full"
-                    style={{ 
+                    style={{
                       objectPosition: 'center top',
-                      objectFit: 'cover'
+                      objectFit: 'cover',
                     }}
                     priority
                   />
                 </div>
+
+                {/* Corner brackets */}
+                {[
+                  { top: '-8px', left: '-8px', borderTopWidth: '2px', borderLeftWidth: '2px' },
+                  { top: '-8px', right: '-8px', borderTopWidth: '2px', borderRightWidth: '2px' },
+                  { bottom: '-8px', left: '-8px', borderBottomWidth: '2px', borderLeftWidth: '2px' },
+                  { bottom: '-8px', right: '-8px', borderBottomWidth: '2px', borderRightWidth: '2px' },
+                ].map((style, idx) => (
+                  <div
+                    key={idx}
+                    className={`hero-photo-bracket hero-photo-bracket-${idx + 1} absolute w-4 h-4 z-20`}
+                    style={{
+                      ...style,
+                      border: '2px solid rgba(255,255,255,0.4)',
+                      borderTopColor: style.borderTopWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                      borderRightColor: style.borderRightWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                      borderBottomColor: style.borderBottomWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                      borderLeftColor: style.borderLeftWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                    } as any}
+                  />
+                ))}
               </div>
             </motion.div>
 
             {/* Typing animation for roles */}
             <motion.p
-              variants={itemVariants}
-              className="text-2xl text-accent-color font-bebas"
-              style={{ letterSpacing: '0.05em' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="text-2xl font-bebas"
+              style={{
+                color: 'var(--accent-color)',
+                letterSpacing: '0.05em',
+              }}
             >
               <TypeWriter
-                words={['Developer', 'Designer', 'Community Leader']}
-                className="text-accent-color font-bebas"
+                text="Developer • Designer • Community Leader"
+                className="text-2xl font-bebas"
               />
             </motion.p>
 
             {/* Bio paragraph */}
             <motion.p
-              variants={itemVariants}
-              className="text-lg text-text-muted max-w-md leading-relaxed font-dm-sans"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="text-lg leading-relaxed font-dm-sans max-w-md"
+              style={{ color: 'var(--text-secondary)' }}
             >
               I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
             </motion.p>
 
             {/* Additional highlight */}
             <motion.p
-              variants={itemVariants}
-              className="text-sm text-text-muted font-dm-sans"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="text-sm font-dm-sans"
+              style={{ color: 'var(--text-muted)' }}
             >
               Explore my projects and contributions on GitHub.
             </motion.p>
 
             {/* Stats Counter */}
-            <motion.div variants={itemVariants}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+            >
               <StatsCounter />
             </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
               <motion.a
@@ -213,41 +285,96 @@ export function Hero() {
                 Contact Me
               </motion.button>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Right Column - Profile Image with Portrait Frame (Desktop only) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="relative hidden lg:flex items-center justify-center"
           >
             <div className="relative" style={{ width: '320px', height: '420px' }}>
-              {/* Glow background */}
-              <div className="absolute inset-0 rounded-2xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)', transform: 'scale(1.1)' }} />
-              
-              {/* Background layer - offset rectangle */}
-              <div className="absolute w-full h-full rounded-2xl bg-card-bg" style={{ bottom: '-10px', right: '-10px' }} />
-              
-              {/* Profile image with portrait frame */}
-              <div 
-                className="relative w-full h-full rounded-2xl overflow-hidden border border-accent-color transition-all duration-300 hover:shadow-lg"
+              {/* Primary rotating ring */}
+              <div
+                className="hero-photo-primary-ring absolute inset-0 rounded-3xl z-0"
                 style={{
-                  boxShadow: '0 25px 50px rgba(255,255,255,0.05)'
+                  width: 'calc(100% + 40px)',
+                  height: 'calc(100% + 40px)',
+                  left: '-20px',
+                  top: '-20px',
+                  borderRadius: '24px',
+                  background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.15), transparent 30%, rgba(255,255,255,0.15) 60%, transparent)',
+                  backgroundClip: 'border-box',
+                }}
+              />
+
+              {/* Secondary dashed ring */}
+              <div
+                className="hero-photo-secondary-ring absolute rounded-3xl z-0"
+                style={{
+                  width: 'calc(100% + 70px)',
+                  height: 'calc(100% + 70px)',
+                  left: '-35px',
+                  top: '-35px',
+                  borderRadius: '28px',
+                  border: `1px dashed rgba(255,255,255,0.06)`,
+                }}
+              />
+
+              {/* Background glow */}
+              <div className="absolute inset-0 rounded-3xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
+
+              {/* Profile image with portrait frame */}
+              <div
+                className="relative w-full h-full rounded-2xl overflow-hidden border z-10"
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  borderColor: 'rgba(255,255,255,0.15)',
+                  boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
                 }}
               >
+                {/* Dark gradient overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none z-20"
+                  style={{
+                    background: 'linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%)',
+                  }}
+                />
+
                 <Image
                   src="/profile.png"
                   alt="Profile"
                   fill
                   className="object-cover w-full h-full"
-                  style={{ 
+                  style={{
                     objectPosition: 'center top',
-                    objectFit: 'cover'
+                    objectFit: 'cover',
                   }}
                   priority
                 />
               </div>
+
+              {/* Corner brackets */}
+              {[
+                { top: '-8px', left: '-8px', borderTopWidth: '2px', borderLeftWidth: '2px' },
+                { top: '-8px', right: '-8px', borderTopWidth: '2px', borderRightWidth: '2px' },
+                { bottom: '-8px', left: '-8px', borderBottomWidth: '2px', borderLeftWidth: '2px' },
+                { bottom: '-8px', right: '-8px', borderBottomWidth: '2px', borderRightWidth: '2px' },
+              ].map((style, idx) => (
+                <div
+                  key={idx}
+                  className={`hero-photo-bracket hero-photo-bracket-${idx + 1} absolute w-4 h-4 z-20`}
+                  style={{
+                    ...style,
+                    border: '2px solid rgba(255,255,255,0.4)',
+                    borderTopColor: style.borderTopWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                    borderRightColor: style.borderRightWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                    borderBottomColor: style.borderBottomWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                    borderLeftColor: style.borderLeftWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                  } as any}
+                />
+              ))}
             </div>
           </motion.div>
         </div>

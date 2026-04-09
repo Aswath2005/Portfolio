@@ -11,21 +11,13 @@ interface LoadingScreenProps {
 const portfolioText = 'PORTFOLIO'
 
 export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
-  const [showSweepLine, setShowSweepLine] = useState(false)
-
   useEffect(() => {
-    // Show sweep line after text types
-    const sweepTimer = setTimeout(() => {
-      setShowSweepLine(true)
-    }, 1000)
-
     // Complete loading after 2.5 seconds
     const timer = setTimeout(() => {
       onLoadingComplete()
     }, 2500)
 
     return () => {
-      clearTimeout(sweepTimer)
       clearTimeout(timer)
     }
   }, [onLoadingComplete])
@@ -52,11 +44,15 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         {portfolioText.split('').map((letter, idx) => (
           <motion.span
             key={idx}
-            className="text-6xl md:text-7xl font-bold text-white font-bebas glow-text"
+            className="text-6xl md:text-7xl font-bold font-bebas"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 + idx * 0.05, duration: 0.4 }}
-            style={{ letterSpacing: '0.08em' }}
+            transition={{ delay: 0.3 + idx * 0.1, duration: 0.4 }}
+            style={{ 
+              letterSpacing: '0.08em',
+              color: 'var(--text-primary)',
+              textShadow: '0 0 40px rgba(255,255,255,0.08), 0 0 80px rgba(255,255,255,0.04)'
+            }}
           >
             {letter}
           </motion.span>
@@ -64,17 +60,15 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       </div>
 
       {/* Sweep line animation */}
-      {showSweepLine && (
-        <motion.div
-          className="relative w-32 h-1 bg-white mb-8 origin-left"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          style={{
-            boxShadow: '0 0 20px rgba(255,255,255,0.3)'
-          }}
-        />
-      )}
+      <motion.div
+        className="relative w-32 h-1 bg-white mb-8 origin-left"
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.3, ease: 'easeOut' }}
+        style={{
+          boxShadow: '0 0 20px rgba(255,255,255,0.3)'
+        }}
+      />
 
       {/* Subtitle */}
       <motion.p

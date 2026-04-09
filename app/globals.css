@@ -39,6 +39,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 html {
@@ -250,4 +251,75 @@ h1, h2, h3, h4, h5, h6 {
 /* Typing animation letters */
 .letter-reveal {
   display: inline-block;
+}
+
+/* Hero photo frame enhancements */
+@supports (background: conic-gradient(from 0deg, transparent)) {
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes rotateBorder {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  .hero-photo-primary-ring {
+    animation: rotateBorder 10s linear infinite;
+  }
+
+  .hero-photo-secondary-ring {
+    animation: rotateBorder 16s linear infinite reverse;
+  }
+}
+
+/* Fallback for browsers without @property support */
+@keyframes rotateBorderFallback {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-photo-bracket {
+  animation: pulseOpacity 3s ease-in-out infinite;
+}
+
+@keyframes pulseOpacity {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}
+
+.hero-photo-bracket-1 {
+  animation-delay: 0s;
+}
+
+.hero-photo-bracket-2 {
+  animation-delay: 0.75s;
+}
+
+.hero-photo-bracket-3 {
+  animation-delay: 1.5s;
+}
+
+.hero-photo-bracket-4 {
+  animation-delay: 2.25s;
+}
+
+/* Cursor styles - hide default */
+html {
+  cursor: none;
+}
+
+html.hide-custom-cursor {
+  cursor: auto;
 }

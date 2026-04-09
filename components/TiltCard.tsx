@@ -33,9 +33,9 @@ export function TiltCard({ children, className = '' }: TiltCardProps) {
     const x = e.clientX - rect.left - centerX
     const y = e.clientY - rect.top - centerY
 
-    // Calculate rotation (max 15 degrees)
-    const rotX = (y / centerY) * -15
-    const rotY = (x / centerX) * 15
+    // Calculate rotation (max 12 degrees)
+    const rotX = (y / centerY) * -12
+    const rotY = (x / centerX) * 12
 
     setRotateX(rotX)
     setRotateY(rotY)
@@ -86,7 +86,7 @@ export function TiltCard({ children, className = '' }: TiltCardProps) {
         <div
           className="pointer-events-none absolute inset-0 rounded-none transition-opacity duration-300"
           style={{
-            opacity: isHovering ? 0.15 : 0,
+            opacity: isHovering ? 0.12 : 0,
             background: `radial-gradient(circle at ${shinePos.x}% ${shinePos.y}%, rgba(255,255,255,0.3) 0%, transparent 50%)`,
             transformStyle: 'preserve-3d',
             transform: 'translateZ(1px)',
