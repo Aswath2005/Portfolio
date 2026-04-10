@@ -32,13 +32,6 @@ const projects = [
     github: 'https://github.com/Aswath2005/cardiosense',
     status: 'in-progress' as const,
   },
-  {
-    title: 'Project Four',
-    description: 'Exploring creative solutions to complex problems.',
-    url: '#',
-    tags: ['Innovation', 'Technology'],
-    status: 'completed' as const,
-  },
 ]
 
 const headingText = 'PROJECTS'
