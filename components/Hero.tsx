@@ -130,7 +130,7 @@ export function Hero() {
               }}
             >
               <TypeWriter
-                text="Developer • Designer • Community Leader"
+                text="developer. community leader. tech enthusiast"
                 className="text-base md:text-2xl font-semibold md:font-bebas"
               />
             </motion.p>

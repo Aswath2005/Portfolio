@@ -41,19 +41,59 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
-              I'm a passionate developer and designer with a commitment to building clean, functional digital experiences. 
-              With expertise in both frontend development and UI/UX design, I bridge the gap between code and creativity, 
-              transforming ideas into impactful digital solutions.
-            </p>
-            
-            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
-              Beyond coding, I'm deeply involved in community leadership and innovation initiatives. I actively contribute to platforms 
-              like µLearn and Legacy IEDC, fostering collaboration and growth. My approach combines technical excellence with a passion 
-              for mentoring and building communities that drive meaningful change.
-            </p>
+            <div>
+              <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+                I'm a passionate developer with a strong interest in building clean and functional digital experiences. With a focus on frontend development, I work on turning ideas into practical solutions that are simple, usable, and effective.
+              </p>
+              
+              <p className="text-base leading-relaxed font-dm-sans mt-6" style={{ color: 'var(--text-secondary)' }}>
+                Beyond coding, I'm actively involved in community leadership and innovation initiatives. I contribute to platforms like µLearn and Legacy IEDC, where I collaborate with others and support a culture of learning and growth. My approach is centered on continuous improvement, teamwork, and building solutions that create meaningful impact.
+              </p>
+            </div>
+
+            {/* Sidebar Content */}
+            <div className="space-y-6 pt-6 border-t border-white/10">
+              {/* Web Development */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Web Development</h3>
+                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+                  Building responsive and functional web applications using modern tools. Focused on writing clean code and improving development skills through practice.
+                </p>
+              </motion.div>
+
+              {/* Programming & Problem Solving */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Programming & Problem Solving</h3>
+                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+                  Learning and applying programming concepts to solve problems. Continuously improving logic, debugging skills, and understanding of core fundamentals.
+                </p>
+              </motion.div>
+
+              {/* Community & Leadership */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Community & Leadership</h3>
+                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+                  Actively contributing to communities like µLearn and IEDC. Collaborating with peers, supporting initiatives, and growing through shared learning.
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Column - Skill Cards Grid */}
