@@ -64,7 +64,7 @@ export function Contact() {
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            style={{ background: 'var(--accent)' }}
+            style={{ background: 'rgba(255,255,255,0.3)' }}
           />
         </motion.div>
 
