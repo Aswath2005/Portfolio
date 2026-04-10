@@ -42,12 +42,13 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         style={{
           letterSpacing: '0.08em',
           color: 'var(--text-primary)',
+          textShadow: '0 0 30px rgba(255, 255, 255, 0.2), 0 0 60px rgba(255, 255, 255, 0.1)',
         }}
       >
         Welcome to
       </motion.div>
 
-      {/* Portfolio text with letter by letter reveal */}
+      {/* Portfolio text with letter by letter reveal and glow */}
       <div className="flex gap-1 justify-center mb-6">
         {portfolioText.split('').map((letter, idx) => (
           <motion.span
@@ -63,6 +64,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
             style={{
               letterSpacing: '0.08em',
               color: 'var(--text-primary)',
+              textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.15)',
             }}
           >
             {letter}
