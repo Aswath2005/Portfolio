@@ -98,8 +98,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-xs uppercase tracking-[0.15em] font-dm-sans mb-2"
-              style={{ color: 'var(--accent)' }}
+              className="text-sm md:text-xs uppercase tracking-[0.15em] font-dm-sans mb-2 font-semibold"
+              style={{ color: '#ffffff' }}
             >
               Hello, I'm
             </motion.p>
@@ -125,7 +125,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-lg md:text-2xl font-bold md:font-bebas uppercase md:normal-case tracking-[0.1em] md:tracking-wide mb-16"
               style={{
-                color: 'var(--accent)',
+                color: '#d1d5db',
                 letterSpacing: 'inherit',
               }}
             >
@@ -141,7 +141,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
               className="text-sm md:text-base leading-7 md:leading-relaxed font-dm-sans max-w-md mb-24"
-              style={{ color: 'var(--text-secondary)' }}
+              style={{ color: '#9ca3af' }}
             >
               I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
             </motion.p>

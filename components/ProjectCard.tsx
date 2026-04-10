@@ -156,7 +156,7 @@ export function ProjectCard({
           </h3>
           <p
             className="text-sm line-clamp-2"
-            style={{ color: 'var(--text-secondary)' }}
+            style={{ color: '#9ca3af' }}
           >
             {description}
           </p>
@@ -170,7 +170,7 @@ export function ProjectCard({
               className="px-2 py-1 text-xs rounded-full border"
               style={{
                 backgroundColor: 'rgba(255,255,255,0.05)',
-                color: '#888888',
+                color: '#6b7280',
                 borderColor: 'rgba(255,255,255,0.1)',
               }}
             >

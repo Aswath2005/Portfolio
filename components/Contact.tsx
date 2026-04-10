@@ -82,7 +82,8 @@ export function Contact() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
               viewport={{ once: false }}
-              className="text-lg text-text-muted leading-relaxed font-dm-sans"
+              className="text-lg leading-relaxed font-dm-sans"
+              style={{ color: '#9ca3af' }}
             >
               Have a project in mind or want to collaborate? I'd love to hear from you! Let's build something amazing together.
             </motion.p>
@@ -95,8 +96,8 @@ export function Contact() {
               viewport={{ once: false }}
               className="flex items-center gap-3"
             >
-              <MapPin className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} />
-              <p className="text-text-muted font-dm-sans">
+              <MapPin className="w-5 h-5 flex-shrink-0" style={{ color: '#ffffff' }} />
+              <p className="font-dm-sans" style={{ color: '#d1d5db' }}>
                 Kerala, India
               </p>
             </motion.div>
@@ -120,9 +121,9 @@ export function Contact() {
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     className="transition-colors duration-300"
-                    style={{ color: '#888888' }}
+                    style={{ color: '#6b7280' }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#6b7280')}
                     aria-label={social.label}
                   >
                     <social.icon className="w-6 h-6" />

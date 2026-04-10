@@ -11,33 +11,34 @@
   --bg-card: #111111;
   --bg-card-hover: #161616;
   --text-primary: #ffffff;
-  --text-secondary: #888888;
-  --text-muted: #444444;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
   --border: #1a1a1a;
   --border-light: #2a2a2a;
   --border-hover: #3a3a3a;
 
-  /* Indigo accent color */
-  --accent: #6366F1;
-  --accent-light: #818cf8;
-  --accent-dim: #4f46e5;
-  --accent-glow: rgba(99, 102, 241, 0.15);
-  --accent-subtle: rgba(99, 102, 241, 0.08);
-  --accent-strong-glow: rgba(99, 102, 241, 0.25);
+  /* White and gray only, no accent colors */
+  --accent: #ffffff;
+  --accent-light: #f3f4f6;
+  --accent-dim: #d1d5db;
+  --accent-glow: rgba(255, 255, 255, 0.08);
+  --accent-subtle: rgba(255, 255, 255, 0.04);
+  --accent-strong-glow: rgba(255, 255, 255, 0.12);
 
-  --btn-primary-bg: #6366F1;
-  --btn-primary-text: #ffffff;
-  --btn-outline-border: #6366F1;
-  --btn-outline-text: #6366F1;
-  --btn-outline-hover-border: #818cf8;
-  --btn-outline-hover-text: #818cf8;
+  --btn-primary-bg: #ffffff;
+  --btn-primary-text: #000000;
+  --btn-outline-border: #ffffff;
+  --btn-outline-text: #ffffff;
+  --btn-outline-hover-border: #d1d5db;
+  --btn-outline-hover-text: #d1d5db;
   --navbar-bg: rgba(0,0,0,0.80);
 
   /* Backwards compatibility */
-  --accent-color: #6366F1;
-  --accent-strong: #6366F1;
-  --btn-bg: #6366F1;
-  --btn-text: #ffffff;
+  --accent-color: #ffffff;
+  --accent-strong: #ffffff;
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
 }
 
 :root.light {

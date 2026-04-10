@@ -43,11 +43,11 @@ export function About() {
             viewport={{ once: false }}
             className="space-y-6"
           >
-            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-base leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
               I'm a passionate developer with a strong interest in building clean and functional digital experiences. With a focus on frontend development, I work on turning ideas into practical solutions that are simple, usable, and effective.
             </p>
             
-            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-base leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
               Beyond coding, I'm actively involved in community leadership and innovation initiatives. I contribute to platforms like µLearn and Legacy IEDC, where I collaborate with others and support a culture of learning and growth. My approach is centered on continuous improvement, teamwork, and building solutions that create meaningful impact.
             </p>
           </motion.div>
@@ -76,7 +76,7 @@ export function About() {
               >
                 <div className="relative z-10">
                   <h3 className="font-black text-lg font-bebas text-white tracking-wider">{skill.name}</h3>
-                  <p className="text-sm text-white/50 font-dm-sans mt-2">{skill.description}</p>
+                  <p className="text-sm font-dm-sans mt-2" style={{ color: '#9ca3af' }}>{skill.description}</p>
                 </div>
 
                 {/* Progress bar line */}

@@ -100,10 +100,10 @@ export function Experience() {
               <h3 className="text-xl font-bold font-bebas tracking-wider mb-2" style={{ color: 'var(--accent)' }}>
                 {exp.role}
               </h3>
-              <p className="text-text-muted text-sm mb-3 font-dm-sans">
+              <p className="text-sm mb-3 font-dm-sans" style={{ color: '#6b7280' }}>
                 {exp.company} • {exp.date}
               </p>
-              <p className="text-text-muted text-sm leading-relaxed font-dm-sans">
+              <p className="text-sm leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
                 {exp.description}
               </p>
             </motion.div>
