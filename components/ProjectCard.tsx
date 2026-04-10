@@ -13,6 +13,7 @@ interface ProjectCardProps {
   github?: string
   screenshot?: string
   index?: number
+  status?: 'in-progress' | 'completed'
 }
 
 export function ProjectCard({
@@ -23,6 +24,7 @@ export function ProjectCard({
   github,
   screenshot,
   index = 0,
+  status = 'completed',
 }: ProjectCardProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false)
   const [iframeError, setIframeError] = useState(false)
@@ -131,6 +133,22 @@ export function ProjectCard({
 
       {/* Card body */}
       <div className="flex-1 flex flex-col gap-4 p-6">
+        {/* Status badge */}
+        {status === 'in-progress' && (
+          <div className="self-start">
+            <span
+              className="px-3 py-1 text-xs font-semibold rounded-full"
+              style={{
+                backgroundColor: 'rgba(255, 193, 7, 0.15)',
+                color: '#FFC107',
+                border: '1px solid rgba(255, 193, 7, 0.3)',
+              }}
+            >
+              In Progress
+            </span>
+          </div>
+        )}
+
         {/* Title and description */}
         <div>
           <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
