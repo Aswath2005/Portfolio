@@ -127,14 +127,62 @@ export function Hero() {
               Aswath S A
             </motion.h1>
 
-            {/* Mobile Profile Image - appears between name and role */}
+            {/* Typing animation for roles */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="text-xl md:text-2xl font-bebas tracking-wide"
+              style={{
+                color: 'var(--text-secondary)',
+                letterSpacing: '0.03em',
+              }}
+            >
+              <TypeWriter
+                text="Developer • Designer • Community Leader"
+                className="text-xl md:text-2xl font-bebas"
+              />
+            </motion.p>
+
+            {/* Bio paragraph */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="text-base leading-relaxed font-dm-sans max-w-md"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
+            </motion.p>
+
+            {/* Additional highlight */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="text-sm font-dm-sans"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              Explore my projects and contributions on GitHub.
+            </motion.p>
+
+            {/* Stats Counter */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
+            >
+              <StatsCounter />
+            </motion.div>
+
+            {/* Mobile Profile Image - appears after stats on mobile */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="lg:hidden flex justify-center mt-10 pb-8"
+              className="lg:hidden flex justify-center mt-8 mb-8"
             >
-              <div className="relative" style={{ width: '260px', height: '340px' }}>
+              <div className="relative" style={{ width: '280px', height: '360px' }}>
                 {/* Primary rotating ring */}
                 <div
                   className="hero-photo-primary-ring absolute inset-0 rounded-lg z-0"
@@ -216,54 +264,6 @@ export function Hero() {
                   />
                 ))}
               </div>
-            </motion.div>
-
-            {/* Typing animation for roles */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-xl md:text-2xl font-bebas tracking-wide"
-              style={{
-                color: 'var(--text-secondary)',
-                letterSpacing: '0.03em',
-              }}
-            >
-              <TypeWriter
-                text="Developer • Designer • Community Leader"
-                className="text-xl md:text-2xl font-bebas"
-              />
-            </motion.p>
-
-            {/* Bio paragraph */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="text-base leading-relaxed font-dm-sans max-w-md"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
-            </motion.p>
-
-            {/* Additional highlight */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="text-sm font-dm-sans"
-              style={{ color: 'var(--text-muted)' }}
-            >
-              Explore my projects and contributions on GitHub.
-            </motion.p>
-
-            {/* Stats Counter */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.4 }}
-            >
-              <StatsCounter />
             </motion.div>
 
             {/* CTA Buttons */}
