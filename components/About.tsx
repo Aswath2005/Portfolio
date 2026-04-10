@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion'
 
 const skills = [
-  { name: 'Web Development', description: 'Modern frameworks & tools', proficiency: 85 },
-  { name: 'UI/UX Design', description: 'User-centered design', proficiency: 80 },
-  { name: 'Community & Leadership', description: 'Driving initiatives', proficiency: 90 },
+  { name: 'Web Development', description: 'Building responsive and functional web applications using modern tools. Focused on writing clean code and improving development skills through practice.', proficiency: 85 },
+  { name: 'Programming & Problem Solving', description: 'Learning and applying programming concepts to solve problems. Continuously improving logic, debugging skills, and understanding of core fundamentals.', proficiency: 85 },
+  { name: 'Community & Leadership', description: 'Actively contributing to communities like µLearn and IEDC. Collaborating with peers, supporting initiatives, and growing through shared learning.', proficiency: 90 },
 ]
 
 export function About() {
@@ -62,10 +62,15 @@ export function About() {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Web Development</h3>
-                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
-                  Building responsive and functional web applications using modern tools. Focused on writing clean code and improving development skills through practice.
-                </p>
+                <div className="flex items-start gap-3">
+                  <span className="inline-block w-2 h-2 rounded-full mt-2" style={{ backgroundColor: 'var(--accent)' }} />
+                  <div>
+                    <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Web Development</h3>
+                    <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+                      Building responsive and functional web applications using modern tools. Focused on writing clean code and improving development skills through practice.
+                    </p>
+                  </div>
+                </div>
               </motion.div>
 
               {/* Programming & Problem Solving */}
@@ -75,10 +80,15 @@ export function About() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Programming & Problem Solving</h3>
-                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
-                  Learning and applying programming concepts to solve problems. Continuously improving logic, debugging skills, and understanding of core fundamentals.
-                </p>
+                <div className="flex items-start gap-3">
+                  <span className="inline-block w-2 h-2 rounded-full mt-2" style={{ backgroundColor: 'var(--accent)' }} />
+                  <div>
+                    <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Programming & Problem Solving</h3>
+                    <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+                      Learning and applying programming concepts to solve problems. Continuously improving logic, debugging skills, and understanding of core fundamentals.
+                    </p>
+                  </div>
+                </div>
               </motion.div>
 
               {/* Community & Leadership */}
@@ -88,10 +98,15 @@ export function About() {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Community & Leadership</h3>
-                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
-                  Actively contributing to communities like µLearn and IEDC. Collaborating with peers, supporting initiatives, and growing through shared learning.
-                </p>
+                <div className="flex items-start gap-3">
+                  <span className="inline-block w-2 h-2 rounded-full mt-2" style={{ backgroundColor: 'var(--accent)' }} />
+                  <div>
+                    <h3 className="font-black text-sm font-bebas text-white tracking-wider mb-2 uppercase">Community & Leadership</h3>
+                    <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
+                      Actively contributing to communities like µLearn and IEDC. Collaborating with peers, supporting initiatives, and growing through shared learning.
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </motion.div>
