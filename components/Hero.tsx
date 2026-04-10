@@ -107,7 +107,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xs uppercase tracking-[0.2em] font-dm-sans"
+              className="text-xs uppercase tracking-[0.15em] font-dm-sans mb-2"
               style={{ color: 'var(--text-muted)' }}
             >
               Hello, I'm
@@ -118,7 +118,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-black font-bebas leading-tight"
+              className="text-5xl md:text-5xl lg:text-6xl font-black font-bebas leading-none mb-12"
               style={{
                 color: 'var(--text-primary)',
                 letterSpacing: '0.02em',
@@ -132,15 +132,15 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-xl md:text-2xl font-bebas tracking-wide"
+              className="text-base md:text-2xl font-semibold md:font-bebas uppercase md:normal-case tracking-[0.1em] md:tracking-wide mb-16"
               style={{
-                color: 'var(--text-secondary)',
-                letterSpacing: '0.03em',
+                color: 'var(--accent)',
+                letterSpacing: 'inherit',
               }}
             >
               <TypeWriter
                 text="Developer • Designer • Community Leader"
-                className="text-xl md:text-2xl font-bebas"
+                className="text-base md:text-2xl font-semibold md:font-bebas"
               />
             </motion.p>
 
@@ -149,7 +149,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="text-base leading-relaxed font-dm-sans max-w-md"
+              className="text-sm md:text-base leading-7 md:leading-relaxed font-dm-sans max-w-md mb-24"
               style={{ color: 'var(--text-secondary)' }}
             >
               I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
@@ -271,7 +271,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-3 pt-4"
             >
               <motion.a
                 href="https://github.com/Aswath2005"
@@ -279,7 +279,7 @@ export function Hero() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary inline-flex items-center justify-center gap-2 group"
+                className="btn-primary inline-flex items-center justify-center gap-2 group w-full sm:w-auto h-13 text-base font-semibold"
               >
                 GitHub Projects
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -288,7 +288,7 @@ export function Hero() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleScroll('contact')}
-                className="btn-outline inline-flex items-center justify-center gap-2 group"
+                className="btn-outline inline-flex items-center justify-center gap-2 group w-full sm:w-auto h-13 text-base font-semibold"
               >
                 Contact Me
               </motion.button>
