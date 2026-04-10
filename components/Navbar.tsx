@@ -72,16 +72,17 @@ export function Navbar() {
           className="flex-shrink-0 group"
         >
           <span 
-            className="text-3xl font-bold font-bebas tracking-widest transition-all duration-300" 
+            className="text-3xl font-bold font-bebas tracking-widest transition-all duration-300 px-4 py-2 rounded-lg" 
             style={{ 
               color: 'var(--accent)',
               fontWeight: 700,
+              boxShadow: '0 0 20px rgba(255,255,255,0.15), inset 0 0 10px rgba(255,255,255,0.05)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.4)'
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(255,255,255,0.25), inset 0 0 15px rgba(255,255,255,0.08)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.textShadow = 'none'
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(255,255,255,0.15), inset 0 0 10px rgba(255,255,255,0.05)'
             }}
           >
             PORTFOLIO
