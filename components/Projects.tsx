@@ -37,22 +37,8 @@ const headingText = 'PROJECTS'
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 md:py-32 px-6 relative overflow-hidden">
+    <section id="projects" className="py-16 md:py-20 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Decorative number background */}
-        <div className="absolute -top-20 right-0 text-9xl md:text-[12rem] font-black text-white/3 pointer-events-none" style={{ fontFamily: 'font-bebas' }}>02</div>
-
-        {/* Section Subheading */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-xs uppercase tracking-[0.2em] font-dm-sans mb-4"
-          style={{ color: 'var(--text-muted)' }}
-        >
-          04 PROJECTS
-        </motion.p>
 
         {/* Section Heading */}
         <motion.div
@@ -60,9 +46,9 @@ export function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-16 relative z-10"
+          className="mb-12 relative z-10"
         >
-          <h2 className="text-6xl md:text-8xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
+          <h2 className="text-4xl md:text-5xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
             {headingText}
           </h2>
           <motion.div 

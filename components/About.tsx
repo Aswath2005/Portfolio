@@ -10,10 +10,8 @@ const skills = [
 
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-32 px-6 relative overflow-hidden">
+    <section id="about" className="py-16 md:py-20 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Decorative number background */}
-        <div className="absolute -top-20 -left-40 text-9xl md:text-[12rem] font-black text-white/3 pointer-events-none" style={{ fontFamily: 'font-bebas' }}>01</div>
 
         {/* Section Heading */}
         <motion.div
@@ -21,9 +19,9 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-20 relative z-10"
+          className="mb-12 relative z-10"
         >
-          <h2 className="text-6xl md:text-8xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
+          <h2 className="text-4xl md:text-5xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
             ABOUT
           </h2>
           <motion.div 
@@ -36,7 +34,7 @@ export function About() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column - Bio */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -80,11 +78,6 @@ export function About() {
                   borderColor: 'rgba(59,130,246,0.2)',
                 }}
               >
-                {/* Decorative number */}
-                <div className="absolute -top-4 -right-4 text-5xl font-black" style={{ fontFamily: 'font-bebas', color: 'rgba(59,130,246,0.15)' }}>
-                  0{idx + 1}
-                </div>
-
                 <div className="relative z-10">
                   <h3 className="font-black text-lg font-bebas text-white tracking-wider">{skill.name}</h3>
                   <p className="text-sm text-white/50 font-dm-sans mt-2">{skill.description}</p>

@@ -89,10 +89,10 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 px-6 lg:px-12 min-h-dvh flex items-center">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-8 items-stretch max-w-full">
+      <div className="relative z-10 px-6 lg:px-12 min-h-screen flex items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
           {/* Left Column */}
-          <div className="space-y-8 flex flex-col justify-center pr-0 lg:pr-12">
+          <div className="space-y-6 flex flex-col justify-center">
             {/* Blue accent line */}
             <motion.div
               initial={{ width: 0 }}
@@ -118,7 +118,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black font-bebas leading-none"
+              className="text-4xl md:text-5xl lg:text-6xl font-black font-bebas leading-tight"
               style={{
                 color: 'var(--text-primary)',
                 letterSpacing: '0.02em',
@@ -300,7 +300,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative hidden lg:block h-screen lg:h-[85vh]"
+            className="relative hidden lg:block h-[500px]"
           >
             {/* Profile image - full height editorial photo */}
             <div

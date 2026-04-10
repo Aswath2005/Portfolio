@@ -44,10 +44,8 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-24 md:py-32 px-6 relative overflow-hidden">
+    <section id="contact" className="py-16 md:py-20 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Decorative number background */}
-        <div className="absolute -bottom-20 -left-40 text-9xl md:text-[12rem] font-black text-white/3 pointer-events-none" style={{ fontFamily: 'font-bebas' }}>04</div>
 
         {/* Section Heading */}
         <motion.div
@@ -55,9 +53,9 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-16 relative z-10"
+          className="mb-12 relative z-10"
         >
-          <h2 className="text-6xl md:text-8xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
+          <h2 className="text-4xl md:text-5xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
             CONTACT
           </h2>
           <motion.div 
@@ -70,7 +68,7 @@ export function Contact() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
           {/* Left Column - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
