@@ -116,11 +116,12 @@ export function GitHubActivity() {
             GITHUB ACTIVITY
           </h2>
           <motion.div
-            className="w-24 h-1 bg-[var(--accent-color)] mt-4"
+            className="w-24 h-1 mt-4"
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
+            style={{ background: 'var(--accent)' }}
           />
         </motion.div>
 
@@ -135,7 +136,8 @@ export function GitHubActivity() {
               href="https://github.com/Aswath2005"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--accent-color)] hover:underline mt-2"
+              className="hover:underline mt-2"
+              style={{ color: 'var(--accent)' }}
             >
               View on GitHub
             </a>
@@ -193,7 +195,10 @@ export function GitHubActivity() {
                       href={repo.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group p-6 bg-[var(--bg-card)] border border-[var(--border)] rounded-lg transition-all hover:border-[var(--accent-color)]"
+                      className="group p-6 bg-[var(--bg-card)] border rounded-lg transition-all"
+                      style={{ borderColor: 'var(--border)' } as React.CSSProperties}
+                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--accent)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'var(--border)')}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1, duration: 0.6 }}
@@ -201,10 +206,10 @@ export function GitHubActivity() {
                       whileHover={{ y: -4 }}
                     >
                       <div className="flex items-start justify-between mb-3">
-                        <h4 className="font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors truncate flex-1">
+                        <h4 className="font-bold text-[var(--text-primary)] transition-colors truncate flex-1" style={{ color: 'var(--text-primary)' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}>
                           {repo.name}
                         </h4>
-                        <ExternalLink className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--accent-color)] transition-colors ml-2 flex-shrink-0" />
+                        <ExternalLink className="w-4 h-4 transition-colors ml-2 flex-shrink-0" style={{ color: 'var(--text-muted)' }} onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')} onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')} />
                       </div>
                       
                       <p className="text-sm text-[var(--text-muted)] mb-3 line-clamp-2">
@@ -217,7 +222,12 @@ export function GitHubActivity() {
                           {repo.topics.slice(0, 3).map((topic) => (
                             <span
                               key={topic}
-                              className="inline-block px-2.5 py-1 text-xs font-medium bg-[var(--accent-color)]/10 text-[var(--accent-color)] rounded-full border border-[var(--accent-color)]/20"
+                              className="inline-block px-2.5 py-1 text-xs font-medium rounded-full border"
+                              style={{
+                                backgroundColor: 'var(--accent-glow)',
+                                color: 'var(--accent)',
+                                borderColor: 'rgba(59,130,246,0.3)',
+                              }}
                             >
                               {topic}
                             </span>

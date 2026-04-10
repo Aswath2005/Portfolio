@@ -8,31 +8,63 @@
 :root.dark {
   --bg-primary: #0a0a0a;
   --bg-surface: #111111;
-  --bg-card: #1a1a1a;
+  --bg-card: #161616;
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  --text-muted: #52525b;
   --border: #27272a;
-  --btn-bg: #ffffff;
-  --btn-text: #000000;
-  --accent-color: #e4e4e7;
+  --border-light: #3f3f46;
+
+  --accent: #3B82F6;
+  --accent-light: #60a5fa;
+  --accent-dim: #1d4ed8;
+  --accent-glow: rgba(59, 130, 246, 0.15);
+  --accent-subtle: rgba(59, 130, 246, 0.08);
+
+  --btn-primary-bg: #3B82F6;
+  --btn-primary-text: #ffffff;
+  --btn-outline-border: #3f3f46;
+  --btn-outline-text: #a1a1aa;
+  --btn-outline-hover-border: #3B82F6;
+  --btn-outline-hover-text: #3B82F6;
+  --navbar-bg: rgba(10,10,10,0.90);
+
+  /* Backwards compatibility */
+  --accent-color: #3B82F6;
   --accent-strong: #ffffff;
-  --navbar-bg: rgba(10,10,10,0.85);
+  --btn-bg: #3B82F6;
+  --btn-text: #ffffff;
 }
 
 :root.light {
   --bg-primary: #ffffff;
-  --bg-surface: #f4f4f5;
-  --bg-card: #fafafa;
+  --bg-surface: #f8fafc;
+  --bg-card: #ffffff;
   --text-primary: #09090b;
   --text-secondary: #52525b;
   --text-muted: #a1a1aa;
   --border: #e4e4e7;
-  --btn-bg: #09090b;
+  --border-light: #d4d4d8;
+
+  --accent: #2563eb;
+  --accent-light: #3B82F6;
+  --accent-dim: #1d4ed8;
+  --accent-glow: rgba(37, 99, 235, 0.12);
+  --accent-subtle: rgba(37, 99, 235, 0.06);
+
+  --btn-primary-bg: #2563eb;
+  --btn-primary-text: #ffffff;
+  --btn-outline-border: #e4e4e7;
+  --btn-outline-text: #52525b;
+  --btn-outline-hover-border: #2563eb;
+  --btn-outline-hover-text: #2563eb;
+  --navbar-bg: rgba(255,255,255,0.90);
+
+  /* Backwards compatibility */
+  --accent-color: #2563eb;
+  --accent-strong: #09090b;
+  --btn-bg: #2563eb;
   --btn-text: #ffffff;
-  --accent-color: #71717a;
-  --accent-strong: #000000;
-  --navbar-bg: rgba(244,244,245,0.85);
 }
 
 * {
@@ -102,8 +134,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Button styles */
 .btn-primary {
   padding: 0.875rem 1.75rem;
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   font-weight: 700;
   border-radius: 0;
   border: none;
@@ -115,17 +147,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-  background-color: var(--accent-color);
+  background-color: var(--accent-light);
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .btn-outline {
   padding: 0.875rem 1.75rem;
   background-color: transparent;
-  color: var(--btn-bg);
+  color: var(--btn-outline-text);
   font-weight: 700;
-  border: 2px solid var(--btn-bg);
+  border: 2px solid var(--btn-outline-border);
   border-radius: 0;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -135,10 +167,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-outline:hover {
-  background-color: var(--accent-color);
-  color: var(--btn-text);
+  border-color: var(--btn-outline-hover-border);
+  color: var(--btn-outline-hover-text);
+  background-color: transparent;
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255,255,255,0.1);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 /* Animations and Effects */
@@ -184,13 +217,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Pulse ring animation for timeline dots */
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
   }
 }
 
@@ -216,28 +249,28 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glow text effect */
 .glow-text {
-  text-shadow: 0 0 40px var(--accent-color);
   color: var(--text-primary);
 }
 
 /* Glow border effect */
 .glow-border {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px var(--accent-glow);
   transition: box-shadow 0.3s ease;
 }
 
 .glow-border:hover {
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 30px var(--accent-glow);
 }
 
 /* Text input focus glow */
 .input-glow:focus {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 15px var(--accent-glow) !important;
+  border-color: var(--accent) !important;
 }
 
 /* Button hover glow */
 .btn-glow:hover {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 0 20px var(--accent-glow) !important;
 }
 
 /* Particle styles */

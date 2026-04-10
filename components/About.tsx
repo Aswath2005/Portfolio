@@ -27,7 +27,8 @@ export function About() {
             ABOUT
           </h2>
           <motion.div 
-            className="w-24 h-1 bg-white mt-6"
+            className="w-24 h-1 mt-6"
+            style={{ background: 'var(--accent)' }}
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -75,11 +76,12 @@ export function About() {
                 whileHover={{ y: -4 }}
                 className="relative space-y-4 p-6 rounded-lg transition-all duration-300 border border-white/5 hover:border-white/10"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  background: 'linear-gradient(135deg, var(--accent-subtle) 0%, rgba(59,130,246,0.03) 100%)',
+                  borderColor: 'rgba(59,130,246,0.2)',
                 }}
               >
                 {/* Decorative number */}
-                <div className="absolute -top-4 -right-4 text-5xl font-black text-white/5" style={{ fontFamily: 'font-bebas' }}>
+                <div className="absolute -top-4 -right-4 text-5xl font-black" style={{ fontFamily: 'font-bebas', color: 'rgba(59,130,246,0.15)' }}>
                   0{idx + 1}
                 </div>
 
@@ -91,7 +93,8 @@ export function About() {
                 {/* Progress bar line */}
                 <div className="h-0.5 bg-white/10 rounded-full overflow-hidden">
                   <motion.div
-                    className="h-full bg-white"
+                    className="h-full"
+                    style={{ background: 'var(--accent)' }}
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.proficiency}%` }}
                     transition={{ delay: idx * 0.15 + 0.3, duration: 1 }}

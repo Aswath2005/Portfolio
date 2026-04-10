@@ -61,11 +61,12 @@ export function Contact() {
             CONTACT
           </h2>
           <motion.div 
-            className="h-1 w-24 bg-white mt-6"
+            className="h-1 w-24 mt-6"
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
+            style={{ background: 'var(--accent)' }}
           />
         </motion.div>
 
@@ -96,7 +97,7 @@ export function Contact() {
               viewport={{ once: false }}
               className="flex items-center gap-3"
             >
-              <MapPin className="w-5 h-5 text-accent-color flex-shrink-0" />
+              <MapPin className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} />
               <p className="text-text-muted font-dm-sans">
                 Kerala, India
               </p>
@@ -120,7 +121,10 @@ export function Contact() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="text-text-muted hover:text-accent-color transition-colors duration-300"
+                    className="transition-colors duration-300"
+                    style={{ color: 'var(--accent-light)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--accent-light)')}
                     aria-label={social.label}
                   >
                     <social.icon className="w-6 h-6" />
@@ -136,10 +140,22 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
               viewport={{ once: false }}
-              className="inline-flex items-center gap-3 hover:text-accent-color transition-colors group"
+              className="inline-flex items-center gap-3 transition-colors group"
+              onMouseEnter={(e) => {
+                const icon = e.currentTarget.querySelector('svg')
+                if (icon) icon.style.color = 'var(--accent)'
+                const p = e.currentTarget.querySelector('p')
+                if (p) p.style.color = 'var(--accent)'
+              }}
+              onMouseLeave={(e) => {
+                const icon = e.currentTarget.querySelector('svg')
+                if (icon) icon.style.color = 'var(--accent)'
+                const p = e.currentTarget.querySelector('p')
+                if (p) p.style.color = 'var(--text-muted)'
+              }}
             >
-              <Mail className="w-5 h-5 text-accent-color flex-shrink-0" />
-              <p className="text-text-muted font-dm-sans group-hover:text-accent-color transition-colors">
+              <Mail className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} />
+              <p className="text-text-muted font-dm-sans transition-colors" style={{ color: 'var(--text-muted)' }}>
                 aswathsa24@gmail.com
               </p>
             </motion.a>
@@ -170,7 +186,18 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color focus:shadow-[0_0_15px_rgba(228,228,231,0.08)] transition-all font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none transition-all font-dm-sans"
+                  style={{
+                    borderColor: 'var(--dark-border)',
+                  } as React.CSSProperties}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--accent)'
+                    e.currentTarget.style.boxShadow = '0 0 15px var(--accent-glow)'
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--dark-border)'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
                   placeholder="Your Name"
                 />
               </motion.div>
@@ -191,7 +218,18 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color focus:shadow-[0_0_15px_rgba(228,228,231,0.08)] transition-all font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none transition-all font-dm-sans"
+                  style={{
+                    borderColor: 'var(--dark-border)',
+                  } as React.CSSProperties}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--accent)'
+                    e.currentTarget.style.boxShadow = '0 0 15px var(--accent-glow)'
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--dark-border)'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
                   placeholder="your@email.com"
                 />
               </motion.div>
@@ -212,7 +250,18 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none focus:border-accent-color focus:shadow-[0_0_15px_rgba(228,228,231,0.08)] transition-all resize-none font-dm-sans"
+                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none transition-all resize-none font-dm-sans"
+                  style={{
+                    borderColor: 'var(--dark-border)',
+                  } as React.CSSProperties}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--accent)'
+                    e.currentTarget.style.boxShadow = '0 0 15px var(--accent-glow)'
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--dark-border)'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
                   placeholder="Tell me about your project..."
                 />
               </motion.div>
@@ -239,7 +288,8 @@ export function Contact() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="text-accent-color text-sm font-medium text-center font-dm-sans"
+                  className="text-sm font-medium text-center font-dm-sans"
+                  style={{ color: 'var(--accent)' }}
                 >
                   {submitMessage}
                 </motion.p>

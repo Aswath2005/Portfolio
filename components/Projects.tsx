@@ -71,7 +71,7 @@ export function Projects() {
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            style={{ backgroundColor: 'white' }}
+            style={{ backgroundColor: 'var(--accent)' }}
           />
         </motion.div>
 

@@ -23,7 +23,10 @@ export function Footer() {
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-text-muted hover:text-accent-color transition-colors text-sm font-dm-sans"
+            className="text-sm font-dm-sans transition-colors"
+            style={{ color: 'var(--text-muted)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
           >
             Back to top ↑
           </motion.button>

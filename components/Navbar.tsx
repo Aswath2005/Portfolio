@@ -60,7 +60,7 @@ export function Navbar() {
           onClick={() => handleNavClick('home')}
           className="flex-shrink-0 group"
         >
-          <span className="text-3xl font-bold text-accent-strong font-bebas tracking-widest transition-all duration-300 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+          <span className="text-3xl font-bold font-bebas tracking-widest transition-all duration-300" style={{ color: 'var(--accent)' }}>
             PORTFOLIO
           </span>
         </motion.button>
@@ -73,16 +73,16 @@ export function Navbar() {
               onClick={() => handleNavClick(link.href)}
               className={`relative text-sm font-medium transition-colors font-dm-sans cursor-pointer group ${
                 activeSection === link.href
-                  ? 'text-accent-strong'
-                  : 'text-text-muted hover:text-accent-strong'
+                  ? 'text-accent'
+                  : 'text-text-muted hover:text-accent'
               }`}
-              whileHover={{ color: '#ffffff' }}
             >
               {link.label}
               <span 
-                className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ${
+                className={`absolute bottom-0 left-0 h-0.5 transition-all duration-300 ${
                   activeSection === link.href ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}
+                style={{ background: 'var(--accent)' }}
               />
             </motion.button>
           ))}
@@ -126,11 +126,12 @@ export function Navbar() {
               }
               transition={{ delay: i * 0.1 }}
               onClick={() => handleNavClick(link.href)}
-              className={`block w-full text-left text-lg font-medium py-3 px-2 font-bebas cursor-pointer transition-colors rounded ${
-                activeSection === link.href
-                  ? 'text-accent-strong'
-                  : 'text-text-light hover:text-accent-strong'
-              }`}
+              className={`block w-full text-left text-lg font-medium py-3 px-2 font-bebas cursor-pointer transition-colors rounded`}
+              style={{
+                color: activeSection === link.href ? 'var(--accent)' : 'var(--text-light)',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = activeSection === link.href ? 'var(--accent)' : 'var(--text-light)')} 
             >
               {link.label}
             </motion.button>

@@ -56,7 +56,7 @@ function StatNumber({ value, suffix }: { value: number; suffix: string }) {
   const count = useCountUp(value, 2000)
 
   return (
-    <div className="text-4xl md:text-3xl font-bold text-[var(--text-primary)] font-bebas">
+    <div className="text-4xl md:text-3xl font-bold font-bebas" style={{ color: 'var(--accent)' }}>
       {count}
       <span>{suffix}</span>
     </div>

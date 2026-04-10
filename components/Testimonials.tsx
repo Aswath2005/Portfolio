@@ -76,14 +76,26 @@ export function Testimonials() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1, duration: 0.6 }}
                     viewport={{ once: false }}
-                    className="card-hover h-full p-8 rounded-2xl bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-color"
+                    className="card-hover h-full p-8 rounded-2xl bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border transition-all"
+                    style={{
+                      borderColor: 'var(--dark-border)',
+                    } as React.CSSProperties}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--accent)'
+                      e.currentTarget.style.backgroundColor = 'var(--accent-glow)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--dark-border)'
+                      e.currentTarget.style.backgroundColor = ''
+                    }}
                   >
                     {/* Star Rating */}
                     <div className="flex gap-1 mb-4">
                       {Array.from({ length: testimonial.rating }).map((_, i) => (
                         <Star
                           key={i}
-                          className="w-4 h-4 fill-accent-color text-accent-color"
+                          style={{ color: 'var(--accent)', fill: 'var(--accent)' }}
+                          className="w-4 h-4"
                         />
                       ))}
                     </div>
@@ -123,19 +135,41 @@ export function Testimonials() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePrevious}
-              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-color hover:bg-accent-color/10 transition-all"
+              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border transition-all"
+              style={{
+                borderColor: 'var(--dark-border)',
+              } as React.CSSProperties}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent)'
+                e.currentTarget.style.backgroundColor = 'var(--accent-glow)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--dark-border)'
+                e.currentTarget.style.backgroundColor = ''
+              }}
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="w-5 h-5 text-accent-color" />
+              <ChevronLeft className="w-5 h-5" style={{ color: 'var(--accent)' }} />
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleNext}
-              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border hover:border-accent-color hover:bg-accent-color/10 transition-all"
+              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border transition-all"
+              style={{
+                borderColor: 'var(--dark-border)',
+              } as React.CSSProperties}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent)'
+                e.currentTarget.style.backgroundColor = 'var(--accent-glow)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--dark-border)'
+                e.currentTarget.style.backgroundColor = ''
+              }}
               aria-label="Next testimonial"
             >
-              <ChevronRight className="w-5 h-5 text-accent-color" />
+              <ChevronRight className="w-5 h-5" style={{ color: 'var(--accent)' }} />
             </motion.button>
           </div>
 
@@ -145,11 +179,11 @@ export function Testimonials() {
               <motion.button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  idx === currentIndex
-                    ? 'bg-accent-color w-8'
-                    : 'bg-dark-border dark:bg-light-border'
-                }`}
+                className="h-2 rounded-full transition-all"
+                style={{
+                  width: idx === currentIndex ? '32px' : '8px',
+                  backgroundColor: idx === currentIndex ? 'var(--accent)' : 'var(--dark-border)',
+                }}
               />
             ))}
           </div>

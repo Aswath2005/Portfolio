@@ -55,8 +55,8 @@ export function Hero() {
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-            opacity: Math.random() * 0.1 + 0.05,
-            backgroundColor: 'rgba(255,255,255,0.8)',
+            opacity: Math.random() * 0.15 + 0.08,
+            backgroundColor: 'rgba(59, 130, 246, 0.6)',
           }}
           animate={{
             y: [0, -80],
@@ -93,12 +93,13 @@ export function Hero() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-8 items-stretch max-w-full">
           {/* Left Column */}
           <div className="space-y-8 flex flex-col justify-center pr-0 lg:pr-12">
-            {/* White accent line */}
+            {/* Blue accent line */}
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: '60px' }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="h-0.5 bg-white"
+              className="h-0.5"
+              style={{ background: 'var(--accent)' }}
             />
 
             {/* Small tag */}
@@ -107,7 +108,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xs uppercase tracking-[0.2em] font-dm-sans"
-              style={{ color: 'var(--text-muted)' }}
+              style={{ color: 'var(--accent)' }}
             >
               Hello, I'm
             </motion.p>
@@ -143,7 +144,7 @@ export function Hero() {
                     left: '-20px',
                     top: '-20px',
                     borderRadius: '16px',
-                    background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.15), transparent 30%, rgba(255,255,255,0.15) 60%, transparent)',
+                    background: 'conic-gradient(from var(--angle, 0deg), rgba(59,130,246,0.2), transparent 30%, rgba(59,130,246,0.2) 60%, transparent)',
                     backgroundClip: 'border-box',
                   }}
                 />
@@ -157,20 +158,20 @@ export function Hero() {
                     left: '-35px',
                     top: '-35px',
                     borderRadius: '20px',
-                    border: `1px dashed rgba(255,255,255,0.06)`,
+                    border: `1px dashed rgba(59,130,246,0.12)`,
                   }}
                 />
 
                 {/* Background glow */}
-                <div className="absolute inset-0 rounded-lg" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
+                <div className="absolute inset-0 rounded-lg" style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)' }} />
 
                 {/* Profile image with portrait frame */}
                 <div
                   className="relative w-full h-full rounded-lg overflow-hidden border z-10"
                   style={{
                     backgroundColor: 'var(--bg-card)',
-                    borderColor: 'rgba(255,255,255,0.15)',
-                    boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
+                    borderColor: 'rgba(59,130,246,0.2)',
+                    boxShadow: '0 0 0 1px rgba(59,130,246,0.1), 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(59,130,246,0.15)',
                   }}
                 >
                   {/* Dark gradient overlay */}
@@ -206,11 +207,11 @@ export function Hero() {
                     className={`hero-photo-bracket hero-photo-bracket-${idx + 1} absolute w-4 h-4 z-20`}
                     style={{
                       ...style,
-                      border: '2px solid rgba(255,255,255,0.4)',
-                      borderTopColor: style.borderTopWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
-                      borderRightColor: style.borderRightWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
-                      borderBottomColor: style.borderBottomWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
-                      borderLeftColor: style.borderLeftWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
+                      border: '2px solid rgba(59,130,246,0.5)',
+                      borderTopColor: style.borderTopWidth ? 'rgba(59,130,246,0.5)' : 'transparent',
+                      borderRightColor: style.borderRightWidth ? 'rgba(59,130,246,0.5)' : 'transparent',
+                      borderBottomColor: style.borderBottomWidth ? 'rgba(59,130,246,0.5)' : 'transparent',
+                      borderLeftColor: style.borderLeftWidth ? 'rgba(59,130,246,0.5)' : 'transparent',
                     } as any}
                   />
                 ))}
@@ -306,8 +307,8 @@ export function Hero() {
               className="relative w-full h-full rounded-xl overflow-hidden border"
               style={{
                 backgroundColor: 'var(--bg-card)',
-                borderColor: 'rgba(255,255,255,0.1)',
-                boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 40px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)',
+                borderColor: 'rgba(59,130,246,0.2)',
+                boxShadow: '0 0 0 1px rgba(59,130,246,0.1), 0 40px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(59,130,246,0.15)',
               }}
             >
               {/* Dark gradient overlay */}

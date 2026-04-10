@@ -151,9 +151,9 @@ export function ProjectCard({
               key={i}
               className="px-2 py-1 text-xs rounded-full border"
               style={{
-                backgroundColor: 'var(--bg-surface)',
-                color: 'var(--text-muted)',
-                borderColor: 'var(--border)',
+                backgroundColor: 'var(--accent-subtle)',
+                color: 'var(--accent-light)',
+                borderColor: 'rgba(59,130,246,0.3)',
               }}
             >
               {tag}
@@ -165,10 +165,16 @@ export function ProjectCard({
         <div className="flex gap-3 mt-auto">
           <button
             onClick={() => window.open(url, '_blank')}
-            className="flex-1 px-4 py-2 text-sm font-medium border rounded-lg transition-all duration-300 hover:bg-white hover:text-black flex items-center justify-center gap-2"
+            className="flex-1 px-4 py-2 text-sm font-medium border rounded-lg transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-2"
             style={{
-              color: 'var(--text-primary)',
-              borderColor: 'var(--text-primary)',
+              color: 'var(--accent)',
+              borderColor: 'var(--accent)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'var(--accent-subtle)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent'
             }}
           >
             Live Site

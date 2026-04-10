@@ -54,11 +54,12 @@ export function Experience() {
             EXPERIENCE
           </h2>
           <motion.div 
-            className="h-1 w-24 bg-white mt-6"
+            className="h-1 w-24 mt-6"
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
+            style={{ background: 'var(--accent)' }}
           />
         </motion.div>
 
@@ -74,12 +75,15 @@ export function Experience() {
               transition={{ delay: idx * 0.12, duration: 0.6 }}
               viewport={{ once: true, margin: '-50px' }}
               whileHover={{ y: -6, boxShadow: '0 0 25px rgba(255,255,255,0.1)' }}
-              className="p-6 border-2 border-dark-border hover:border-accent-color transition-all rounded-none"
+              className="p-6 border-2 transition-all rounded-none"
               style={{
+                borderColor: 'var(--dark-border)',
                 backgroundColor: '#1a1a1a',
-              }}
+              } as React.CSSProperties}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent)'\n                e.currentTarget.style.boxShadow = '0 0 25px var(--accent-glow)'\n              }}\n              onMouseLeave={(e) => {\n                e.currentTarget.style.borderColor = 'var(--dark-border)'\n                e.currentTarget.style.boxShadow = 'none'\n              }}
             >
-              <h3 className="text-xl font-bold font-bebas text-white tracking-wider mb-2">
+              <h3 className="text-xl font-bold font-bebas tracking-wider mb-2" style={{ color: 'var(--accent)' }}>
                 {exp.role}
               </h3>
               <p className="text-text-muted text-sm mb-3 font-dm-sans">

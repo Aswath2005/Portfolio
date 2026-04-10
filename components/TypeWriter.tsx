@@ -45,6 +45,7 @@ export function TypeWriter({ text = 'Developer • Designer • Community Leader
         className={`transition-opacity duration-300 ${
           isComplete ? 'opacity-0' : 'opacity-100'
         }`}
+        style={{ color: 'var(--accent)' }}
       >
         |
       </span>
