@@ -291,22 +291,53 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative hidden lg:block h-[500px]"
+            className="relative hidden lg:block"
+            style={{ width: '280px', height: '360px', margin: '0 auto' }}
           >
-            {/* Profile image - full height editorial photo */}
+            {/* Primary rotating ring */}
             <div
-              className="relative w-full h-full rounded-xl overflow-hidden border"
+              className="hero-photo-primary-ring absolute inset-0 rounded-lg z-0"
+              style={{
+                width: 'calc(100% + 40px)',
+                height: 'calc(100% + 40px)',
+                left: '-20px',
+                top: '-20px',
+                borderRadius: '16px',
+                background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.06), transparent 30%, rgba(255,255,255,0.06) 60%, transparent)',
+                backgroundClip: 'border-box',
+              }}
+            />
+
+            {/* Secondary dashed ring */}
+            <div
+              className="hero-photo-secondary-ring absolute rounded-lg z-0"
+              style={{
+                width: 'calc(100% + 70px)',
+                height: 'calc(100% + 70px)',
+                left: '-35px',
+                top: '-35px',
+                borderRadius: '20px',
+                border: `1px dashed rgba(255,255,255,0.1)`,
+              }}
+            />
+
+            {/* Background glow */}
+            <div className="absolute inset-0 rounded-lg" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
+
+            {/* Profile image with portrait frame */}
+            <div
+              className="relative w-full h-full rounded-lg overflow-hidden border z-10"
               style={{
                 backgroundColor: 'var(--bg-card)',
                 borderColor: 'rgba(255,255,255,0.15)',
-                boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 40px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)',
+                boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 40px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1)',
               }}
             >
               {/* Dark gradient overlay */}
               <div
                 className="absolute inset-0 pointer-events-none z-20"
                 style={{
-                  background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.4) 100%)',
+                  background: 'linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%)',
                 }}
               />
 
@@ -322,6 +353,27 @@ export function Hero() {
                 priority
               />
             </div>
+
+            {/* Corner brackets */}
+            {[
+              { top: '-8px', left: '-8px', borderTopWidth: '2px', borderLeftWidth: '2px' },
+              { top: '-8px', right: '-8px', borderTopWidth: '2px', borderRightWidth: '2px' },
+              { bottom: '-8px', left: '-8px', borderBottomWidth: '2px', borderLeftWidth: '2px' },
+              { bottom: '-8px', right: '-8px', borderBottomWidth: '2px', borderRightWidth: '2px' },
+            ].map((style, idx) => (
+              <div
+                key={idx}
+                className={`hero-photo-bracket hero-photo-bracket-${idx + 1} absolute w-4 h-4 z-20`}
+                style={{
+                  ...style,
+                  border: '2px solid rgba(255,255,255,0.3)',
+                  borderTopColor: style.borderTopWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
+                  borderRightColor: style.borderRightWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
+                  borderBottomColor: style.borderBottomWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
+                  borderLeftColor: style.borderLeftWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
+                }}
+              />
+            ))}
           </motion.div>
         </div>
       </div>
