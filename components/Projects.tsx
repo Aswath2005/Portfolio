@@ -12,6 +12,7 @@ const projects = [
     screenshot: '/calorify-preview.png',
     tags: ['Next.js', 'React', 'Web App'],
     github: 'https://github.com/Aswath2005',
+    status: 'completed' as const,
   },
   {
     title: 'StudyFlow',
@@ -20,7 +21,7 @@ const projects = [
     screenshot: '/studyflow-preview.png',
     tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/Aswath2005/StudyPlanner-Frontend',
-    status: 'completed',
+    status: 'completed' as const,
   },
   {
     title: 'CardioSense',
@@ -29,13 +30,14 @@ const projects = [
     screenshot: '/cardiosense-preview.png',
     tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/Aswath2005/cardiosense',
-    status: 'in-progress',
+    status: 'in-progress' as const,
   },
   {
     title: 'Project Four',
     description: 'Exploring creative solutions to complex problems.',
     url: '#',
     tags: ['Innovation', 'Technology'],
+    status: 'completed' as const,
   },
 ]
 

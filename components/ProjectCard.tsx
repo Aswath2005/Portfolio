@@ -9,7 +9,7 @@ interface ProjectCardProps {
   title: string
   description: string
   url: string
-  tags: string[]
+  tags: readonly string[]
   github?: string
   screenshot?: string
   index?: number
