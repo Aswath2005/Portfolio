@@ -77,11 +77,11 @@ export function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.12, duration: 0.6 }}
               viewport={{ once: true, margin: '-50px' }}
-              whileHover={{ y: -6, boxShadow: '0 0 25px rgba(255,255,255,0.1)' }}
-              className="p-6 border-2 transition-all rounded-none cursor-pointer"
+              whileHover={{ y: -8 }}
+              className="group relative p-7 border-2 transition-all duration-300 rounded-xl cursor-pointer overflow-hidden"
               style={{
-                borderColor: 'var(--dark-border)',
-                backgroundColor: '#1a1a1a',
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--bg-card)',
               } as React.CSSProperties}
               onClick={() => {
                 if (exp.link) {
@@ -89,23 +89,36 @@ export function Experience() {
                 }
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--accent)'
-                e.currentTarget.style.boxShadow = '0 0 25px var(--accent-glow)'
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'
+                e.currentTarget.style.boxShadow = '0 0 40px rgba(255, 255, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05)'
+                e.currentTarget.style.backgroundColor = 'rgba(17, 17, 17, 0.8)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--dark-border)'
-                e.currentTarget.style.boxShadow = 'none'
+                e.currentTarget.style.borderColor = 'var(--border)'
+                e.currentTarget.style.boxShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                e.currentTarget.style.backgroundColor = 'var(--bg-card)'
               }}
             >
-              <h3 className="text-xl font-bold font-bebas tracking-wider mb-2" style={{ color: 'var(--accent)' }}>
-                {exp.role}
-              </h3>
-              <p className="text-sm mb-3 font-dm-sans" style={{ color: '#6b7280' }}>
-                {exp.company} • {exp.date}
-              </p>
-              <p className="text-sm leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
-                {exp.description}
-              </p>
+              {/* Glow gradient on hover */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 70%)',
+                }}
+              />
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold font-bebas tracking-wider mb-2 group-hover:translate-x-1 transition-transform duration-300" style={{ color: 'var(--accent)' }}>
+                  {exp.role}
+                </h3>
+                <p className="text-sm mb-3 font-dm-sans" style={{ color: '#6b7280' }}>
+                  {exp.company} • {exp.date}
+                </p>
+                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
+                  {exp.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
