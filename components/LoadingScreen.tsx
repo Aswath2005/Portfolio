@@ -63,6 +63,7 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
             style={{
               letterSpacing: '0.08em',
               color: 'var(--text-primary)',
+              textShadow: '0 0 40px rgba(59,130,246,0.5)',
             }}
           >
             {letter}
@@ -82,8 +83,8 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         }}
         style={{
           width: '128px',
-          backgroundColor: 'rgba(255,255,255,0.5)',
-          boxShadow: '0 0 20px rgba(255,255,255,0.1)',
+          backgroundColor: 'var(--accent)',
+          boxShadow: '0 0 30px var(--accent-glow)',
         }}
       />
 
@@ -112,8 +113,8 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
         }}
         className="absolute bottom-0 left-0 right-0 h-1.5 origin-left"
         style={{
-          backgroundColor: 'rgba(255,255,255,0.4)',
-          boxShadow: '0 0 15px rgba(255,255,255,0.08)',
+          backgroundColor: 'var(--accent)',
+          boxShadow: '0 0 20px var(--accent-glow)',
         }}
       />
     </motion.div>
