@@ -37,42 +37,41 @@ const headingText = 'PROJECTS'
 
 export function Projects() {
   return (
-    <section id="projects" className="py-20 px-6 relative">
+    <section id="projects" className="py-24 md:py-32 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
+        {/* Decorative number background */}
+        <div className="absolute -top-20 right-0 text-9xl md:text-[12rem] font-black text-white/3 pointer-events-none" style={{ fontFamily: 'font-bebas' }}>02</div>
+
+        {/* Section Subheading */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-100px' }}
+          className="text-xs uppercase tracking-[0.2em] font-dm-sans mb-4"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          04 PROJECTS
+        </motion.p>
+
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-16"
+          className="mb-16 relative z-10"
         >
-          <div className="flex gap-1">
-            {headingText.split('').map((letter, idx) => (
-              <motion.span
-                key={idx}
-                className="text-5xl font-bold font-bebas inline-block"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
-                viewport={{ once: true }}
-                style={{
-                  letterSpacing: '0.08em',
-                  color: 'var(--text-primary)',
-                  textShadow: '0 0 40px var(--accent-color)',
-                }}
-              >
-                {letter}
-              </motion.span>
-            ))}
-          </div>
+          <h2 className="text-6xl md:text-8xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
+            {headingText}
+          </h2>
           <motion.div 
-            className="h-1 mt-4"
+            className="h-1 w-24 mt-6"
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            style={{ backgroundColor: 'var(--accent-color)' }}
+            style={{ backgroundColor: 'white' }}
           />
         </motion.div>
 

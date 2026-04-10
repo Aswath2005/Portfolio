@@ -89,17 +89,25 @@ export function Hero() {
         }}
       />
 
-      <div className="relative z-10 px-6 lg:px-12 min-h-screen flex items-center">
-        <div className="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-12 items-center w-full max-w-7xl mx-auto">
+      <div className="relative z-10 px-6 lg:px-12 min-h-dvh flex items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-[55%_45%] gap-12 lg:gap-8 items-stretch max-w-full">
           {/* Left Column */}
-          <div className="space-y-6 lg:space-y-8">
+          <div className="space-y-8 flex flex-col justify-center pr-0 lg:pr-12">
+            {/* White accent line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: '60px' }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="h-0.5 bg-white"
+            />
+
             {/* Small tag */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-sm uppercase tracking-widest font-dm-sans"
-              style={{ color: 'var(--accent-color)' }}
+              className="text-xs uppercase tracking-[0.2em] font-dm-sans"
+              style={{ color: 'var(--text-muted)' }}
             >
               Hello, I'm
             </motion.p>
@@ -109,11 +117,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-6xl lg:text-7xl xl:text-8xl font-bold font-bebas leading-tight"
+              className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black font-bebas leading-none"
               style={{
                 color: 'var(--text-primary)',
-                letterSpacing: '0.05em',
-                textShadow: '0 0 40px var(--accent-color)',
+                letterSpacing: '0.02em',
               }}
             >
               Aswath S A
@@ -215,15 +222,15 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-2xl font-bebas"
+              className="text-xl md:text-2xl font-bebas tracking-wide"
               style={{
-                color: 'var(--accent-color)',
-                letterSpacing: '0.05em',
+                color: 'var(--text-secondary)',
+                letterSpacing: '0.03em',
               }}
             >
               <TypeWriter
                 text="Developer • Designer • Community Leader"
-                className="text-2xl font-bebas"
+                className="text-xl md:text-2xl font-bebas"
               />
             </motion.p>
 
@@ -232,7 +239,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="text-lg leading-relaxed font-dm-sans max-w-md"
+              className="text-base leading-relaxed font-dm-sans max-w-md"
               style={{ color: 'var(--text-secondary)' }}
             >
               I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
@@ -289,92 +296,39 @@ export function Hero() {
 
           {/* Right Column - Profile Image with Portrait Frame (Desktop only) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="relative hidden lg:flex items-center justify-center"
+            className="relative hidden lg:block h-screen lg:h-[85vh]"
           >
-            <div className="relative" style={{ width: '320px', height: '420px' }}>
-              {/* Primary rotating ring */}
+            {/* Profile image - full height editorial photo */}
+            <div
+              className="relative w-full h-full rounded-xl overflow-hidden border"
+              style={{
+                backgroundColor: 'var(--bg-card)',
+                borderColor: 'rgba(255,255,255,0.1)',
+                boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 40px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)',
+              }}
+            >
+              {/* Dark gradient overlay */}
               <div
-                className="hero-photo-primary-ring absolute inset-0 rounded-3xl z-0"
+                className="absolute inset-0 pointer-events-none z-20"
                 style={{
-                  width: 'calc(100% + 40px)',
-                  height: 'calc(100% + 40px)',
-                  left: '-20px',
-                  top: '-20px',
-                  borderRadius: '24px',
-                  background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.15), transparent 30%, rgba(255,255,255,0.15) 60%, transparent)',
-                  backgroundClip: 'border-box',
+                  background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.4) 100%)',
                 }}
               />
 
-              {/* Secondary dashed ring */}
-              <div
-                className="hero-photo-secondary-ring absolute rounded-3xl z-0"
+              <Image
+                src="/IMG_20260404_122553.jpg"
+                alt="Profile"
+                fill
+                className="object-cover w-full h-full"
                 style={{
-                  width: 'calc(100% + 70px)',
-                  height: 'calc(100% + 70px)',
-                  left: '-35px',
-                  top: '-35px',
-                  borderRadius: '28px',
-                  border: `1px dashed rgba(255,255,255,0.06)`,
+                  objectPosition: 'center top',
+                  objectFit: 'cover',
                 }}
+                priority
               />
-
-              {/* Background glow */}
-              <div className="absolute inset-0 rounded-3xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
-
-              {/* Profile image with portrait frame */}
-              <div
-                className="relative w-full h-full rounded-2xl overflow-hidden border z-10"
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  borderColor: 'rgba(255,255,255,0.15)',
-                  boxShadow: '0 0 0 1px rgba(255,255,255,0.05), 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
-                }}
-              >
-                {/* Dark gradient overlay */}
-                <div
-                  className="absolute inset-0 pointer-events-none z-20"
-                  style={{
-                    background: 'linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%)',
-                  }}
-                />
-
-                <Image
-                  src="/IMG_20260404_122553.jpg"
-                  alt="Profile"
-                  fill
-                  className="object-cover w-full h-full"
-                  style={{
-                    objectPosition: 'center top',
-                    objectFit: 'cover',
-                  }}
-                  priority
-                />
-              </div>
-
-              {/* Corner brackets */}
-              {[
-                { top: '-8px', left: '-8px', borderTopWidth: '2px', borderLeftWidth: '2px' },
-                { top: '-8px', right: '-8px', borderTopWidth: '2px', borderRightWidth: '2px' },
-                { bottom: '-8px', left: '-8px', borderBottomWidth: '2px', borderLeftWidth: '2px' },
-                { bottom: '-8px', right: '-8px', borderBottomWidth: '2px', borderRightWidth: '2px' },
-              ].map((style, idx) => (
-                <div
-                  key={idx}
-                  className={`hero-photo-bracket hero-photo-bracket-${idx + 1} absolute w-4 h-4 z-20`}
-                  style={{
-                    ...style,
-                    border: '2px solid rgba(255,255,255,0.4)',
-                    borderTopColor: style.borderTopWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
-                    borderRightColor: style.borderRightWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
-                    borderBottomColor: style.borderBottomWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
-                    borderLeftColor: style.borderLeftWidth ? 'rgba(255,255,255,0.4)' : 'transparent',
-                  } as any}
-                />
-              ))}
             </div>
           </motion.div>
         </div>

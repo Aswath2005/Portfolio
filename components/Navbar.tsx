@@ -47,8 +47,8 @@ export function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'py-3 backdrop-blur-md' : 'py-6 bg-dark-bg/50 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-white/5 ${
+        isScrolled ? 'py-3 backdrop-blur-md' : 'py-4 bg-dark-bg/50 backdrop-blur-sm'
       }`}
       style={isScrolled ? { background: 'rgba(10,10,10,0.85)' } : {}}
     >

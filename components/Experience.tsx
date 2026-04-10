@@ -37,21 +37,24 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20 px-6 relative">
+    <section id="experience" className="py-24 md:py-32 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
+        {/* Decorative number background */}
+        <div className="absolute -top-20 left-0 text-9xl md:text-[12rem] font-black text-white/3 pointer-events-none" style={{ fontFamily: 'font-bebas' }}>03</div>
+
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-16"
+          className="mb-16 relative z-10"
         >
-          <h2 className="text-5xl font-bold font-bebas text-white glow-text" style={{ letterSpacing: '0.08em' }}>
+          <h2 className="text-6xl md:text-8xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
             EXPERIENCE
           </h2>
           <motion.div 
-            className="w-24 h-1 bg-accent-color mt-4"
+            className="h-1 w-24 bg-white mt-6"
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}

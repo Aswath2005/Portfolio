@@ -10,21 +10,24 @@ const skills = [
 
 export function About() {
   return (
-    <section id="about" className="py-20 px-6 relative">
+    <section id="about" className="py-24 md:py-32 px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
+        {/* Decorative number background */}
+        <div className="absolute -top-20 -left-40 text-9xl md:text-[12rem] font-black text-white/3 pointer-events-none" style={{ fontFamily: 'font-bebas' }}>01</div>
+
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-16"
+          className="mb-20 relative z-10"
         >
-          <h2 className="text-5xl font-bold font-bebas text-white glow-text" style={{ letterSpacing: '0.08em' }}>
+          <h2 className="text-6xl md:text-8xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
             ABOUT
           </h2>
           <motion.div 
-            className="w-24 h-1 bg-accent-color mt-4"
+            className="w-24 h-1 bg-white mt-6"
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -32,7 +35,7 @@ export function About() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Column - Bio */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -41,26 +44,26 @@ export function About() {
             viewport={{ once: false }}
             className="space-y-6"
           >
-            <p className="text-lg text-text-muted leading-relaxed font-dm-sans">
+            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
               I'm a passionate developer and designer with a commitment to building clean, functional digital experiences. 
               With expertise in both frontend development and UI/UX design, I bridge the gap between code and creativity, 
               transforming ideas into impactful digital solutions.
             </p>
             
-            <p className="text-lg text-text-muted leading-relaxed font-dm-sans">
+            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
               Beyond coding, I'm deeply involved in community leadership and innovation initiatives. I actively contribute to platforms 
               like µLearn and Legacy IEDC, fostering collaboration and growth. My approach combines technical excellence with a passion 
               for mentoring and building communities that drive meaningful change.
             </p>
           </motion.div>
 
-          {/* Right Column - Skill Bars */}
+          {/* Right Column - Skill Cards Grid */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false }}
-            className="space-y-8"
+            className="grid grid-cols-1 gap-8"
           >
             {skills.map((skill, idx) => (
               <motion.div
@@ -70,22 +73,25 @@ export function About() {
                 transition={{ delay: idx * 0.15, duration: 0.6 }}
                 viewport={{ once: true, margin: '-50px' }}
                 whileHover={{ y: -4 }}
-                className="space-y-2 p-4 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-white/10"
+                className="relative space-y-4 p-6 rounded-lg transition-all duration-300 border border-white/5 hover:border-white/10"
                 style={{
-                  boxShadow: '0 0 0px rgba(255,255,255,0)'
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
                 }}
               >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="font-bold text-lg font-bebas text-white tracking-wider">{skill.name}</h3>
-                    <p className="text-sm text-text-muted font-dm-sans">{skill.description}</p>
-                  </div>
+                {/* Decorative number */}
+                <div className="absolute -top-4 -right-4 text-5xl font-black text-white/5" style={{ fontFamily: 'font-bebas' }}>
+                  0{idx + 1}
+                </div>
+
+                <div className="relative z-10">
+                  <h3 className="font-black text-lg font-bebas text-white tracking-wider">{skill.name}</h3>
+                  <p className="text-sm text-white/50 font-dm-sans mt-2">{skill.description}</p>
                 </div>
 
                 {/* Progress bar line */}
-                <div className="h-1 bg-dark-border rounded-full overflow-hidden">
+                <div className="h-0.5 bg-white/10 rounded-full overflow-hidden">
                   <motion.div
-                    className="h-full bg-accent-color"
+                    className="h-full bg-white"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.proficiency}%` }}
                     transition={{ delay: idx * 0.15 + 0.3, duration: 1 }}
