@@ -42,10 +42,11 @@ export function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.15, duration: 0.6 }}
       viewport={{ once: true, margin: '-50px' }}
-      className="flex flex-col h-full rounded-xl overflow-hidden border transition-all duration-300 hover:border-opacity-100 hover:shadow-xl hover:-translate-y-1.5"
+      className="flex flex-col h-full overflow-hidden border transition-all duration-300 hover:border-opacity-100 hover:shadow-xl hover:-translate-y-1.5"
       style={{
         backgroundColor: 'var(--bg-card)',
         borderColor: 'var(--border)',
+        borderRadius: '16px',
       }}
     >
       {/* Browser mockup bar */}
