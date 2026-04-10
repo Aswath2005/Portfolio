@@ -124,18 +124,18 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="relative lg:hidden py-6"
+              className="lg:hidden flex justify-center mt-10 pb-8"
             >
-              <div className="relative w-full max-w-xs mx-auto h-80">
+              <div className="relative" style={{ width: '260px', height: '340px' }}>
                 {/* Primary rotating ring */}
                 <div
-                  className="hero-photo-primary-ring absolute inset-0 rounded-3xl z-0"
+                  className="hero-photo-primary-ring absolute inset-0 rounded-lg z-0"
                   style={{
                     width: 'calc(100% + 40px)',
                     height: 'calc(100% + 40px)',
                     left: '-20px',
                     top: '-20px',
-                    borderRadius: '24px',
+                    borderRadius: '16px',
                     background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.15), transparent 30%, rgba(255,255,255,0.15) 60%, transparent)',
                     backgroundClip: 'border-box',
                   }}
@@ -143,23 +143,23 @@ export function Hero() {
 
                 {/* Secondary dashed ring */}
                 <div
-                  className="hero-photo-secondary-ring absolute rounded-3xl z-0"
+                  className="hero-photo-secondary-ring absolute rounded-lg z-0"
                   style={{
                     width: 'calc(100% + 70px)',
                     height: 'calc(100% + 70px)',
                     left: '-35px',
                     top: '-35px',
-                    borderRadius: '28px',
+                    borderRadius: '20px',
                     border: `1px dashed rgba(255,255,255,0.06)`,
                   }}
                 />
 
                 {/* Background glow */}
-                <div className="absolute inset-0 rounded-3xl" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
+                <div className="absolute inset-0 rounded-lg" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
 
                 {/* Profile image with portrait frame */}
                 <div
-                  className="relative w-full h-full rounded-2xl overflow-hidden border z-10"
+                  className="relative w-full h-full rounded-lg overflow-hidden border z-10"
                   style={{
                     backgroundColor: 'var(--bg-card)',
                     borderColor: 'rgba(255,255,255,0.15)',
