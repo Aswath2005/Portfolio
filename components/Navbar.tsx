@@ -34,11 +34,19 @@ export function Navbar() {
       window.open('https://github.com/Aswath2005', '_blank')
       setIsOpen(false)
     } else {
-      const element = document.getElementById(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-        setIsOpen(false)
-      }
+      // Close menu first
+      setIsOpen(false)
+      // Small delay to ensure menu closes before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(href)
+        if (element) {
+          const offsetTop = element.offsetTop - 80 // Account for fixed navbar
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          })
+        }
+      }, 100)
     }
   }
 
@@ -128,9 +136,9 @@ export function Navbar() {
         initial={{ opacity: 0, height: 0 }}
         animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? 'auto' : 0 }}
         transition={{ duration: 0.3 }}
-        className={`md:hidden overflow-hidden bg-dark-bg/90 backdrop-blur ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        className={`md:hidden overflow-hidden bg-dark-bg/95 backdrop-blur-md border-b border-white/5 ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
       >
-        <div className="px-6 py-8 space-y-4">
+        <div className="px-6 py-6 space-y-2">
           {navLinks.map((link, i) => (
             <motion.button
               key={link.href}
@@ -140,18 +148,21 @@ export function Navbar() {
                   ? { opacity: 1, x: 0 }
                   : { opacity: 0, x: -20 }
               }
-              transition={{ delay: i * 0.1 }}
+              transition={{ delay: i * 0.05 }}
               onClick={() => handleNavClick(link.href)}
-              className={`block w-full text-left text-lg font-medium py-3 px-2 font-bebas cursor-pointer transition-colors rounded`}
+              className={`block w-full text-left text-base font-medium py-3 px-3 font-dm-sans cursor-pointer transition-all duration-200 rounded-lg hover:bg-white/5 active:bg-white/10`}
               style={{
-                color: activeSection === link.href ? 'var(--accent)' : 'var(--text-light)',
+                color: activeSection === link.href ? '#ffffff' : '#9ca3af',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = activeSection === link.href ? 'var(--accent)' : 'var(--text-light)')} 
             >
               {link.label}
             </motion.button>
           ))}
+          
+          {/* Mobile Theme Toggle */}
+          <div className="pt-4 border-t border-white/10 mt-4">
+            <ThemeToggle />
+          </div>
         </div>
       </motion.div>
     </motion.nav>
