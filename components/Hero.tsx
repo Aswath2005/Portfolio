@@ -44,7 +44,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative overflow-hidden pt-24 lg:pt-0"
+      className="relative overflow-hidden pt-10 md:pt-16 lg:pt-0"
       style={{ backgroundColor: 'var(--bg-primary)' }}
     >
       {/* Floating particles background */}
@@ -98,8 +98,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xs uppercase tracking-[0.15em] font-dm-sans mb-2"
-              style={{ color: 'var(--text-muted)' }}
+              className="text-base md:text-xs uppercase tracking-[0.15em] font-dm-sans mb-2"
+              style={{ color: 'var(--accent)' }}
             >
               Hello, I'm
             </motion.p>
@@ -123,15 +123,15 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-base md:text-2xl font-semibold md:font-bebas uppercase md:normal-case tracking-[0.1em] md:tracking-wide mb-16"
+              className="text-lg md:text-2xl font-bold md:font-bebas uppercase md:normal-case tracking-[0.1em] md:tracking-wide mb-16"
               style={{
-                color: 'var(--text-secondary)',
+                color: 'var(--accent)',
                 letterSpacing: 'inherit',
               }}
             >
               <TypeWriter
                 text="developer. community leader. tech enthusiast"
-                className="text-base md:text-2xl font-semibold md:font-bebas"
+                className="text-lg md:text-2xl font-bold md:font-bebas"
               />
             </motion.p>
 
