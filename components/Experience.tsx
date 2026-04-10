@@ -8,30 +8,35 @@ const experiences = [
     company: 'Legacy IEDC',
     date: 'Present',
     description: 'Leading initiatives and driving innovation in entrepreneurship and development. Building a thriving community of developers and entrepreneurs.',
+    link: 'https://iedc.uck.ac.in/team/member/2026cqaoo',
   },
   {
     role: 'Operations Lead',
     company: 'µLearn UCEK',
     date: 'Present',
     description: 'Managing operations and overseeing program execution. Coordinating teams to deliver impactful learning experiences and community events.',
+    link: 'https://mulearn.uck.ac.in/#team',
   },
   {
     role: 'Campus Co-Organizer',
     company: 'Google Developer Groups UCEK',
     date: 'Present',
     description: 'Organizing workshops, hackathons, and developer communities. Fostering collaboration and knowledge sharing among developers.',
+    link: 'https://gdg.community.dev/gdg-on-campus-university-college-of-engineering-trivandrum-india/',
   },
   {
     role: 'Ex Campus Co-Lead',
     company: 'µLearn UCEK',
     date: 'Previous',
     description: 'Previously led campus initiatives and community development programs. Mentored students and facilitated learning opportunities.',
+    link: 'https://mulearn.uck.ac.in/#team',
   },
   {
     role: 'Ex Operations Officer',
     company: 'Legacy IEDC UCEK',
     date: 'Previous',
     description: 'Managed operational tasks and supported organizational goals. Contributed to the growth and success of the entrepreneurship center.',
+    link: 'https://iedc.uck.ac.in/team/ex',
   },
 ]
 
@@ -73,11 +78,16 @@ export function Experience() {
               transition={{ delay: idx * 0.12, duration: 0.6 }}
               viewport={{ once: true, margin: '-50px' }}
               whileHover={{ y: -6, boxShadow: '0 0 25px rgba(255,255,255,0.1)' }}
-              className="p-6 border-2 transition-all rounded-none"
+              className="p-6 border-2 transition-all rounded-none cursor-pointer"
               style={{
                 borderColor: 'var(--dark-border)',
                 backgroundColor: '#1a1a1a',
               } as React.CSSProperties}
+              onClick={() => {
+                if (exp.link) {
+                  window.open(exp.link, '_blank')
+                }
+              }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = 'var(--accent)'
                 e.currentTarget.style.boxShadow = '0 0 25px var(--accent-glow)'
