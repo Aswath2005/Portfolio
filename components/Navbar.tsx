@@ -96,7 +96,7 @@ export function Navbar() {
               {activeSection === link.href && (
                 <motion.div 
                   className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
-                  style={{ background: 'white' }}
+                  style={{ background: 'var(--accent)' }}
                   layoutId="activeIndicator"
                 />
               )}

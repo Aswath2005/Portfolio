@@ -26,7 +26,7 @@ export function About() {
           </h2>
           <motion.div 
             className="w-24 h-1 mt-6"
-            style={{ background: 'rgba(255,255,255,0.3)' }}
+            style={{ background: 'rgba(99, 102, 241, 0.4)' }}
             initial={{ width: 0 }}
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.2 }}

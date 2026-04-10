@@ -58,7 +58,7 @@ export function Projects() {
             whileInView={{ width: '96px' }}
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
-            style={{ backgroundColor: 'rgba(255,255,255,0.3)' }}
+            style={{ backgroundColor: 'rgba(99, 102, 241, 0.4)' }}
           />
         </motion.div>
 

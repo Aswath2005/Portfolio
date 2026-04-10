@@ -17,27 +17,27 @@
   --border-light: #2a2a2a;
   --border-hover: #3a3a3a;
 
-  /* No accent color — white glow system */
-  --accent: #ffffff;
-  --accent-light: #e5e5e5;
-  --accent-dim: #aaaaaa;
-  --accent-glow: rgba(255, 255, 255, 0.06);
-  --accent-subtle: rgba(255, 255, 255, 0.03);
-  --accent-strong-glow: rgba(255, 255, 255, 0.12);
+  /* Indigo accent color */
+  --accent: #6366F1;
+  --accent-light: #818cf8;
+  --accent-dim: #4f46e5;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --accent-subtle: rgba(99, 102, 241, 0.08);
+  --accent-strong-glow: rgba(99, 102, 241, 0.25);
 
-  --btn-primary-bg: #ffffff;
-  --btn-primary-text: #000000;
-  --btn-outline-border: #2a2a2a;
-  --btn-outline-text: #888888;
-  --btn-outline-hover-border: #ffffff;
-  --btn-outline-hover-text: #ffffff;
+  --btn-primary-bg: #6366F1;
+  --btn-primary-text: #ffffff;
+  --btn-outline-border: #6366F1;
+  --btn-outline-text: #6366F1;
+  --btn-outline-hover-border: #818cf8;
+  --btn-outline-hover-text: #818cf8;
   --navbar-bg: rgba(0,0,0,0.80);
 
   /* Backwards compatibility */
-  --accent-color: #ffffff;
-  --accent-strong: #ffffff;
-  --btn-bg: #ffffff;
-  --btn-text: #000000;
+  --accent-color: #6366F1;
+  --accent-strong: #6366F1;
+  --btn-bg: #6366F1;
+  --btn-text: #ffffff;
 }
 
 :root.light {
@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 60%;
   height: 1px;
-  background: linear-gradient(to right, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(to right, rgba(99, 102, 241, 0.4), transparent);
 }
 
 /* Button styles */
