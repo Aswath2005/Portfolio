@@ -79,7 +79,13 @@ export function Experience() {
                 backgroundColor: '#1a1a1a',
               } as React.CSSProperties}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--accent)'\n                e.currentTarget.style.boxShadow = '0 0 25px var(--accent-glow)'\n              }}\n              onMouseLeave={(e) => {\n                e.currentTarget.style.borderColor = 'var(--dark-border)'\n                e.currentTarget.style.boxShadow = 'none'\n              }}
+                e.currentTarget.style.borderColor = 'var(--accent)'
+                e.currentTarget.style.boxShadow = '0 0 25px var(--accent-glow)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--dark-border)'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
             >
               <h3 className="text-xl font-bold font-bebas tracking-wider mb-2" style={{ color: 'var(--accent)' }}>
                 {exp.role}
