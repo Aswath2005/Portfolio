@@ -74,8 +74,8 @@ export function About() {
                 whileHover={{ y: -4 }}
                 className="relative space-y-4 p-6 rounded-lg transition-all duration-300 border border-white/5 hover:border-white/10"
                 style={{
-                  background: 'linear-gradient(135deg, var(--accent-subtle) 0%, rgba(59,130,246,0.03) 100%)',
-                  borderColor: 'rgba(59,130,246,0.2)',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)',
+                  borderColor: 'rgba(255,255,255,0.08)',
                 }}
               >
                 <div className="relative z-10">

@@ -63,7 +63,6 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
             style={{
               letterSpacing: '0.08em',
               color: 'var(--text-primary)',
-              textShadow: '0 0 40px rgba(59,130,246,0.5)',
             }}
           >
             {letter}

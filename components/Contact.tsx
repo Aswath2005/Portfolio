@@ -120,9 +120,9 @@ export function Contact() {
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     className="transition-colors duration-300"
-                    style={{ color: 'var(--accent-light)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--accent-light)')}
+                    style={{ color: '#888888' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#888888')}
                     aria-label={social.label}
                   >
                     <social.icon className="w-6 h-6" />

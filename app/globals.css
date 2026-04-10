@@ -6,64 +6,71 @@
 
 :root,
 :root.dark {
-  --bg-primary: #0a0a0a;
-  --bg-surface: #111111;
-  --bg-card: #161616;
+  --bg-primary: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card-hover: #161616;
   --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #52525b;
-  --border: #27272a;
-  --border-light: #3f3f46;
+  --text-secondary: #888888;
+  --text-muted: #444444;
+  --border: #1a1a1a;
+  --border-light: #2a2a2a;
+  --border-hover: #3a3a3a;
 
-  --accent: #3B82F6;
-  --accent-light: #60a5fa;
-  --accent-dim: #1d4ed8;
-  --accent-glow: rgba(59, 130, 246, 0.15);
-  --accent-subtle: rgba(59, 130, 246, 0.08);
+  /* No accent color — white glow system */
+  --accent: #ffffff;
+  --accent-light: #e5e5e5;
+  --accent-dim: #aaaaaa;
+  --accent-glow: rgba(255, 255, 255, 0.06);
+  --accent-subtle: rgba(255, 255, 255, 0.03);
+  --accent-strong-glow: rgba(255, 255, 255, 0.12);
 
-  --btn-primary-bg: #3B82F6;
-  --btn-primary-text: #ffffff;
-  --btn-outline-border: #3f3f46;
-  --btn-outline-text: #a1a1aa;
-  --btn-outline-hover-border: #3B82F6;
-  --btn-outline-hover-text: #3B82F6;
-  --navbar-bg: rgba(10,10,10,0.90);
+  --btn-primary-bg: #ffffff;
+  --btn-primary-text: #000000;
+  --btn-outline-border: #2a2a2a;
+  --btn-outline-text: #888888;
+  --btn-outline-hover-border: #ffffff;
+  --btn-outline-hover-text: #ffffff;
+  --navbar-bg: rgba(0,0,0,0.80);
 
   /* Backwards compatibility */
-  --accent-color: #3B82F6;
+  --accent-color: #ffffff;
   --accent-strong: #ffffff;
-  --btn-bg: #3B82F6;
-  --btn-text: #ffffff;
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
 }
 
 :root.light {
-  --bg-primary: #ffffff;
-  --bg-surface: #f8fafc;
+  --bg-primary: #fafafa;
+  --bg-surface: #f5f5f5;
   --bg-card: #ffffff;
-  --text-primary: #09090b;
-  --text-secondary: #52525b;
-  --text-muted: #a1a1aa;
-  --border: #e4e4e7;
-  --border-light: #d4d4d8;
+  --bg-card-hover: #f0f0f0;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border: #e5e5e5;
+  --border-light: #d4d4d4;
+  --border-hover: #aaaaaa;
 
-  --accent: #2563eb;
-  --accent-light: #3B82F6;
-  --accent-dim: #1d4ed8;
-  --accent-glow: rgba(37, 99, 235, 0.12);
-  --accent-subtle: rgba(37, 99, 235, 0.06);
+  --accent: #000000;
+  --accent-light: #333333;
+  --accent-dim: #666666;
+  --accent-glow: rgba(0, 0, 0, 0.06);
+  --accent-subtle: rgba(0, 0, 0, 0.03);
+  --accent-strong-glow: rgba(0, 0, 0, 0.1);
 
-  --btn-primary-bg: #2563eb;
+  --btn-primary-bg: #000000;
   --btn-primary-text: #ffffff;
-  --btn-outline-border: #e4e4e7;
-  --btn-outline-text: #52525b;
-  --btn-outline-hover-border: #2563eb;
-  --btn-outline-hover-text: #2563eb;
-  --navbar-bg: rgba(255,255,255,0.90);
+  --btn-outline-border: #e5e5e5;
+  --btn-outline-text: #666666;
+  --btn-outline-hover-border: #000000;
+  --btn-outline-hover-text: #000000;
+  --navbar-bg: rgba(250,250,250,0.85);
 
   /* Backwards compatibility */
-  --accent-color: #2563eb;
-  --accent-strong: #09090b;
-  --btn-bg: #2563eb;
+  --accent-color: #000000;
+  --accent-strong: #000000;
+  --btn-bg: #000000;
   --btn-text: #ffffff;
 }
 
@@ -126,9 +133,9 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   bottom: -12px;
   left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--accent-color);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255,255,255,0.4), transparent);
 }
 
 /* Button styles */
@@ -149,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover {
   background-color: var(--accent-light);
   transform: translateY(-2px);
-  box-shadow: 0 0 20px var(--accent-glow);
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
 .btn-outline {
@@ -171,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--btn-outline-hover-text);
   background-color: transparent;
   transform: translateY(-2px);
-  box-shadow: 0 0 20px var(--accent-glow);
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
 /* Animations and Effects */
@@ -217,13 +224,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Pulse ring animation for timeline dots */
 @keyframes pulse-ring {
   0% {
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
 

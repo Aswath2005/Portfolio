@@ -90,7 +90,7 @@ export function CustomCursor() {
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: 'var(--accent)' }} />
+        <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#ffffff' }} />
       </div>
 
       {/* Ring that follows */}
@@ -103,8 +103,8 @@ export function CustomCursor() {
           transform: 'translate(-50%, -50%)',
           width: isHoveringLink ? '40px' : '32px',
           height: isHoveringLink ? '40px' : '32px',
-          borderColor: isHoveringLink ? 'var(--accent)' : 'rgba(228, 228, 231, 0.3)',
-          backgroundColor: isHoveringLink ? 'var(--accent-glow)' : 'transparent',
+          borderColor: isHoveringLink ? '#ffffff' : 'rgba(255,255,255,0.2)',
+          backgroundColor: isHoveringLink ? 'rgba(255,255,255,0.08)' : 'transparent',
         }}
       />
     </>

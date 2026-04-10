@@ -87,7 +87,7 @@ export function TiltCard({ children, className = '' }: TiltCardProps) {
           className="pointer-events-none absolute inset-0 rounded-none transition-opacity duration-300"
           style={{
             opacity: isHovering ? 0.12 : 0,
-            background: `radial-gradient(circle at ${shinePos.x}% ${shinePos.y}%, rgba(59,130,246,0.3) 0%, transparent 50%)`,
+            background: `radial-gradient(circle at ${shinePos.x}% ${shinePos.y}%, rgba(255,255,255,0.15) 0%, transparent 50%)`,
             transformStyle: 'preserve-3d',
             transform: 'translateZ(1px)',
           }}

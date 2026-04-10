@@ -20,8 +20,8 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-0.5 bg-white z-[9999]"
-      style={{ width: `${scrollProgress}%` }}
+      className="fixed top-0 left-0 right-0 h-0.5 z-[9999]"
+      style={{ width: `${scrollProgress}%`, background: 'rgba(255,255,255,0.6)' }}
       initial={{ width: '0%' }}
       animate={{ width: `${scrollProgress}%` }}
       transition={{ type: 'tween', duration: 0.3 }}

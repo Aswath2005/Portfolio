@@ -73,19 +73,10 @@ export function Hero() {
 
       {/* Subtle background glow blob */}
       <motion.div
-        className="absolute top-1/2 left-0 w-96 h-96 rounded-full pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none -z-10"
         style={{
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 1) 0%, transparent 70%)',
-          opacity: 0.03,
-          zIndex: -2,
-        }}
-        animate={{
-          y: [0, 50, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
+          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.04) 0%, transparent 70%)',
+          top: '-100px',
         }}
       />
 
@@ -134,7 +125,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="text-base md:text-2xl font-semibold md:font-bebas uppercase md:normal-case tracking-[0.1em] md:tracking-wide mb-16"
               style={{
-                color: 'var(--accent)',
+                color: 'var(--text-secondary)',
                 letterSpacing: 'inherit',
               }}
             >
@@ -192,7 +183,7 @@ export function Hero() {
                     left: '-20px',
                     top: '-20px',
                     borderRadius: '16px',
-                    background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.1), transparent 30%, rgba(255,255,255,0.1) 60%, transparent)',
+                    background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.06), transparent 30%, rgba(255,255,255,0.06) 60%, transparent)',
                     backgroundClip: 'border-box',
                   }}
                 />

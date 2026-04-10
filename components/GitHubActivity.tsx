@@ -224,9 +224,9 @@ export function GitHubActivity() {
                               key={topic}
                               className="inline-block px-2.5 py-1 text-xs font-medium rounded-full border"
                               style={{
-                                backgroundColor: 'var(--accent-glow)',
-                                color: 'var(--accent)',
-                                borderColor: 'rgba(59,130,246,0.3)',
+                                backgroundColor: 'rgba(255,255,255,0.05)',
+                                color: '#888888',
+                                borderColor: 'rgba(255,255,255,0.1)',
                               }}
                             >
                               {topic}

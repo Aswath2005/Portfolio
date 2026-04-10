@@ -151,9 +151,9 @@ export function ProjectCard({
               key={i}
               className="px-2 py-1 text-xs rounded-full border"
               style={{
-                backgroundColor: 'var(--accent-subtle)',
-                color: 'var(--accent-light)',
-                borderColor: 'rgba(59,130,246,0.3)',
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                color: '#888888',
+                borderColor: 'rgba(255,255,255,0.1)',
               }}
             >
               {tag}

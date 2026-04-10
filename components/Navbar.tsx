@@ -50,7 +50,10 @@ export function Navbar() {
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-white/5 ${
         isScrolled ? 'py-3 backdrop-blur-md' : 'py-4 bg-dark-bg/50 backdrop-blur-sm'
       }`}
-      style={isScrolled ? { background: 'rgba(10,10,10,0.85)' } : {}}
+      style={isScrolled ? { 
+        background: 'var(--navbar-bg)',
+        backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.015), transparent)'
+      } : {}}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -60,7 +63,19 @@ export function Navbar() {
           onClick={() => handleNavClick('home')}
           className="flex-shrink-0 group"
         >
-          <span className="text-3xl font-bold font-bebas tracking-widest transition-all duration-300" style={{ color: 'var(--accent)' }}>
+          <span 
+            className="text-3xl font-bold font-bebas tracking-widest transition-all duration-300" 
+            style={{ 
+              color: 'var(--accent)',
+              fontWeight: 700,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.textShadow = '0 0 20px rgba(255,255,255,0.4)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.textShadow = 'none'
+            }}
+          >
             PORTFOLIO
           </span>
         </motion.button>
@@ -73,17 +88,18 @@ export function Navbar() {
               onClick={() => handleNavClick(link.href)}
               className={`relative text-sm font-medium transition-colors font-dm-sans cursor-pointer group ${
                 activeSection === link.href
-                  ? 'text-accent'
-                  : 'text-text-muted hover:text-accent'
+                  ? 'text-white'
+                  : 'text-text-muted hover:text-white'
               }`}
             >
               {link.label}
-              <span 
-                className={`absolute bottom-0 left-0 h-0.5 transition-all duration-300 ${
-                  activeSection === link.href ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}
-                style={{ background: 'var(--accent)' }}
-              />
+              {activeSection === link.href && (
+                <motion.div 
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full"
+                  style={{ background: 'white' }}
+                  layoutId="activeIndicator"
+                />
+              )}
             </motion.button>
           ))}
           
