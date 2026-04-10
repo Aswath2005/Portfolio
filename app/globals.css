@@ -255,6 +255,35 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Hero photo ring rotations */
+@keyframes rotate-primary-ring {
+  0% {
+    --angle: 0deg;
+    background: conic-gradient(from 0deg, rgba(255,255,255,0.08), transparent 30%, rgba(255,255,255,0.08) 60%, transparent);
+  }
+  100% {
+    --angle: 360deg;
+    background: conic-gradient(from 360deg, rgba(255,255,255,0.08), transparent 30%, rgba(255,255,255,0.08) 60%, transparent);
+  }
+}
+
+@keyframes rotate-secondary-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+.hero-photo-primary-ring {
+  animation: rotate-primary-ring 8s linear infinite;
+}
+
+.hero-photo-secondary-ring {
+  animation: rotate-secondary-ring 12s linear infinite;
+}
+
 /* Glow text effect */
 .glow-text {
   color: var(--text-primary);
