@@ -303,7 +303,7 @@ export function Hero() {
                 left: '-20px',
                 top: '-20px',
                 borderRadius: '16px',
-                background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.06), transparent 30%, rgba(255,255,255,0.06) 60%, transparent)',
+                background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.2), transparent 30%, rgba(255,255,255,0.2) 60%, transparent)',
                 backgroundClip: 'border-box',
               }}
             />
@@ -317,7 +317,7 @@ export function Hero() {
                 left: '-35px',
                 top: '-35px',
                 borderRadius: '20px',
-                border: `1px dashed rgba(255,255,255,0.1)`,
+                border: `1px dashed rgba(255,255,255,0.25)`,
               }}
             />
 

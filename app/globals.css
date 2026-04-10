@@ -259,11 +259,11 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes rotate-primary-ring {
   0% {
     --angle: 0deg;
-    background: conic-gradient(from 0deg, rgba(255,255,255,0.08), transparent 30%, rgba(255,255,255,0.08) 60%, transparent);
+    background: conic-gradient(from 0deg, rgba(255,255,255,0.2), transparent 30%, rgba(255,255,255,0.2) 60%, transparent);
   }
   100% {
     --angle: 360deg;
-    background: conic-gradient(from 360deg, rgba(255,255,255,0.08), transparent 30%, rgba(255,255,255,0.08) 60%, transparent);
+    background: conic-gradient(from 360deg, rgba(255,255,255,0.2), transparent 30%, rgba(255,255,255,0.2) 60%, transparent);
   }
 }
 
