@@ -21,7 +21,7 @@ const projects = [
     screenshot: '/studyflow-preview.png',
     tags: ['Next.js 14', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/Aswath2005/StudyPlanner-Frontend',
-    status: 'completed' as const,
+    status: 'in-progress' as const,
   },
   {
     title: 'CardioSense',
