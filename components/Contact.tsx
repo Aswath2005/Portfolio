@@ -1,8 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useEffect } from 'react'
 import { Mail, MapPin, Linkedin, Instagram, Github, Send } from 'lucide-react'
+import { SectionLabel } from './SectionLabel'
+import emailjs from '@emailjs/browser'
+
+// Initialize EmailJS (replace with your Public Key from emailjs.com)
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -12,6 +19,13 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
+  const [submitError, setSubmitError] = useState('')
+
+  useEffect(() => {
+    if (EMAILJS_PUBLIC_KEY) {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+    }
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -23,18 +37,47 @@ export function Contact() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setSubmitError('')
+
+    // Check if EmailJS is configured
+    if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
+      setSubmitError('Email service not configured. Please contact the site owner.')
+      return
+    }
+
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      setSubmitError('Please fill in all fields')
+      return
+    }
+
     setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitMessage('Thanks for reaching out! I will get back to you soon.')
-      setFormData({ name: '', email: '', message: '' })
-      setIsSubmitting(false)
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'aswathsa24@gmail.com', // Your email
+        }
+      )
 
+      setSubmitMessage('✓ Message sent successfully! I\'ll get back to you soon.')
+      setFormData({ name: '', email: '', message: '' })
+
+      // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitMessage('')
-      }, 3000)
-    }, 1500)
+      }, 5000)
+    } catch (error) {
+      console.error('Email error:', error)
+      setSubmitError('Failed to send message. Please try again or email me directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const socialLinks = [
@@ -44,31 +87,46 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="py-16 md:py-20 px-6 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section 
+      id="contact" 
+      className="py-16 md:py-20 px-6 relative overflow-hidden"
+      style={{ 
+        backgroundColor: 'var(--bg-primary)',
+        backgroundImage: 'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
+        backgroundSize: '32px 32px',
+      }}
+    >
+      {/* Radial glow centered */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255,255,255,0.04), transparent)',
+        }}
+      />
 
-        {/* Section Heading */}
-        <motion.div
+      <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* Section Label */}
+        <SectionLabel number="05" label="CONTACT" />
+
+        {/* Main Heading */}
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-12 relative z-10"
+          className="gradient-text mb-12"
+          style={{
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontWeight: 800,
+            fontFamily: 'Bebas Neue, sans-serif',
+            letterSpacing: '-0.02em',
+          }}
         >
-          <h2 className="text-4xl md:text-5xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
-            CONTACT
-          </h2>
-          <motion.div 
-            className="h-1 w-24 mt-6"
-            initial={{ width: 0 }}
-            whileInView={{ width: '96px' }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            style={{ background: 'rgba(99, 102, 241, 0.4)' }}
-          />
-        </motion.div>
+          GET IN TOUCH
+        </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -120,7 +178,7 @@ export function Contact() {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.95 }}
-                    className="transition-colors duration-300"
+                    className="transition-colors duration-300 focus-ring"
                     style={{ color: '#6b7280' }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
                     onMouseLeave={(e) => (e.currentTarget.style.color = '#6b7280')}
@@ -139,7 +197,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
               viewport={{ once: false }}
-              className="inline-flex items-center gap-3 transition-colors group"
+              className="inline-flex items-center gap-3 transition-colors group link-with-arrow focus-ring rounded-lg"
               onMouseEnter={(e) => {
                 const icon = e.currentTarget.querySelector('svg')
                 if (icon) icon.style.color = 'var(--accent)'
@@ -154,7 +212,7 @@ export function Contact() {
               }}
             >
               <Mail className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--accent)' }} />
-              <p className="text-text-muted font-dm-sans transition-colors" style={{ color: 'var(--text-muted)' }}>
+              <p className="text-text-muted font-dm-sans transition-colors arrow" style={{ color: 'var(--text-muted)' }}>
                 aswathsa24@gmail.com
               </p>
             </motion.a>
@@ -166,7 +224,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false }}
-            className="p-8 border-2 border-dark-border"
+            className="premium-card"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Input */}
@@ -176,7 +234,7 @@ export function Contact() {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-sm font-bold text-white mb-2 font-bebas tracking-widest">
+                <label className="block text-xs font-bold text-white mb-2 font-bebas tracking-widest">
                   NAME
                 </label>
                 <input
@@ -185,18 +243,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none transition-all font-dm-sans"
-                  style={{
-                    borderColor: 'var(--dark-border)',
-                  } as React.CSSProperties}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--accent)'
-                    e.currentTarget.style.boxShadow = '0 0 15px var(--accent-glow)'
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--dark-border)'
-                    e.currentTarget.style.boxShadow = 'none'
-                  }}
+                  className="premium-input w-full"
                   placeholder="Your Name"
                 />
               </motion.div>
@@ -208,7 +255,7 @@ export function Contact() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-sm font-bold text-white mb-2 font-bebas tracking-widest">
+                <label className="block text-xs font-bold text-white mb-2 font-bebas tracking-widest">
                   EMAIL
                 </label>
                 <input
@@ -217,18 +264,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none transition-all font-dm-sans"
-                  style={{
-                    borderColor: 'var(--dark-border)',
-                  } as React.CSSProperties}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--accent)'
-                    e.currentTarget.style.boxShadow = '0 0 15px var(--accent-glow)'
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--dark-border)'
-                    e.currentTarget.style.boxShadow = 'none'
-                  }}
+                  className="premium-input w-full"
                   placeholder="your@email.com"
                 />
               </motion.div>
@@ -240,7 +276,7 @@ export function Contact() {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-sm font-bold text-white mb-2 font-bebas tracking-widest">
+                <label className="block text-xs font-bold text-white mb-2 font-bebas tracking-widest">
                   MESSAGE
                 </label>
                 <textarea
@@ -249,18 +285,7 @@ export function Contact() {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-none bg-card-bg border-2 border-dark-border text-white placeholder-text-muted-dark focus:outline-none transition-all resize-none font-dm-sans"
-                  style={{
-                    borderColor: 'var(--dark-border)',
-                  } as React.CSSProperties}
-                  onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--accent)'
-                    e.currentTarget.style.boxShadow = '0 0 15px var(--accent-glow)'
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--dark-border)'
-                    e.currentTarget.style.boxShadow = 'none'
-                  }}
+                  className="premium-input w-full resize-none"
                   placeholder="Tell me about your project..."
                 />
               </motion.div>
@@ -272,13 +297,13 @@ export function Contact() {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 viewport={{ once: true, margin: '-50px' }}
                 whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(255,255,255,0.2)' }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
                 className="btn-primary w-full inline-flex items-center justify-center gap-2 group disabled:opacity-50 font-bebas tracking-wider transition-all"
               >
                 {isSubmitting ? 'SENDING...' : 'SEND'}
-                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform arrow" />
               </motion.button>
 
               {/* Success Message */}
@@ -287,10 +312,23 @@ export function Contact() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="text-sm font-medium text-center font-dm-sans"
-                  style={{ color: 'var(--accent)' }}
+                  className="text-sm font-medium text-center font-dm-sans p-3 rounded-lg"
+                  style={{ color: '#22c55e', backgroundColor: 'rgba(34, 197, 94, 0.1)' }}
                 >
                   {submitMessage}
+                </motion.p>
+              )}
+
+              {/* Error Message */}
+              {submitError && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="text-sm font-medium text-center font-dm-sans p-3 rounded-lg"
+                  style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)' }}
+                >
+                  {submitError}
                 </motion.p>
               )}
             </form>
@@ -300,3 +338,4 @@ export function Contact() {
     </section>
   )
 }
+

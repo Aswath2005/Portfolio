@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Globe, Github, ExternalLink } from 'lucide-react'
 import Image from 'next/image'
+import { useSpotlight } from '@/hooks/useSpotlight'
 
 interface ProjectCardProps {
   title: string
@@ -28,6 +29,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   const [iframeLoaded, setIframeLoaded] = useState(false)
   const [iframeError, setIframeError] = useState(false)
+  const { containerRef, spotlightRef } = useSpotlight()
 
   const handleIframeLoad = () => {
     setIframeLoaded(true)
@@ -40,21 +42,35 @@ export function ProjectCard({
 
   return (
     <motion.div
+      ref={containerRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.15, duration: 0.6 }}
       viewport={{ once: true, margin: '-50px' }}
-      className="flex flex-col h-full overflow-hidden border transition-all duration-300 hover:border-opacity-100 hover:shadow-xl hover:-translate-y-1.5"
-      style={{
-        backgroundColor: 'var(--bg-card)',
-        borderColor: 'var(--border)',
-        borderRadius: '16px',
-      }}
+      className="premium-card spotlight-card flex flex-col h-full overflow-hidden relative group"
     >
+      <div ref={spotlightRef} style={{ display: 'none' }} />
+
+      {/* Decorative number background */}
+      <div
+        className="absolute -top-12 -right-8 font-black opacity-3 pointer-events-none z-0"
+        style={{
+          fontSize: '6rem',
+          color: 'white',
+          fontFamily: 'Bebas Neue, sans-serif',
+          fontWeight: 900,
+        }}
+      >
+        {String(index + 1).padStart(2, '0')}
+      </div>
+
       {/* Browser mockup bar */}
       <div
-        className="px-4 py-3 border-b flex items-center gap-3"
-        style={{ backgroundColor: '#1a1a1a', borderColor: 'var(--border)' }}
+        className="px-4 py-3 border-b flex items-center gap-3 relative z-10"
+        style={{
+          background: 'linear-gradient(to bottom, #1a1a1a, #111111)',
+          borderColor: 'rgba(255,255,255,0.06)',
+        }}
       >
         {/* Window control dots */}
         <div className="flex gap-2">
@@ -65,7 +81,7 @@ export function ProjectCard({
 
         {/* URL bar */}
         <div className="flex-1 text-center">
-          <p className="text-xs text-gray-500 truncate">{url}</p>
+          <p className="text-xs text-gray-500 truncate opacity-60">{url}</p>
         </div>
       </div>
 
@@ -132,20 +148,21 @@ export function ProjectCard({
       </div>
 
       {/* Card body */}
-      <div className="flex-1 flex flex-col gap-4 p-6">
+      <div className="flex-1 flex flex-col gap-4 p-6 relative z-10">
         {/* Status badge */}
         {status === 'in-progress' && (
           <div className="self-start">
-            <span
-              className="px-3 py-1 text-xs font-semibold rounded-full"
+            <div
+              className="px-3 py-1 text-xs font-semibold rounded-full border flex items-center gap-2"
               style={{
-                backgroundColor: 'rgba(255, 193, 7, 0.15)',
-                color: '#FFC107',
-                border: '1px solid rgba(255, 193, 7, 0.3)',
+                backgroundColor: 'rgba(255,255,255,0.04)',
+                color: 'rgba(255,255,255,0.5)',
+                borderColor: 'rgba(255,255,255,0.1)',
               }}
             >
+              <span className="w-1.5 h-1.5 rounded-full bg-white/50 animate-pulse" />
               In Progress
-            </span>
+            </div>
           </div>
         )}
 
@@ -169,9 +186,9 @@ export function ProjectCard({
               key={i}
               className="px-2 py-1 text-xs rounded-full border"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.05)',
+                backgroundColor: 'rgba(255,255,255,0.04)',
                 color: '#6b7280',
-                borderColor: 'rgba(255,255,255,0.1)',
+                borderColor: 'rgba(255,255,255,0.08)',
               }}
             >
               {tag}
@@ -181,39 +198,41 @@ export function ProjectCard({
 
         {/* Buttons */}
         <div className="flex gap-3 mt-auto">
-          <button
+          <motion.button
             onClick={() => window.open(url, '_blank')}
-            className="flex-1 px-4 py-2 text-sm font-medium border rounded-lg transition-all duration-300 hover:shadow-lg flex items-center justify-center gap-2"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex-1 px-4 py-2 text-sm font-medium border rounded-lg transition-all duration-300 flex items-center justify-center gap-2 focus-ring link-with-arrow"
             style={{
               color: 'var(--accent)',
-              borderColor: 'var(--accent)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--accent-subtle)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent'
+              borderColor: 'rgba(255,255,255,0.2)',
+              background: 'rgba(255,255,255,0.02)',
             }}
           >
             Live Site
-            <ExternalLink className="w-3.5 h-3.5" />
-          </button>
+            <ExternalLink className="w-3.5 h-3.5 arrow" />
+          </motion.button>
 
           {github && (
-            <button
+            <motion.button
               onClick={() => window.open(github, '_blank')}
-              className="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-opacity-10 flex items-center gap-2"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 flex items-center gap-2 focus-ring"
               style={{
                 color: 'var(--text-secondary)',
-                backgroundColor: 'transparent',
+                backgroundColor: 'rgba(255,255,255,0.02)',
+                borderColor: 'rgba(255,255,255,0.08)',
+                border: '1px solid rgba(255,255,255,0.08)',
               }}
             >
               <Github className="w-4 h-4" />
               Code
-            </button>
+            </motion.button>
           )}
         </div>
       </div>
     </motion.div>
   )
 }
+        {/* Window control dots */}

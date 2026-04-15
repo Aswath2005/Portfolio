@@ -47,6 +47,27 @@ export function Hero() {
       className="relative overflow-hidden pt-10 md:pt-16 lg:pt-0"
       style={{ backgroundColor: 'var(--bg-primary)' }}
     >
+      {/* Dot grid pattern with fade mask */}
+      <div
+        className="absolute inset-0 z-0 fade-mask pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
+
+      {/* Large radial gradient spotlight */}
+      <motion.div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] pointer-events-none z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        style={{
+          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,255,255,0.07) 0%, transparent 70%)',
+          filter: 'blur(40px)',
+        }}
+      />
+
       {/* Floating particles background */}
       {particles.map((particle) => (
         <motion.div
@@ -71,104 +92,85 @@ export function Hero() {
         />
       ))}
 
-      {/* Subtle background glow blob */}
-      <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] pointer-events-none -z-10"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(255, 255, 255, 0.04) 0%, transparent 70%)',
-          top: '-100px',
-        }}
-      />
-
       <div className="relative z-10 px-6 lg:px-12 min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
           {/* Left Column */}
           <div className="space-y-8 flex flex-col justify-center">
-            {/* Accent line - brighter and wider */}
+            {/* Premium Badge */}
             <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: '80px' }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="h-1 rounded-full"
-              style={{ background: 'rgba(255,255,255,0.6)' }}
-            />
-
-            {/* Small tag - more prominent */}
-            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xs md:text-sm uppercase tracking-[0.2em] font-dm-sans font-semibold"
-              style={{ color: '#d1d5db' }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="premium-badge w-fit"
             >
-              Hello, I'm
-            </motion.p>
+              <span className="flex items-center gap-2">
+                <span className="text-[10px]">✦</span>
+                Hello, I'm
+              </span>
+            </motion.div>
 
-            {/* Large name heading - even bigger and bolder */}
+            {/* Large name heading with gradient text */}
             <motion.h1
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-6xl sm:text-7xl md:text-7xl lg:text-8xl font-black font-bebas leading-[1.1] -mb-2"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="gradient-text"
               style={{
-                color: 'var(--text-primary)',
-                letterSpacing: '-0.02em',
-                textShadow: '0 2px 20px rgba(255, 255, 255, 0.08)',
+                fontSize: 'clamp(3rem, 8vw, 7rem)',
+                fontFamily: 'Bebas Neue, sans-serif',
+                fontWeight: 800,
+                lineHeight: 1.1,
+                letterSpacing: '-0.03em',
               }}
             >
-              Aswath S A
+              ASWATH S A
             </motion.h1>
 
-            {/* Typing animation for roles - larger and bolder */}
+            {/* Typing animation for roles */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-xl md:text-3xl font-bold font-bebas tracking-tight leading-snug mb-8"
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="font-dm-sans"
               style={{
-                color: '#ffffff',
-                letterSpacing: '-0.01em',
+                fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
+                color: 'rgba(255,255,255,0.5)',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
               }}
             >
               <TypeWriter
-                text="developer. community leader. tech enthusiast"
-                className="text-xl md:text-3xl font-bold font-bebas"
+                text="Developer • Designer • Community Leader"
+                className="font-bebas"
               />
             </motion.p>
 
-            {/* Bio paragraph - improved styling */}
+            {/* Bio paragraph */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="text-base md:text-lg leading-8 md:leading-relaxed font-dm-sans max-w-lg mb-6"
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-base md:text-lg leading-8 md:leading-relaxed font-dm-sans max-w-lg"
               style={{ color: '#d1d5db' }}
             >
               I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
             </motion.p>
 
-            {/* Additional highlight - subtle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="text-xs md:text-sm font-dm-sans uppercase tracking-widest"
-              style={{ color: '#9ca3af' }}
-            >
-              ✦ Explore my work and contributions
-            </motion.p>
-
-            {/* Stats Counter */}
+            {/* Stats Row with subtle top border */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
               className="pt-8"
+              style={{
+                borderTop: '1px solid rgba(255,255,255,0.06)',
+                paddingTop: '24px',
+              }}
             >
               <StatsCounter />
             </motion.div>
 
-            {/* Mobile Profile Image - appears after stats on mobile */}
+            {/* Mobile Profile Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -176,6 +178,18 @@ export function Hero() {
               className="lg:hidden flex justify-center mt-12 mb-8"
             >
               <div className="relative" style={{ width: '280px', height: '360px' }}>
+                {/* Halo glow behind photo */}
+                <div
+                  className="halo-effect absolute inset-0 rounded-lg"
+                  style={{
+                    width: '500px',
+                    height: '600px',
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                />
+
                 {/* Primary rotating ring */}
                 <div
                   className="hero-photo-primary-ring absolute inset-0 rounded-lg z-0"
@@ -203,16 +217,13 @@ export function Hero() {
                   }}
                 />
 
-                {/* Background glow */}
-                <div className="absolute inset-0 rounded-lg" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)' }} />
-
                 {/* Profile image with portrait frame */}
                 <div
                   className="relative w-full h-full rounded-lg overflow-hidden border z-10"
                   style={{
                     backgroundColor: 'var(--bg-card)',
                     borderColor: 'rgba(255,255,255,0.15)',
-                    boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
+                    boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.5), inset 0 -60px 40px rgba(0,0,0,0.8)',
                   }}
                 >
                   {/* Dark gradient overlay */}
@@ -224,8 +235,8 @@ export function Hero() {
                   />
 
                   <Image
-                  src="/IMG_20260404_122553.jpg"
-                  alt="Profile"
+                    src="/IMG_20260404_122553.jpg"
+                    alt="Profile"
                     fill
                     className="object-cover w-full h-full"
                     style={{
@@ -263,23 +274,23 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
               className="flex flex-col sm:flex-row gap-4 pt-6"
             >
               <motion.a
                 href="https://github.com/Aswath2005"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 className="btn-primary inline-flex items-center justify-center gap-2 group w-full sm:w-auto h-13 text-base font-semibold"
               >
                 GitHub Projects
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 link-with-arrow" />
               </motion.a>
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => handleScroll('contact')}
                 className="btn-outline inline-flex items-center justify-center gap-2 group w-full sm:w-auto h-13 text-base font-semibold"
               >
@@ -296,6 +307,18 @@ export function Hero() {
             className="relative hidden lg:block"
             style={{ width: '280px', height: '360px', margin: '0 auto' }}
           >
+            {/* Halo glow behind photo */}
+            <div
+              className="halo-effect absolute inset-0 rounded-lg"
+              style={{
+                width: '500px',
+                height: '600px',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            />
+
             {/* Primary rotating ring */}
             <div
               className="hero-photo-primary-ring absolute inset-0 rounded-lg z-0"
@@ -323,16 +346,13 @@ export function Hero() {
               }}
             />
 
-            {/* Background glow */}
-            <div className="absolute inset-0 rounded-lg" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)' }} />
-
             {/* Profile image with portrait frame */}
             <div
               className="relative w-full h-full rounded-lg overflow-hidden border z-10"
               style={{
                 backgroundColor: 'var(--bg-card)',
                 borderColor: 'rgba(255,255,255,0.15)',
-                boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 40px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1)',
+                boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 40px 80px rgba(0,0,0,0.8), inset 0 -60px 40px rgba(0,0,0,0.8)',
               }}
             >
               {/* Dark gradient overlay */}

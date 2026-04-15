@@ -1,6 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { SectionLabel } from './SectionLabel'
+import { useSpotlight } from '@/hooks/useSpotlight'
 
 const experiences = [
   {
@@ -40,86 +42,110 @@ const experiences = [
   },
 ]
 
+interface ExperienceCardProps {
+  exp: typeof experiences[0]
+  idx: number
+}
+
+function ExperienceCard({ exp, idx }: ExperienceCardProps) {
+  const { containerRef, spotlightRef } = useSpotlight()
+  const isPresent = exp.date === 'Present'
+
+  return (
+    <motion.div
+      ref={containerRef}
+      key={idx}
+      initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ delay: idx * 0.12, duration: 0.6 }}
+      viewport={{ once: true, margin: '-50px' }}
+      whileHover={{ y: -4 }}
+      className="premium-card spotlight-card group relative cursor-pointer overflow-hidden"
+      onClick={() => {
+        if (exp.link) {
+          window.open(exp.link, '_blank')
+        }
+      }}
+    >
+      <div ref={spotlightRef} style={{ display: 'none' }} />
+
+      {/* Decorative year text */}
+      <div
+        className="absolute -bottom-8 -right-6 font-black opacity-2 pointer-events-none select-none"
+        style={{
+          fontSize: '5rem',
+          color: 'white',
+          fontFamily: 'Bebas Neue, sans-serif',
+          fontWeight: 900,
+        }}
+      >
+        {isPresent ? '2025' : '2024'}
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="flex items-baseline gap-2 mb-2">
+          <h3 className="text-xl font-bold font-bebas tracking-wider group-hover:translate-x-1 transition-transform duration-300 text-white">
+            {exp.role}
+          </h3>
+          <p className="text-sm font-dm-sans" style={{ color: 'rgba(255,255,255,0.35)' }}>
+            — {exp.company}
+          </p>
+        </div>
+        <p className="text-xs mb-3 font-dm-sans uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.3)' }}>
+          {exp.date}
+        </p>
+        <p className="text-sm leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
+          {exp.description}
+        </p>
+      </div>
+
+      {/* Timeline dot - present pulse */}
+      {isPresent && (
+        <div
+          className="absolute top-8 -left-1 w-3 h-3 rounded-full z-20"
+          style={{
+            background: 'white',
+            animation: 'pulse-dot 2s ease-in-out infinite',
+            boxShadow: '0 0 0 0 rgba(255,255,255,0.4)',
+          }}
+        />
+      )}
+    </motion.div>
+  )
+}
+
 export function Experience() {
   return (
-    <section id="experience" className="py-16 md:py-20 px-6 relative overflow-hidden">
+    <section id="experience" className="py-16 md:py-20 px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-surface)' }}>
       <div className="max-w-7xl mx-auto">
 
-        {/* Section Heading */}
-        <motion.div
+        {/* Section Label */}
+        <SectionLabel number="04" label="EXPERIENCE" />
+
+        {/* Main Heading */}
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-12 relative z-10"
+          className="gradient-text mb-12"
+          style={{
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontWeight: 800,
+            fontFamily: 'Bebas Neue, sans-serif',
+            letterSpacing: '-0.02em',
+          }}
         >
-          <h2 className="text-4xl md:text-5xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
-            EXPERIENCE
-          </h2>
-          <motion.div 
-            className="h-1 w-24 mt-6"
-            initial={{ width: 0 }}
-            whileInView={{ width: '96px' }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            style={{ background: 'rgba(99, 102, 241, 0.4)' }}
-          />
-        </motion.div>
+          EXPERIENCE
+        </motion.h2>
 
         {/* Experience Grid */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {experiences.map((exp, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.12, duration: 0.6 }}
-              viewport={{ once: true, margin: '-50px' }}
-              whileHover={{ y: -8 }}
-              className="group relative p-7 border-2 transition-all duration-300 rounded-xl cursor-pointer overflow-hidden"
-              style={{
-                borderColor: 'var(--border)',
-                backgroundColor: 'var(--bg-card)',
-              } as React.CSSProperties}
-              onClick={() => {
-                if (exp.link) {
-                  window.open(exp.link, '_blank')
-                }
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)'
-                e.currentTarget.style.boxShadow = '0 0 40px rgba(255, 255, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05)'
-                e.currentTarget.style.backgroundColor = 'rgba(17, 17, 17, 0.8)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--border)'
-                e.currentTarget.style.boxShadow = '0 0 0px rgba(255, 255, 255, 0)'
-                e.currentTarget.style.backgroundColor = 'var(--bg-card)'
-              }}
-            >
-              {/* Glow gradient on hover */}
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                style={{
-                  background: 'radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 70%)',
-                }}
-              />
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold font-bebas tracking-wider mb-2 group-hover:translate-x-1 transition-transform duration-300" style={{ color: 'var(--accent)' }}>
-                  {exp.role}
-                </h3>
-                <p className="text-sm mb-3 font-dm-sans" style={{ color: '#6b7280' }}>
-                  {exp.company} • {exp.date}
-                </p>
-                <p className="text-sm leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
-                  {exp.description}
-                </p>
-              </div>
-            </motion.div>
+            <ExperienceCard key={idx} exp={exp} idx={idx} />
           ))}
         </motion.div>
       </div>

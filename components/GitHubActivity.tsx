@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Star, GitBranch, ExternalLink } from 'lucide-react'
+import { SectionLabel } from './SectionLabel'
 
 interface Repository {
   id: number
@@ -99,31 +100,27 @@ export function GitHubActivity() {
   }
 
   return (
-    <section id="github" className="py-20 px-6 relative">
+    <section id="github" className="py-16 md:py-20 px-6 relative" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <div className="max-w-7xl mx-auto">
-        {/* Section Heading */}
-        <motion.div
+        {/* Section Label */}
+        <SectionLabel number="03" label="GITHUB" />
+
+        {/* Main Heading */}
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-16"
+          className="gradient-text mb-12"
+          style={{
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontWeight: 800,
+            fontFamily: 'Bebas Neue, sans-serif',
+            letterSpacing: '-0.02em',
+          }}
         >
-          <h2
-            className="text-5xl font-bold font-bebas text-[var(--text-primary)] glow-text"
-            style={{ letterSpacing: '0.08em' }}
-          >
-            GITHUB ACTIVITY
-          </h2>
-          <motion.div
-            className="w-24 h-1 mt-4"
-            initial={{ width: 0 }}
-            whileInView={{ width: '96px' }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            style={{ background: 'var(--accent)' }}
-          />
-        </motion.div>
+          GITHUB ACTIVITY
+        </motion.h2>
 
         {error && (
           <motion.div
@@ -136,7 +133,7 @@ export function GitHubActivity() {
               href="https://github.com/Aswath2005"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline mt-2"
+              className="hover:underline mt-2 focus-ring rounded-lg"
               style={{ color: 'var(--accent)' }}
             >
               View on GitHub

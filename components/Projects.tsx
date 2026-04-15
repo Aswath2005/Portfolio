@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { TiltCard } from './TiltCard'
 import { ProjectCard } from './ProjectCard'
+import { SectionLabel } from './SectionLabel'
 
 const projects = [
   {
@@ -34,33 +35,30 @@ const projects = [
   },
 ]
 
-const headingText = 'PROJECTS'
-
 export function Projects() {
   return (
-    <section id="projects" className="py-16 md:py-20 px-6 relative overflow-hidden">
+    <section id="projects" className="py-16 md:py-20 px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <div className="max-w-7xl mx-auto">
 
-        {/* Section Heading */}
-        <motion.div
+        {/* Section Label */}
+        <SectionLabel number="02" label="PROJECTS" />
+
+        {/* Main Heading */}
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="mb-12 relative z-10"
+          className="gradient-text mb-12"
+          style={{
+            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+            fontWeight: 800,
+            fontFamily: 'Bebas Neue, sans-serif',
+            letterSpacing: '-0.02em',
+          }}
         >
-          <h2 className="text-4xl md:text-5xl font-black font-bebas text-white" style={{ letterSpacing: '-0.02em' }}>
-            {headingText}
-          </h2>
-          <motion.div 
-            className="h-1 w-24 mt-6"
-            initial={{ width: 0 }}
-            whileInView={{ width: '96px' }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            style={{ backgroundColor: 'rgba(99, 102, 241, 0.4)' }}
-          />
-        </motion.div>
+          PROJECTS
+        </motion.h2>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
