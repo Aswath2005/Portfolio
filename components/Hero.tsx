@@ -130,7 +130,7 @@ export function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
               className="font-dm-sans"
               style={{
                 fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
@@ -140,7 +140,7 @@ export function Hero() {
               }}
             >
               <TypeWriter
-                text="Developer • Designer • Community Leader"
+                text="Developer • Tech Enthusiast • Community Leader"
                 className="font-bebas"
               />
             </motion.p>

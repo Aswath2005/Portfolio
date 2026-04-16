@@ -28,10 +28,9 @@ export function StatsCounter() {
       {stats.map((stat, idx) => (
         <motion.div
           key={idx}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: idx * 0.15, duration: 0.6 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: idx * 0.15, duration: 0.6, type: 'spring', stiffness: 200, damping: 8, overshoot: 1.2 }}
           className="relative flex flex-col items-center justify-center"
         >
           {/* Stat Number */}
@@ -56,9 +55,21 @@ function StatNumber({ value, suffix }: { value: number; suffix: string }) {
   const count = useCountUp(value, 2000)
 
   return (
-    <div className="text-4xl md:text-3xl font-bold font-bebas" style={{ color: 'var(--accent)' }}>
+    <motion.div 
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ 
+        duration: 0.6, 
+        type: 'spring', 
+        stiffness: 200, 
+        damping: 8,
+        overshoot: 1.2
+      }}
+      className="text-4xl md:text-3xl font-bold font-bebas" 
+      style={{ color: 'var(--accent)' }}
+    >
       {count}
       <span>{suffix}</span>
-    </div>
+    </motion.div>
   )
 }
