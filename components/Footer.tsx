@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -27,17 +28,24 @@ export function Footer() {
             © {currentYear} Aswath. Built with passion for design, development, and community.
           </p>
 
-          <motion.button
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-sm font-dm-sans transition-colors focus-ring rounded-lg"
-            style={{ color: 'var(--rgba-light-20)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--rgba-light-20)')}
-          >
-            Back to top ↑
-          </motion.button>
+          <div className="flex items-center gap-6">
+            {/* Mobile Theme Toggle */}
+            <div className="md:hidden">
+              <ThemeToggle />
+            </div>
+
+            <motion.button
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="text-sm font-dm-sans transition-colors focus-ring rounded-lg"
+              style={{ color: 'var(--rgba-light-20)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--rgba-light-20)')}
+            >
+              Back to top ↑
+            </motion.button>
+          </div>
         </motion.div>
       </div>
     </footer>

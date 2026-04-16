@@ -116,7 +116,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="gradient-text"
               style={{
-                fontSize: 'clamp(3rem, 8vw, 7rem)',
+                fontSize: 'clamp(3.8rem, 8vw, 7rem)',
                 fontFamily: 'Bebas Neue, sans-serif',
                 fontWeight: 800,
                 lineHeight: 1.1,
@@ -182,8 +182,8 @@ export function Hero() {
                 <div
                   className="halo-effect absolute inset-0 rounded-lg"
                   style={{
-                    width: '500px',
-                    height: '600px',
+                    width: '380px',
+                    height: '480px',
                     left: '50%',
                     top: '50%',
                     transform: 'translate(-50%, -50%)',

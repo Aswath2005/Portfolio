@@ -172,11 +172,6 @@ export function Navbar() {
                 {link.label}
               </motion.button>
             ))}
-            
-            {/* Mobile Theme Toggle */}
-            <div className="pt-4 border-t border-white/10 mt-4">
-              <ThemeToggle />
-            </div>
           </div>
         </motion.div>
       </motion.nav>
