@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ThemeToggle } from './ThemeToggle'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -29,11 +28,6 @@ export function Footer() {
           </p>
 
           <div className="flex items-center gap-6">
-            {/* Mobile Theme Toggle */}
-            <div className="md:hidden">
-              <ThemeToggle />
-            </div>
-
             <motion.button
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}

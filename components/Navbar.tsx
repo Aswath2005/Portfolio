@@ -119,11 +119,32 @@ export function Navbar() {
             <ThemeToggle />
           </div>
 
-          {/* Hamburger Menu */}
+          {/* Mobile Controls - Menu + Theme Toggle */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Mobile Theme Toggle */}
+            <ThemeToggle />
+            
+            {/* Hamburger Menu */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 focus-ring"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? (
+                <X className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
+              ) : (
+                <Menu className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
+              )}
+            </motion.button>
+          </div>
+
+          {/* Hidden Hamburger Menu (for desktop) */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="md:hidden p-2 focus-ring"
+            className="hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
