@@ -1,15 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState, FormEvent, useEffect } from 'react'
+import { useState, FormEvent } from 'react'
 import { Mail, MapPin, Linkedin, Instagram, Github, Send } from 'lucide-react'
 import { SectionLabel } from './SectionLabel'
-import emailjs from '@emailjs/browser'
-
-// Initialize EmailJS (replace with your Public Key from emailjs.com)
-const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
-const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || ''
-const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || ''
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -19,13 +13,6 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
-  const [submitError, setSubmitError] = useState('')
-
-  useEffect(() => {
-    if (EMAILJS_PUBLIC_KEY) {
-      emailjs.init(EMAILJS_PUBLIC_KEY)
-    }
-  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -37,47 +24,18 @@ export function Contact() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setSubmitError('')
-
-    // Check if EmailJS is configured
-    if (!EMAILJS_PUBLIC_KEY || !EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
-      setSubmitError('Email service not configured. Please contact the site owner.')
-      return
-    }
-
-    // Validate form
-    if (!formData.name || !formData.email || !formData.message) {
-      setSubmitError('Please fill in all fields')
-      return
-    }
-
     setIsSubmitting(true)
 
-    try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'aswathsa24@gmail.com', // Your email
-        }
-      )
-
-      setSubmitMessage('✓ Message sent successfully! I\'ll get back to you soon.')
+    // Simulate form submission
+    setTimeout(() => {
+      setSubmitMessage('Thanks for reaching out! I will get back to you soon.')
       setFormData({ name: '', email: '', message: '' })
+      setIsSubmitting(false)
 
-      // Clear success message after 5 seconds
       setTimeout(() => {
         setSubmitMessage('')
-      }, 5000)
-    } catch (error) {
-      console.error('Email error:', error)
-      setSubmitError('Failed to send message. Please try again or email me directly.')
-    } finally {
-      setIsSubmitting(false)
-    }
+      }, 3000)
+    }, 1500)
   }
 
   const socialLinks = [
@@ -312,23 +270,10 @@ export function Contact() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="text-sm font-medium text-center font-dm-sans p-3 rounded-lg"
-                  style={{ color: '#22c55e', backgroundColor: 'rgba(34, 197, 94, 0.1)' }}
+                  className="text-sm font-medium text-center font-dm-sans"
+                  style={{ color: 'var(--accent)' }}
                 >
                   {submitMessage}
-                </motion.p>
-              )}
-
-              {/* Error Message */}
-              {submitError && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="text-sm font-medium text-center font-dm-sans p-3 rounded-lg"
-                  style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)' }}
-                >
-                  {submitError}
                 </motion.p>
               )}
             </form>
