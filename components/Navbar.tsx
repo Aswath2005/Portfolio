@@ -61,10 +61,10 @@ export function Navbar() {
         }`}
         style={isScrolled ? { 
           background: 'var(--navbar-bg)',
-          backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255,0.015), transparent)',
-          borderColor: 'rgba(255,255,255,0.06)',
+          backgroundImage: 'linear-gradient(to bottom, var(--rgba-light-02), transparent)',
+          borderColor: 'var(--rgba-light-06)',
         } : {
-          borderColor: 'rgba(255,255,255,0.04)',
+          borderColor: 'var(--rgba-light-04)',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -78,7 +78,7 @@ export function Navbar() {
             <span 
               className="text-sm font-black font-bebas tracking-wider transition-all duration-300" 
               style={{ 
-                color: 'rgba(255,255,255,0.9)',
+                color: 'var(--text-primary)',
                 fontSize: '1.1rem',
                 fontWeight: 700,
                 letterSpacing: '0.05em',
@@ -96,8 +96,8 @@ export function Navbar() {
                 onClick={() => handleNavClick(link.href)}
                 className={`relative text-xs font-black font-bebas transition-colors cursor-pointer group focus-ring uppercase ${
                   activeSection === link.href
-                    ? 'text-white'
-                    : 'text-white/45 hover:text-white/90'
+                    ? 'text-[var(--text-primary)]'
+                    : '[&]:text-[var(--text-tertiary)] hover:[&]:text-[var(--text-primary)]'
                 }`}
                 style={{
                   letterSpacing: '0.08em',
@@ -108,7 +108,7 @@ export function Navbar() {
                 {activeSection === link.href && (
                   <motion.div 
                     className="absolute bottom-0 left-0 right-0 w-full h-0.5"
-                    style={{ background: 'rgba(255,255,255,0.2)' }}
+                    style={{ background: 'var(--rgba-light-20)' }}
                     layoutId="activeIndicator"
                   />
                 )}
@@ -128,9 +128,9 @@ export function Navbar() {
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X className="w-6 h-6" style={{ color: 'rgba(255,255,255,0.9)' }} />
+              <X className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
             ) : (
-              <Menu className="w-6 h-6" style={{ color: 'rgba(255,255,255,0.9)' }} />
+              <Menu className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
             )}
           </motion.button>
         </div>
@@ -142,9 +142,9 @@ export function Navbar() {
           transition={{ duration: 0.3 }}
           className={`md:hidden overflow-hidden border-t ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
           style={{
-            background: 'rgba(0,0,0,0.6)',
+            background: isScrolled ? 'var(--rgba-light-02)' : 'var(--accent-subtle)',
             backdropFilter: 'blur(8px)',
-            borderColor: 'rgba(255,255,255,0.06)',
+            borderColor: 'var(--rgba-light-06)',
           }}
         >
           <div className="px-6 py-6 space-y-2">

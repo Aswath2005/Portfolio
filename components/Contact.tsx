@@ -126,7 +126,7 @@ export function Contact() {
               viewport={{ once: false }}
               className="space-y-3"
             >
-              <p className="font-bold text-white font-bebas tracking-widest">SOCIAL</p>
+              <p className="font-bold font-bebas tracking-widest" style={{ color: 'var(--text-primary)' }}>SOCIAL</p>
               <div className="flex gap-6">
                 {socialLinks.map((social, idx) => (
                   <motion.a
@@ -137,9 +137,9 @@ export function Contact() {
                     whileHover={{ scale: 1.2, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                     className="transition-colors duration-300 focus-ring"
-                    style={{ color: '#6b7280' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = '#6b7280')}
+                    style={{ color: 'var(--text-muted)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-muted)')}
                     aria-label={social.label}
                   >
                     <social.icon className="w-6 h-6" />
@@ -192,7 +192,7 @@ export function Contact() {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-xs font-bold text-white mb-2 font-bebas tracking-widest">
+                <label className="block text-xs font-bold mb-2 font-bebas tracking-widest" style={{ color: 'var(--text-primary)' }}>
                   NAME
                 </label>
                 <input
@@ -213,7 +213,7 @@ export function Contact() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-xs font-bold text-white mb-2 font-bebas tracking-widest">
+                <label className="block text-xs font-bold mb-2 font-bebas tracking-widest" style={{ color: 'var(--text-primary)' }}>
                   EMAIL
                 </label>
                 <input
@@ -234,7 +234,7 @@ export function Contact() {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-xs font-bold text-white mb-2 font-bebas tracking-widest">
+                <label className="block text-xs font-bold mb-2 font-bebas tracking-widest" style={{ color: 'var(--text-primary)' }}>
                   MESSAGE
                 </label>
                 <textarea
@@ -254,7 +254,7 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
                 viewport={{ once: true, margin: '-50px' }}
-                whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(255,255,255,0.2)' }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 20px var(--accent-glow)' }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}

@@ -31,12 +31,12 @@ function SkillCard({ skill, index }: SkillCardProps) {
       <div ref={spotlightRef} style={{ display: 'none' }} />
       
       <div className="relative z-10">
-        <h3 className="font-black text-lg font-bebas text-white tracking-wider">{skill.name}</h3>
-        <p className="text-sm font-dm-sans mt-2" style={{ color: '#9ca3af' }}>{skill.description}</p>
+        <h3 className="font-black text-lg font-bebas tracking-wider" style={{ color: 'var(--text-primary)' }}>{skill.name}</h3>
+        <p className="text-sm font-dm-sans mt-2" style={{ color: 'var(--text-secondary)' }}>{skill.description}</p>
       </div>
 
       {/* Progress bar line */}
-      <div className="h-0.5 bg-white/10 rounded-full overflow-hidden mt-4">
+      <div className="h-0.5 rounded-full overflow-hidden mt-4" style={{ backgroundColor: 'var(--border-light)' }}>
         <motion.div
           className="h-full"
           style={{ background: 'var(--accent)' }}
@@ -84,11 +84,11 @@ export function About() {
             viewport={{ once: false }}
             className="space-y-6"
           >
-            <p className="text-base leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
+            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
               I'm a passionate developer with a strong interest in building clean and functional digital experiences. With a focus on frontend development, I work on turning ideas into practical solutions that are simple, usable, and effective.
             </p>
             
-            <p className="text-base leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
+            <p className="text-base leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
               Beyond coding, I'm actively involved in community leadership and innovation initiatives. I contribute to platforms like µLearn and Legacy IEDC, where I collaborate with others and support a culture of learning and growth. My approach is centered on continuous improvement, teamwork, and building solutions that create meaningful impact.
             </p>
           </motion.div>

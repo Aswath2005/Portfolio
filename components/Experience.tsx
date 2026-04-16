@@ -69,33 +69,18 @@ function ExperienceCard({ exp, idx }: ExperienceCardProps) {
     >
       <div ref={spotlightRef} style={{ display: 'none' }} />
 
-      {/* Decorative year text */}
-      <div
-        className="absolute -bottom-8 -right-6 font-black opacity-2 pointer-events-none select-none"
-        style={{
-          fontSize: '5rem',
-          color: 'white',
-          fontFamily: 'Bebas Neue, sans-serif',
-          fontWeight: 900,
-        }}
-      >
-        {isPresent ? '2025' : '2024'}
-      </div>
-
       {/* Content */}
       <div className="relative z-10">
         <div className="flex items-baseline gap-2 mb-2">
-          <h3 className="text-xl font-bold font-bebas tracking-wider group-hover:translate-x-1 transition-transform duration-300 text-white">
+          <h3 className="text-xl font-bold font-bebas tracking-wider group-hover:translate-x-1 transition-transform duration-300" style={{ color: 'var(--text-primary)' }}>
             {exp.role}
           </h3>
-          <p className="text-sm font-dm-sans" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          <p className="text-sm font-dm-sans" style={{ color: 'var(--rgba-light-35)' }}>
             — {exp.company}
           </p>
         </div>
-        <p className="text-xs mb-3 font-dm-sans uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.3)' }}>
-          {exp.date}
-        </p>
-        <p className="text-sm leading-relaxed font-dm-sans" style={{ color: '#9ca3af' }}>
+
+        <p className="text-sm leading-relaxed font-dm-sans" style={{ color: 'var(--text-secondary)' }}>
           {exp.description}
         </p>
       </div>
@@ -105,9 +90,9 @@ function ExperienceCard({ exp, idx }: ExperienceCardProps) {
         <div
           className="absolute top-8 -left-1 w-3 h-3 rounded-full z-20"
           style={{
-            background: 'white',
+            background: 'var(--accent)',
             animation: 'pulse-dot 2s ease-in-out infinite',
-            boxShadow: '0 0 0 0 rgba(255,255,255,0.4)',
+            boxShadow: '0 0 0 0 var(--accent-glow)',
           }}
         />
       )}

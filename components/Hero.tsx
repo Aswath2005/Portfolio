@@ -51,7 +51,7 @@ export function Hero() {
       <div
         className="absolute inset-0 z-0 fade-mask pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(var(--rgba-light-06) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }}
       />
@@ -63,7 +63,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         style={{
-          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255,255,255,0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 80% 50% at 50% -10%, var(--rgba-light-04), transparent 70%)',
           filter: 'blur(40px)',
         }}
       />
@@ -93,7 +93,7 @@ export function Hero() {
       ))}
 
       <div className="relative z-10 px-6 lg:px-12 min-h-screen flex items-center">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-7xl mx-auto">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-start lg:mt-24 max-w-7xl mx-auto">
           {/* Left Column */}
           <div className="space-y-8 flex flex-col justify-center">
             {/* Premium Badge */}
@@ -134,7 +134,7 @@ export function Hero() {
               className="font-dm-sans"
               style={{
                 fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-                color: 'rgba(255,255,255,0.5)',
+                color: 'var(--text-tertiary)',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
               }}
@@ -151,7 +151,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-base md:text-lg leading-8 md:leading-relaxed font-dm-sans max-w-lg"
-              style={{ color: '#d1d5db' }}
+              style={{ color: 'var(--text-secondary)' }}
             >
               I build modern web experiences and actively contribute to innovation-driven communities. I focus on creating clean, functional, and impactful digital solutions.
             </motion.p>
@@ -163,7 +163,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="pt-8"
               style={{
-                borderTop: '1px solid rgba(255,255,255,0.06)',
+                borderTop: '1px solid var(--rgba-light-06)',
                 paddingTop: '24px',
               }}
             >
@@ -190,40 +190,15 @@ export function Hero() {
                   }}
                 />
 
-                {/* Primary rotating ring */}
-                <div
-                  className="hero-photo-primary-ring absolute inset-0 rounded-lg z-0"
-                  style={{
-                    width: 'calc(100% + 40px)',
-                    height: 'calc(100% + 40px)',
-                    left: '-20px',
-                    top: '-20px',
-                    borderRadius: '16px',
-                    background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.2), transparent 30%, rgba(255,255,255,0.2) 60%, transparent)',
-                    backgroundClip: 'border-box',
-                  }}
-                />
 
-                {/* Secondary dashed ring */}
-                <div
-                  className="hero-photo-secondary-ring absolute rounded-lg z-0"
-                  style={{
-                    width: 'calc(100% + 70px)',
-                    height: 'calc(100% + 70px)',
-                    left: '-35px',
-                    top: '-35px',
-                    borderRadius: '20px',
-                    border: `1px dashed rgba(255,255,255,0.25)`,
-                  }}
-                />
 
                 {/* Profile image with portrait frame */}
                 <div
-                  className="relative w-full h-full rounded-lg overflow-hidden border z-10"
+                  className="relative w-full h-full overflow-hidden z-10"
                   style={{
                     backgroundColor: 'var(--bg-card)',
-                    borderColor: 'rgba(255,255,255,0.15)',
-                    boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.5), inset 0 -60px 40px rgba(0,0,0,0.8)',
+                    borderRadius: '18px',
+                    boxShadow: '0 0 80px rgba(255,255,255,0.25), 0 0 50px rgba(255,255,255,0.2), 0 0 25px rgba(255,255,255,0.15), 0 20px 60px rgba(0,0,0,0.5), inset 0 -60px 40px rgba(0,0,0,0.8), inset 0 1px 0px rgba(255,255,255,0.03)',
                   }}
                 >
                   {/* Dark gradient overlay */}
@@ -256,14 +231,14 @@ export function Hero() {
                 ].map((style, idx) => (
                   <div
                     key={idx}
-                    className={`hero-photo-bracket hero-photo-bracket-${idx + 1} absolute w-4 h-4 z-20`}
+                    className="absolute w-4 h-4 z-20"
                     style={{
                       ...style,
-                      border: '2px solid rgba(255,255,255,0.3)',
-                      borderTopColor: style.borderTopWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
-                      borderRightColor: style.borderRightWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
-                      borderBottomColor: style.borderBottomWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
-                      borderLeftColor: style.borderLeftWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
+                      border: '2px solid var(--rgba-light-30)',
+                      borderTopColor: style.borderTopWidth ? 'var(--rgba-light-30)' : 'transparent',
+                      borderRightColor: style.borderRightWidth ? 'var(--rgba-light-30)' : 'transparent',
+                      borderBottomColor: style.borderBottomWidth ? 'var(--rgba-light-30)' : 'transparent',
+                      borderLeftColor: style.borderLeftWidth ? 'var(--rgba-light-30)' : 'transparent',
                     } as any}
                   />
                 ))}
@@ -319,42 +294,15 @@ export function Hero() {
               }}
             />
 
-            {/* Primary rotating ring */}
-            <div
-              className="hero-photo-primary-ring absolute inset-0 rounded-lg z-0"
-              style={{
-                width: 'calc(100% + 40px)',
-                height: 'calc(100% + 40px)',
-                left: '-20px',
-                top: '-20px',
-                borderRadius: '16px',
-                background: 'conic-gradient(from var(--angle, 0deg), rgba(255,255,255,0.2), transparent 30%, rgba(255,255,255,0.2) 60%, transparent)',
-                backgroundClip: 'border-box',
-              }}
-            />
-
-            {/* Secondary dashed ring */}
-            <div
-              className="hero-photo-secondary-ring absolute rounded-lg z-0"
-              style={{
-                width: 'calc(100% + 70px)',
-                height: 'calc(100% + 70px)',
-                left: '-35px',
-                top: '-35px',
-                borderRadius: '20px',
-                border: `1px dashed rgba(255,255,255,0.25)`,
-              }}
-            />
-
             {/* Profile image with portrait frame */}
             <div
-              className="relative w-full h-full rounded-lg overflow-hidden border z-10"
-              style={{
-                backgroundColor: 'var(--bg-card)',
-                borderColor: 'rgba(255,255,255,0.15)',
-                boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 40px 80px rgba(0,0,0,0.8), inset 0 -60px 40px rgba(0,0,0,0.8)',
-              }}
-            >
+              className="relative w-full h-full overflow-hidden z-10"
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  borderRadius: '18px',
+                  boxShadow: '0 0 80px rgba(255,255,255,0.25), 0 0 50px rgba(255,255,255,0.2), 0 0 25px rgba(255,255,255,0.15), 0 40px 80px rgba(0,0,0,0.8), inset 0 -60px 40px rgba(0,0,0,0.8), inset 0 1px 0px rgba(255,255,255,0.03)',
+                }}
+              >
               {/* Dark gradient overlay */}
               <div
                 className="absolute inset-0 pointer-events-none z-20"
@@ -385,14 +333,14 @@ export function Hero() {
             ].map((style, idx) => (
               <div
                 key={idx}
-                className={`hero-photo-bracket hero-photo-bracket-${idx + 1} absolute w-4 h-4 z-20`}
+                className="absolute w-4 h-4 z-20"
                 style={{
                   ...style,
-                  border: '2px solid rgba(255,255,255,0.3)',
-                  borderTopColor: style.borderTopWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
-                  borderRightColor: style.borderRightWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
-                  borderBottomColor: style.borderBottomWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
-                  borderLeftColor: style.borderLeftWidth ? 'rgba(255,255,255,0.3)' : 'transparent',
+                  border: '2px solid var(--rgba-light-30)',
+                  borderTopColor: style.borderTopWidth ? 'var(--rgba-light-30)' : 'transparent',
+                  borderRightColor: style.borderRightWidth ? 'var(--rgba-light-30)' : 'transparent',
+                  borderBottomColor: style.borderBottomWidth ? 'var(--rgba-light-30)' : 'transparent',
+                  borderLeftColor: style.borderLeftWidth ? 'var(--rgba-light-30)' : 'transparent',
                 }}
               />
             ))}

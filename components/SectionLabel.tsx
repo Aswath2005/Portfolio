@@ -19,7 +19,7 @@ export function SectionLabel({ number, label }: SectionLabelProps) {
       <div className="h-px w-5 bg-white/30" />
       <span
         className="text-xs font-black uppercase tracking-[0.2em]"
-        style={{ color: 'rgba(255,255,255,0.3)' }}
+        style={{ color: 'var(--rgba-light-30)' }}
       >
         {number} — {label}
       </span>

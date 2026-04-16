@@ -76,17 +76,18 @@ export function Testimonials() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1, duration: 0.6 }}
                     viewport={{ once: false }}
-                    className="card-hover h-full p-8 rounded-2xl bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border transition-all"
+                    className="card-hover h-full p-8 rounded-2xl border transition-all"
                     style={{
-                      borderColor: 'var(--dark-border)',
+                      backgroundColor: 'var(--bg-card)',
+                      borderColor: 'var(--border)',
                     } as React.CSSProperties}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.borderColor = 'var(--accent)'
-                      e.currentTarget.style.backgroundColor = 'var(--accent-glow)'
+                      e.currentTarget.style.backgroundColor = 'var(--bg-card-hover)'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--dark-border)'
-                      e.currentTarget.style.backgroundColor = ''
+                      e.currentTarget.style.borderColor = 'var(--border)'
+                      e.currentTarget.style.backgroundColor = 'var(--bg-card)'
                     }}
                   >
                     {/* Star Rating */}
@@ -101,12 +102,12 @@ export function Testimonials() {
                     </div>
 
                     {/* Quote */}
-                    <p className="text-text-muted dark:text-text-dark mb-6 text-lg leading-relaxed">
+                    <p className="text-lg leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
                       "{testimonial.quote}"
                     </p>
 
                     {/* Author */}
-                    <div className="flex items-center gap-4 pt-6 border-t border-dark-border dark:border-light-border">
+                    <div className="flex items-center gap-4 pt-6" style={{ borderTop: `1px solid var(--border)` }}>
                       <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-400">
                         <img
                           src={testimonial.image}
@@ -115,10 +116,10 @@ export function Testimonials() {
                         />
                       </div>
                       <div>
-                        <p className="font-bold text-white dark:text-text-dark">
+                        <p className="font-bold" style={{ color: 'var(--text-primary)' }}>
                           {testimonial.name}
                         </p>
-                        <p className="text-sm text-text-muted dark:text-text-dark">
+                        <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
                           {testimonial.role}
                         </p>
                       </div>
@@ -135,17 +136,18 @@ export function Testimonials() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePrevious}
-              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border transition-all"
+              className="p-3 rounded-full border transition-all"
               style={{
-                borderColor: 'var(--dark-border)',
+                backgroundColor: 'var(--bg-card)',
+                borderColor: 'var(--border)',
               } as React.CSSProperties}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = 'var(--accent)'
-                e.currentTarget.style.backgroundColor = 'var(--accent-glow)'
+                e.currentTarget.style.backgroundColor = 'var(--bg-card-hover)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--dark-border)'
-                e.currentTarget.style.backgroundColor = ''
+                e.currentTarget.style.borderColor = 'var(--border)'
+                e.currentTarget.style.backgroundColor = 'var(--bg-card)'
               }}
               aria-label="Previous testimonial"
             >
@@ -155,17 +157,18 @@ export function Testimonials() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleNext}
-              className="p-3 rounded-full bg-dark-secondary dark:bg-light-secondary border border-dark-border dark:border-light-border transition-all"
+              className="p-3 rounded-full border transition-all"
               style={{
-                borderColor: 'var(--dark-border)',
+                backgroundColor: 'var(--bg-card)',
+                borderColor: 'var(--border)',
               } as React.CSSProperties}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = 'var(--accent)'
-                e.currentTarget.style.backgroundColor = 'var(--accent-glow)'
+                e.currentTarget.style.backgroundColor = 'var(--bg-card-hover)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'var(--dark-border)'
-                e.currentTarget.style.backgroundColor = ''
+                e.currentTarget.style.borderColor = 'var(--border)'
+                e.currentTarget.style.backgroundColor = 'var(--bg-card)'
               }}
               aria-label="Next testimonial"
             >
@@ -182,7 +185,7 @@ export function Testimonials() {
                 className="h-2 rounded-full transition-all"
                 style={{
                   width: idx === currentIndex ? '32px' : '8px',
-                  backgroundColor: idx === currentIndex ? 'var(--accent)' : 'var(--dark-border)',
+                  backgroundColor: idx === currentIndex ? 'var(--accent)' : 'var(--border)',
                 }}
               />
             ))}

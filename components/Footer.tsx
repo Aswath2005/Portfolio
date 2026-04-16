@@ -11,7 +11,7 @@ export function Footer() {
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
-          background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent)',
+          background: 'linear-gradient(to right, transparent, var(--rgba-light-06), transparent)',
         }}
       />
 
@@ -23,7 +23,7 @@ export function Footer() {
           viewport={{ once: false }}
           className="flex flex-col sm:flex-row justify-between items-center gap-4"
         >
-          <p className="text-text-muted-dark text-sm font-dm-sans italic" style={{ color: 'rgba(255,255,255,0.2)' }}>
+          <p className="text-text-muted-dark text-sm font-dm-sans italic" style={{ color: 'var(--rgba-light-20)' }}>
             © {currentYear} Aswath. Built with passion for design, development, and community.
           </p>
 
@@ -32,9 +32,9 @@ export function Footer() {
             whileTap={{ scale: 0.95 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="text-sm font-dm-sans transition-colors focus-ring rounded-lg"
-            style={{ color: 'rgba(255,255,255,0.2)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.9)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.2)')}
+            style={{ color: 'var(--rgba-light-20)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--rgba-light-20)')}
           >
             Back to top ↑
           </motion.button>
