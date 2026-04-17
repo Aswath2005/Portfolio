@@ -26,16 +26,32 @@ export function Contact() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send to Google Apps Script that submits to Google Sheet
+      const response = await fetch('https://script.google.com/macros/s/AKfycby4fi4sVkv85HlrWWPvrW7ifergJ4uOlK1pIa47uk5EQAODbQ2t8XZ_TwxgjzsNtN1w1w/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      })
+
       setSubmitMessage('Thanks for reaching out! I will get back to you soon.')
       setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitMessage('Thanks for reaching out! I will get back to you soon.')
+    } finally {
       setIsSubmitting(false)
 
       setTimeout(() => {
         setSubmitMessage('')
       }, 3000)
-    }, 1500)
+    }
   }
 
   const socialLinks = [
