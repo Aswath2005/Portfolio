@@ -47,7 +47,7 @@ export function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.15, duration: 0.6 }}
       viewport={{ once: true, margin: '-50px' }}
-      className="premium-card spotlight-card flex flex-col h-full overflow-hidden relative group"
+      className="editorial-project-card spotlight-card flex flex-col h-full overflow-hidden relative group"
     >
       <div ref={spotlightRef} style={{ display: 'none' }} />
 
@@ -68,7 +68,7 @@ export function ProjectCard({
       <div
         className="px-4 py-3 border-b flex items-center gap-3 relative z-10"
         style={{
-          background: 'linear-gradient(to bottom, #1a1a1a, #111111)',
+          background: 'rgba(255,255,255,0.025)',
           borderColor: 'rgba(255,255,255,0.06)',
         }}
       >
@@ -86,14 +86,14 @@ export function ProjectCard({
       </div>
 
       {/* iframe preview area */}
-      <div className="relative w-full" style={{ height: '200px', overflow: 'hidden', backgroundColor: 'var(--bg-surface)' }}>
+      <div className="relative w-full editorial-project-image" style={{ overflow: 'hidden', backgroundColor: 'var(--bg-surface)' }}>
         {screenshot ? (
           /* Screenshot image preview */
           <Image
             src={screenshot}
             alt={title}
             fill
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
             style={{ objectPosition: 'top center' }}
           />
         ) : !iframeError ? (
@@ -148,7 +148,7 @@ export function ProjectCard({
       </div>
 
       {/* Card body */}
-      <div className="flex-1 flex flex-col gap-4 p-6 relative z-10">
+      <div className="flex-1 flex flex-col gap-4 p-6 md:p-8 relative z-10">
         {/* Status badge */}
         {status === 'in-progress' && (
           <div className="self-start">
@@ -168,7 +168,7 @@ export function ProjectCard({
 
         {/* Title and description */}
         <div>
-          <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
+          <h3 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
             {title}
           </h3>
           <p
@@ -184,11 +184,11 @@ export function ProjectCard({
           {tags.map((tag, i) => (
             <span
               key={i}
-              className="px-2 py-1 text-xs rounded-full border"
+              className="editorial-tag"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.04)',
-                color: '#6b7280',
-                borderColor: 'rgba(255,255,255,0.08)',
+                backgroundColor: 'transparent',
+                color: 'var(--text-muted)',
+                borderColor: 'rgba(255,255,255,0.14)',
               }}
             >
               {tag}
@@ -202,11 +202,11 @@ export function ProjectCard({
             onClick={() => window.open(url, '_blank')}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex-1 px-4 py-2 text-sm font-medium border rounded-lg transition-all duration-300 flex items-center justify-center gap-2 focus-ring link-with-arrow"
+            className="flex-1 btn-quiet text-xs justify-center focus-ring link-with-arrow"
             style={{
               color: 'var(--accent)',
               borderColor: 'rgba(255,255,255,0.2)',
-              background: 'rgba(255,255,255,0.02)',
+              background: 'transparent',
             }}
           >
             Live Site
@@ -218,7 +218,7 @@ export function ProjectCard({
               onClick={() => window.open(github, '_blank')}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 flex items-center gap-2 focus-ring"
+              className="px-4 py-2 text-xs font-medium transition-all duration-300 flex items-center gap-2 focus-ring"
               style={{
                 color: 'var(--text-secondary)',
                 backgroundColor: 'rgba(255,255,255,0.02)',

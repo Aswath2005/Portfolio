@@ -2,27 +2,18 @@
 
 import { motion } from 'framer-motion'
 
-interface SectionLabelProps {
-  number: string
-  label: string
-}
-
-export function SectionLabel({ number, label }: SectionLabelProps) {
+export function SectionLabel({ number, label }: { number: string; label: string }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true, margin: '-100px' }}
-      className="flex items-center gap-4 mb-8"
+      initial={{ opacity: 0, x: -15 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="editorial-label"
     >
-      <div className="h-px w-5 bg-white/30" />
-      <span
-        className="text-xs font-black uppercase tracking-[0.2em]"
-        style={{ color: 'var(--rgba-light-30)' }}
-      >
-        {number} — {label}
-      </span>
+      <span>{number}</span>
+      <i />
+      <strong>{label}</strong>
     </motion.div>
   )
 }

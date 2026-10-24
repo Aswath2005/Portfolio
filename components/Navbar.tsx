@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
@@ -75,16 +75,15 @@ export function Navbar() {
             onClick={() => handleNavClick('home')}
             className="flex-shrink-0 group focus-ring"
           >
-            <span 
-              className="text-sm font-black font-bebas tracking-wider transition-all duration-300" 
+            <span
+              className="text-sm font-black font-bebas tracking-[0.18em] transition-all duration-300"
               style={{ 
                 color: 'var(--text-primary)',
-                fontSize: '1.1rem',
+                fontSize: '1.25rem',
                 fontWeight: 700,
-                letterSpacing: '0.05em',
               }}
             >
-              AS
+              ASWATH<span style={{ color: 'var(--coral)' }}>.</span>
             </span>
           </motion.button>
 
@@ -108,7 +107,7 @@ export function Navbar() {
                 {activeSection === link.href && (
                   <motion.div 
                     className="absolute bottom-0 left-0 right-0 w-full h-0.5"
-                    style={{ background: 'var(--rgba-light-20)' }}
+                    style={{ background: 'var(--coral)' }}
                     layoutId="activeIndicator"
                   />
                 )}

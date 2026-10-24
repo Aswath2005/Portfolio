@@ -63,7 +63,7 @@ export function Contact() {
   return (
     <section 
       id="contact" 
-      className="py-16 md:py-20 px-6 relative overflow-hidden"
+      className="editorial-section contact-editorial"
       style={{ 
         backgroundColor: 'var(--bg-primary)',
         backgroundImage: 'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
@@ -78,27 +78,22 @@ export function Contact() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="editorial-container relative z-10">
 
         {/* Section Label */}
         <SectionLabel number="05" label="CONTACT" />
 
         {/* Main Heading */}
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="gradient-text mb-12"
-          style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-            fontWeight: 800,
-            fontFamily: 'Bebas Neue, sans-serif',
-            letterSpacing: '-0.02em',
-          }}
+          className="section-title-row"
         >
-          GET IN TOUCH
-        </motion.h2>
+          <h2 className="editorial-heading">GET IN TOUCH<span className="text-coral">.</span></h2>
+          <p>Have a project in mind or want to collaborate? I&apos;d love to hear from you! Let&apos;s build something amazing together.</p>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Contact Info */}
@@ -107,7 +102,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false }}
-            className="space-y-8"
+            className="contact-details"
           >
             <motion.p
               initial={{ opacity: 0 }}
@@ -198,7 +193,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: false }}
-            className="premium-card"
+            className="contact-form-card"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Input */}
@@ -208,7 +203,7 @@ export function Contact() {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-xs font-bold mb-2 font-bebas tracking-widest" style={{ color: 'var(--text-primary)' }}>
+                <label className="block text-xs font-bold mb-2 font-mono tracking-widest" style={{ color: 'var(--text-primary)' }}>
                   NAME
                 </label>
                 <input
@@ -229,7 +224,7 @@ export function Contact() {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-xs font-bold mb-2 font-bebas tracking-widest" style={{ color: 'var(--text-primary)' }}>
+                <label className="block text-xs font-bold mb-2 font-mono tracking-widest" style={{ color: 'var(--text-primary)' }}>
                   EMAIL
                 </label>
                 <input
@@ -250,7 +245,7 @@ export function Contact() {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 viewport={{ once: false }}
               >
-                <label className="block text-xs font-bold mb-2 font-bebas tracking-widest" style={{ color: 'var(--text-primary)' }}>
+                <label className="block text-xs font-bold mb-2 font-mono tracking-widest" style={{ color: 'var(--text-primary)' }}>
                   MESSAGE
                 </label>
                 <textarea
@@ -274,7 +269,7 @@ export function Contact() {
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-primary w-full inline-flex items-center justify-center gap-2 group disabled:opacity-50 font-bebas tracking-wider transition-all"
+                className="btn-coral w-full inline-flex items-center justify-center gap-2 group disabled:opacity-50"
               >
                 {isSubmitting ? 'SENDING...' : 'SEND'}
                 <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform arrow" />
@@ -299,4 +294,3 @@ export function Contact() {
     </section>
   )
 }
-

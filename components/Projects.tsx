@@ -37,28 +37,23 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-16 md:py-20 px-6 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="editorial-section">
+      <div className="editorial-container">
 
         {/* Section Label */}
         <SectionLabel number="02" label="PROJECTS" />
 
         {/* Main Heading */}
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: '-100px' }}
-          className="gradient-text mb-12"
-          style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-            fontWeight: 800,
-            fontFamily: 'Bebas Neue, sans-serif',
-            letterSpacing: '-0.02em',
-          }}
+          className="section-title-row"
         >
-          PROJECTS
-        </motion.h2>
+          <h2 className="editorial-heading">PROJECTS<span className="text-coral">.</span></h2>
+          <p>Selected projects built with modern web technologies and focused on practical, impactful solutions.</p>
+        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

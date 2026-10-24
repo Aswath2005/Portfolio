@@ -1,122 +1,88 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import { TypeWriter } from './TypeWriter'
+import { useEffect, useState } from 'react'
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void
 }
 
-const portfolioText = 'PORTFOLIO'
-
 export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
+  const [expanded, setExpanded] = useState(false)
+
   useEffect(() => {
-    // Ensure we start at top of page
     window.scrollTo(0, 0)
-    
-    // Complete loading after 1.8 seconds
+
+    const expandTimer = setTimeout(() => setExpanded(true), 800)
     const timer = setTimeout(() => {
       window.scrollTo(0, 0)
       onLoadingComplete()
-    }, 1800)
+    }, 2500)
 
     return () => {
+      clearTimeout(expandTimer)
       clearTimeout(timer)
     }
   }, [onLoadingComplete])
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
+      className="loading-screen"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -100, transition: { duration: 0.6, ease: 'easeInOut' } }}
-      style={{ backgroundColor: 'var(--bg-primary)' }}
+      exit={{ opacity: 0, y: '-8%', transition: { duration: 0.55, ease: 'easeInOut' } }}
     >
-      {/* Main heading */}
+      <div className="loading-orbit loading-orbit-one" />
+      <div className="loading-orbit loading-orbit-two" />
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="text-6xl md:text-7xl font-bold font-bebas leading-tight text-center mb-6"
-        style={{
-          letterSpacing: '0.08em',
-          color: 'var(--text-primary)',
-          textShadow: '0 0 30px rgba(255, 255, 255, 0.2), 0 0 60px rgba(255, 255, 255, 0.1)',
-        }}
+        className="loading-mark"
+        initial={{ opacity: 0, scale: 0.75, rotate: -12 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
       >
-        Welcome to
+        <motion.span layout className="loading-name">
+          {(expanded ? ['A', 'S', 'W', 'A', 'T', 'H', ' ', 'S', ' ', 'A'] : ['A', 'S']).map((letter, index) => (
+            <motion.span
+              layout
+              key={`${letter}-${index}`}
+              className={expanded && index > 6 ? 'loading-name-accent' : ''}
+              initial={{ opacity: 0, scale: 0.5, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: expanded ? index * 0.045 : index * 0.08, duration: 0.32 }}
+            >
+              {letter === ' ' ? '\u00a0' : letter}
+            </motion.span>
+          ))}
+          <motion.span layout className="loading-name-accent">.</motion.span>
+        </motion.span>
       </motion.div>
 
-      {/* Portfolio text with letter by letter reveal and glow */}
-      <div className="flex gap-1 justify-center mb-6">
-        {portfolioText.split('').map((letter, idx) => (
-          <motion.span
-            key={idx}
-            className="text-6xl md:text-7xl font-bold font-bebas"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-              delay: 0.35 + idx * 0.08,
-              duration: 0.4,
-              ease: 'easeOut',
-            }}
-            style={{
-              letterSpacing: '0.08em',
-              color: 'var(--text-primary)',
-              textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.15)',
-            }}
-          >
-            {letter}
-          </motion.span>
-        ))}
-      </div>
-
-      {/* Sweep line animation */}
       <motion.div
-        className="relative h-1 mb-8 origin-left"
+        className="loading-label"
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.35, duration: 0.35 }}
+      >
+        Loading<span className="loading-dots"><i /> <i /> <i /></span>
+      </motion.div>
+
+      <motion.div
+        className="loading-signal"
         initial={{ scaleX: 0, opacity: 0 }}
         animate={{ scaleX: 1, opacity: 1 }}
-        transition={{
-          delay: 1.0,
-          duration: 0.7,
-          ease: 'easeOut',
-        }}
-        style={{
-          width: '128px',
-          backgroundColor: 'var(--accent)',
-          boxShadow: '0 0 30px var(--accent-glow)',
-        }}
-      />
-
-      {/* Subtitle */}
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.6,
-          delay: 1.3,
-          ease: 'easeOut',
-        }}
-        className="text-sm md:text-base tracking-widest font-dm-sans"
-        style={{ color: 'var(--text-muted)' }}
+        transition={{ delay: 0.35, duration: 0.7, ease: 'easeOut' }}
       >
-        Just loading
-      </motion.p>
+        <i />
+        <i />
+        <i />
+        <i />
+      </motion.div>
 
-      {/* Loading progress bar at bottom */}
       <motion.div
+        className="loading-progress"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
-        transition={{
-          duration: 1.5,
-          ease: 'easeInOut',
-        }}
-        className="absolute bottom-0 left-0 right-0 h-1.5 origin-left"
-        style={{
-          backgroundColor: 'var(--accent)',
-          boxShadow: '0 0 20px var(--accent-glow)',
-        }}
+        transition={{ duration: 2.4, ease: 'easeInOut' }}
       />
     </motion.div>
   )
