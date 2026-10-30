@@ -1799,8 +1799,9 @@ html {
   .hero-name + p {
     max-width: 100%;
     font-size: 0.56rem !important;
-    letter-spacing: 0.1em !important;
-    white-space: nowrap;
+    letter-spacing: 0.08em !important;
+    line-height: 1.7 !important;
+    white-space: normal;
   }
 
   .hero-role {
