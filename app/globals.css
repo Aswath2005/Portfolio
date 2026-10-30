@@ -1746,7 +1746,22 @@ html {
 
 @media (max-width: 640px) {
   .hero-orbit {
-    display: none;
+    opacity: 0.62;
+  }
+
+  .hero-orbit-one {
+    width: 34rem;
+    height: 12rem;
+    right: -17rem;
+    top: 21rem;
+  }
+
+  .hero-orbit-two {
+    width: 28rem;
+    height: 9rem;
+    right: -14rem;
+    top: 23rem;
+    opacity: 0.38;
   }
 
   .hero-editorial {
