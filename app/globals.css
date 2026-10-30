@@ -1785,17 +1785,27 @@ html {
   }
 
   .hero-name {
-    font-size: clamp(2.8rem, 12.5vw, 4.5rem);
-    letter-spacing: -0.045em;
+    font-size: clamp(3.2rem, 15vw, 5.5rem);
+    letter-spacing: -0.06em;
     white-space: nowrap;
     margin-bottom: 1.1rem;
+  }
+
+  .hero-kicker {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  .hero-name + p {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.12em !important;
   }
 
   .hero-role {
     flex-wrap: wrap;
     gap: 0.55rem 0.7rem;
     margin-top: 1.4rem;
-    font-size: clamp(1.8rem, 8vw, 2.2rem);
+    font-size: clamp(2rem, 9.5vw, 2.6rem);
   }
 
   .hero-role::before {
@@ -1804,6 +1814,8 @@ html {
 
   .hero-copy > p {
     max-width: 32rem;
+    font-size: 1rem !important;
+    line-height: 1.8 !important;
   }
 
   .hero-role + p {
@@ -1822,6 +1834,8 @@ html {
   .hero-actions .btn-coral,
   .hero-actions .btn-quiet {
     justify-content: center;
+    min-height: 3.25rem;
+    font-size: 0.68rem;
   }
 
   .hero-socials {
