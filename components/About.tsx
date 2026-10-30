@@ -25,13 +25,16 @@ export function About() {
             <a className="editorial-link" href="#experience">More about my journey <ArrowUpRight className="h-4 w-4" /></a>
           </motion.div>
         </div>
-        <div className="strength-grid">
+        <div className="about-focus-list">
           {strengths.map(({ icon: Icon, title, text }, index) => (
-            <motion.article key={title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }} viewport={{ once: true }} className="strength-card">
-              <span className="strength-index">0{index + 1}</span>
-              <Icon className="h-6 w-6 text-coral" strokeWidth={1.5} />
-              <h3>{title}</h3>
-              <p>{text}</p>
+            <motion.article key={title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: index * 0.1 }} viewport={{ once: true }} className="about-focus-row">
+              <span className="about-focus-index">0{index + 1}</span>
+              <Icon className="about-focus-icon h-5 w-5" strokeWidth={1.5} />
+              <div className="about-focus-main">
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+              <ArrowUpRight className="about-focus-arrow h-5 w-5" />
             </motion.article>
           ))}
         </div>

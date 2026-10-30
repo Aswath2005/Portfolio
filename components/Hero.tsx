@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowDownRight, ArrowUpRight, Brackets, MapPin, Sparkles } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, Brackets, Github, Instagram, Linkedin, MapPin } from 'lucide-react'
 import { TypeWriter } from './TypeWriter'
 import { StatsCounter } from './StatsCounter'
 
@@ -36,8 +36,7 @@ export function Hero() {
               transition={{ duration: 0.85, delay: 0.18 }}
               className="hero-name max-w-5xl font-bebas text-[clamp(4.5rem,9vw,9.5rem)] leading-[0.72] tracking-[-0.035em]"
             >
-              ASWATH
-              <span className="hero-name-accent block">S A<span className="text-coral">.</span></span>
+              ASWATH <span className="hero-name-accent">S A<span className="text-coral">.</span></span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -68,7 +67,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="mt-6 flex flex-wrap gap-3"
+              className="hero-actions mt-6 flex flex-wrap gap-3"
             >
               <button className="btn-coral group" onClick={() => handleScroll('projects')}>
                 View selected work
@@ -78,6 +77,26 @@ export function Hero() {
                 Start a project
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="hero-socials"
+              aria-label="Social profiles"
+            >
+              <span className="hero-socials-label">Connect</span>
+              <span className="hero-socials-divider" aria-hidden="true" />
+              <a href="https://github.com/Aswath2005" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                <Github className="h-5 w-5" strokeWidth={1.7} />
+              </a>
+              <a href="https://linkedin.com/in/aswath-s-a-3702a9292" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                <Linkedin className="h-5 w-5" strokeWidth={1.7} />
+              </a>
+              <a href="https://www.instagram.com/aswath2_4/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                <Instagram className="h-5 w-5" strokeWidth={1.7} />
+              </a>
             </motion.div>
           </div>
 

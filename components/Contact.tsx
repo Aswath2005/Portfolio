@@ -95,7 +95,7 @@ export function Contact() {
           <p>Have a project in mind or want to collaborate? I&apos;d love to hear from you! Let&apos;s build something amazing together.</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="contact-main-grid grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column - Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -195,7 +195,7 @@ export function Contact() {
             viewport={{ once: false }}
             className="contact-form-card"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="contact-form space-y-6">
               {/* Name Input */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

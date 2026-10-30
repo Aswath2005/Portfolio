@@ -31,8 +31,14 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, y: '-8%', transition: { duration: 0.55, ease: 'easeInOut' } }}
     >
+      <div className="loading-grid" aria-hidden="true" />
       <div className="loading-orbit loading-orbit-one" />
       <div className="loading-orbit loading-orbit-two" />
+
+      <div className="loading-corner loading-corner-top">
+        <span>ASWATH S A.</span>
+        <span>PORTFOLIO / 2026</span>
+      </div>
 
       <motion.div
         className="loading-mark"
@@ -58,25 +64,19 @@ export function LoadingScreen({ onLoadingComplete }: LoadingScreenProps) {
       </motion.div>
 
       <motion.div
-        className="loading-label"
+        className="loading-status"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.35, duration: 0.35 }}
       >
-        Loading<span className="loading-dots"><i /> <i /> <i /></span>
+        <span className="loading-status-dot" />
+        Preparing the experience
       </motion.div>
 
-      <motion.div
-        className="loading-signal"
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={{ scaleX: 1, opacity: 1 }}
-        transition={{ delay: 0.35, duration: 0.7, ease: 'easeOut' }}
-      >
-        <i />
-        <i />
-        <i />
-        <i />
-      </motion.div>
+      <div className="loading-corner loading-corner-bottom">
+        <span>CODE / COMMUNITY / CREATIVITY</span>
+        <span>SCROLL TO EXPLORE</span>
+      </div>
 
       <motion.div
         className="loading-progress"

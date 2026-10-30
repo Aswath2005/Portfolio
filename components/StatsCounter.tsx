@@ -23,7 +23,7 @@ export function StatsCounter() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
       viewport={{ once: true, margin: '-50px' }}
-      className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 py-12 max-w-md lg:max-w-none"
+      className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-4 py-8 md:py-12 max-w-md lg:max-w-none"
     >
       {stats.map((stat, idx) => (
         <motion.div
@@ -42,7 +42,7 @@ export function StatsCounter() {
           )}
 
           {/* Label */}
-          <p className="text-sm text-[var(--text-muted)] font-dm-sans mt-2 text-center">
+          <p className="text-xs md:text-sm text-[var(--text-muted)] font-dm-sans mt-2 text-center">
             {stat.label}
           </p>
         </motion.div>
@@ -65,7 +65,7 @@ function StatNumber({ value, suffix }: { value: number; suffix: string }) {
         damping: 8,
         overshoot: 1.2
       }}
-      className="text-4xl md:text-3xl font-bold font-bebas" 
+      className="text-3xl md:text-3xl font-bold font-bebas"
       style={{ color: 'var(--accent)' }}
     >
       {count}
