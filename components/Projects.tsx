@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ArrowUpRight, Github } from 'lucide-react'
 import { TiltCard } from './TiltCard'
 import { ProjectCard } from './ProjectCard'
 import { SectionLabel } from './SectionLabel'
@@ -63,6 +64,22 @@ export function Projects() {
             </TiltCard>
           ))}
         </div>
+
+        <motion.a
+          href="https://github.com/Aswath2005"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          whileHover={{ y: -3 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: '-50px' }}
+          className="btn-quiet link-with-arrow mx-auto mt-10 inline-flex items-center gap-3 focus-ring"
+        >
+          <Github className="h-4 w-4" />
+          View more on GitHub
+          <ArrowUpRight className="h-4 w-4 arrow" />
+        </motion.a>
       </div>
     </section>
   )
