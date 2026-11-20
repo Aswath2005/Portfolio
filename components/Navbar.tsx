@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { useActiveSection } from '@/hooks/useActiveSection'
-import { ThemeToggle } from './ThemeToggle'
 
 const navLinks = [
   { href: 'home', label: 'Home' },
@@ -113,16 +112,10 @@ export function Navbar() {
                 )}
               </motion.button>
             ))}
-            
-            {/* Theme Toggle */}
-            <ThemeToggle />
           </div>
 
-          {/* Mobile Controls - Menu + Theme Toggle */}
+          {/* Mobile Controls */}
           <div className="md:hidden flex items-center gap-2">
-            {/* Mobile Theme Toggle */}
-            <ThemeToggle />
-            
             {/* Hamburger Menu */}
             <motion.button
               whileHover={{ scale: 1.1 }}

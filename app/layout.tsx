@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { ScrollProgress } from '@/components/ScrollProgress'
-import { ThemeProvider } from '@/context/ThemeContext'
 
 export const metadata: Metadata = {
   title: 'My Portfolio - Aswath S A',
@@ -47,10 +46,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#0d0d0d" />
       </head>
       <body>
-        <ThemeProvider>
-          <ScrollProgress />
-          {children}
-        </ThemeProvider>
+        <ScrollProgress />
+        {children}
       </body>
     </html>
   )

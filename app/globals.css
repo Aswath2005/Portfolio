@@ -4,8 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root,
-:root.dark {
+:root {
   --bg-primary: #000000;
   --bg-surface: #080808;
   --bg-card: #0a0a0a;
@@ -55,56 +54,6 @@
   --accent-strong: #ffffff;
   --btn-bg: #ffffff;
   --btn-text: #000000;
-}
-
-:root.light {
-  --bg-primary: #fafafa;
-  --bg-surface: #f5f5f5;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f0f0f0;
-  --text-primary: #000000;
-  --text-secondary: #333333;
-  --text-tertiary: #555555;
-  --text-muted: #777777;
-  --border: #d4d4d4;
-  --border-light: #e5e5e5;
-  --border-hover: #999999;
-
-  --accent: #000000;
-  --coral: #5968d8;
-  --accent-light: #1a1a1a;
-  --accent-dim: #404040;
-  --accent-glow: rgba(0, 0, 0, 0.08);
-  --accent-subtle: rgba(0, 0, 0, 0.04);
-  --accent-strong-glow: rgba(0, 0, 0, 0.15);
-
-  /* Adaptive rgba colors for light mode */
-  --rgba-light-35: rgba(0, 0, 0, 0.45);
-  --rgba-light-30: rgba(0, 0, 0, 0.6);
-  --rgba-light-20: rgba(0, 0, 0, 0.3);
-  --rgba-light-06: rgba(0, 0, 0, 0.08);
-  --rgba-light-04: rgba(0, 0, 0, 0.05);
-  --rgba-light-02: rgba(0, 0, 0, 0.03);
-  --rgba-light-08: rgba(0, 0, 0, 0.1);
-  --rgba-light-10: rgba(0, 0, 0, 0.12);
-  --rgba-light-12: rgba(0, 0, 0, 0.25);
-
-  --btn-primary-bg: #000000;
-  --btn-primary-text: #ffffff;
-  --btn-outline-border: #d4d4d4;
-  --btn-outline-text: #333333;
-  --btn-outline-hover-border: #000000;
-  --btn-outline-hover-text: #000000;
-  --navbar-bg: rgba(250,250,250,0.95);
-
-  --mouse-x: 0;
-  --mouse-y: 0;
-
-  /* Backwards compatibility */
-  --accent-color: #000000;
-  --accent-strong: #000000;
-  --btn-bg: #000000;
-  --btn-text: #ffffff;
 }
 
 * {
@@ -281,10 +230,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   animation: shimmer-border 3s ease-in-out infinite;
-}
-
-:root.light .premium-badge {
-  border: 1px solid #000000;
 }
 
 /* Card spotlight effect */
