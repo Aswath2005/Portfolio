@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Github, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react'
+import { ExternalLink, Github, Instagram, Linkedin, Mail, MessageCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Aswath S A | Links',
@@ -32,6 +32,11 @@ const links = [
     label: 'Email',
     href: 'mailto:aswathsa24@gmail.com',
     icon: Mail,
+  },
+  {
+    label: 'Visit My Portfolio',
+    href: 'https://aswathsa.vercel.app',
+    icon: ExternalLink,
   },
 ]
 
