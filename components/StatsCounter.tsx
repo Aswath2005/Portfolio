@@ -11,9 +11,9 @@ interface Stat {
 
 const stats: Stat[] = [
   { value: 4, suffix: '+', label: 'Communities Led' },
-  { value: 6, suffix: '+', label: 'Projects Built' },
+  { value: 8, suffix: '+', label: 'Projects Built' },
   { value: 15, suffix: '+', label: 'Events Organized' },
-  { value: 3, suffix: '', label: 'Years Experience' },
+  { value: 3, suffix: '+', label: 'Years Experience' },
 ]
 
 export function StatsCounter() {
