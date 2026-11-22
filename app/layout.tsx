@@ -3,30 +3,70 @@ import './globals.css'
 import { ScrollProgress } from '@/components/ScrollProgress'
 
 export const metadata: Metadata = {
-  title: 'My Portfolio - Aswath S A',
-  description: 'A professional portfolio website showcasing design and development work. Modern, fast, and beautiful.',
+  metadataBase: new URL('https://aswathsa.vercel.app'),
+  title: {
+    default: 'Aswath S A — Full-Stack Developer, Portfolio & Community Leader',
+    template: '%s | Aswath S A',
+  },
+  description: 'Aswath S A (Aswath SA) is a full-stack developer and community leader from Kerala, India. Explore Aswath S A’s portfolio, projects, skills, leadership experience, and web development work.',
+  keywords: [
+    'Aswath S A',
+    'Aswath SA',
+    'Aswath',
+    'Aswath Portfolio',
+    'Aswath S A Portfolio',
+    'Aswath S A Developer',
+    'Full-Stack Developer',
+    'React Developer',
+    'Next.js Developer',
+    'Web Developer',
+    'Portfolio',
+    'Kerala',
+  ],
+  authors: [{ name: 'Aswath S A', url: 'https://aswathsa.vercel.app' }],
+  creator: 'Aswath S A',
+  publisher: 'Aswath S A',
+  category: 'technology',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
-    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="%23374151" width="100" height="100"/><text y="75" font-size="60" font-weight="bold" fill="%23ffffff" x="50" text-anchor="middle">AS</text></svg>',
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
   },
   openGraph: {
-    title: 'My Portfolio - Aswath S A',
-    description: 'A professional portfolio website showcasing design and development work. Modern, fast, and beautiful.',
+    title: 'Aswath S A — Full-Stack Developer & Community Leader',
+    description: 'Explore Aswath S A’s portfolio, projects, skills, and leadership experience.',
     url: 'https://aswathsa.vercel.app',
     type: 'website',
+    locale: 'en_US',
+    siteName: 'Aswath S A Portfolio',
     images: [
       {
-        url: '/IMG_20260404_122553.jpg',
-        width: 600,
-        height: 600,
-        alt: 'Aswath S A - Portfolio',
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Aswath S A — Full-Stack Developer Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'My Portfolio - Aswath S A',
-    description: 'A professional portfolio website showcasing design and development work. Modern, fast, and beautiful.',
-    images: ['/IMG_20260404_122553.jpg'],
+    title: 'Aswath S A — Full-Stack Developer',
+    description: 'Explore Aswath S A’s portfolio, projects, skills, and leadership experience.',
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 
@@ -44,6 +84,45 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="theme-color" content="#0d0d0d" />
+        <meta name="application-name" content="Aswath S A Portfolio" />
+        <meta name="apple-mobile-web-app-title" content="Aswath S A" />
+        <meta name="format-detection" content="telephone=no" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Aswath S A',
+              alternateName: ['Aswath SA', 'Aswath'],
+              url: 'https://aswathsa.vercel.app',
+              image: 'https://aswathsa.vercel.app/IMG_20260404_122553.jpg',
+              jobTitle: 'Full-Stack Developer',
+              description: 'Full-stack developer and community leader from Kerala, India.',
+              address: {
+                '@type': 'PostalAddress',
+                addressRegion: 'Kerala',
+                addressCountry: 'IN',
+              },
+              email: 'mailto:aswathsa24@gmail.com',
+              sameAs: [
+                'https://github.com/Aswath2005',
+                'https://linkedin.com/in/aswath-s-a-3702a9292',
+                'https://www.instagram.com/aswath2_4/',
+              ],
+              knowsAbout: [
+                'React',
+                'Next.js',
+                'TypeScript',
+                'Node.js',
+                'MongoDB',
+                'Supabase',
+                'Full-Stack Development',
+                'Community Leadership',
+              ],
+            }),
+          }}
+        />
       </head>
       <body>
         <ScrollProgress />
