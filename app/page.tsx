@@ -34,7 +34,7 @@ export default function Home() {
       <Navbar />
 
       {/* Page Content */}
-      <div className="pt-20">
+      <div>
         <Hero />
         <About />
         <Projects />

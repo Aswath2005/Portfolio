@@ -10,6 +10,39 @@ const strengths = [
   { icon: Users, title: 'Community & Leadership', text: 'Actively contributing to communities like µLearn and IEDC. Collaborating with peers, supporting initiatives, and growing through shared learning.' },
 ]
 
+const techCategories = [
+  {
+    title: 'Frontend',
+    technologies: [
+      { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+      { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+      { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+      { name: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+      { name: 'CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+      { name: 'Tailwind CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+    ],
+  },
+  {
+    title: 'Backend & Database',
+    technologies: [
+      { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: 'Express', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+      { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+      { name: 'Supabase', logo: 'https://cdn.simpleicons.org/supabase/3FCF8E' },
+    ],
+  },
+  {
+    title: 'Tools & Platforms',
+    technologies: [
+      { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+      { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+      { name: 'Vercel', logo: 'https://cdn.simpleicons.org/vercel/FFFFFF' },
+      { name: 'Canva', logo: 'https://cdn.simpleicons.org/canva/00C4CC' },
+      { name: 'Claude', logo: 'https://cdn.simpleicons.org/anthropic/D97757' },
+    ],
+  },
+]
+
 export function About() {
   return (
     <section id="about" className="editorial-section editorial-section-muted">
@@ -38,6 +71,38 @@ export function About() {
             </motion.article>
           ))}
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: '-80px' }}
+          className="tech-stack"
+        >
+          <div className="tech-stack-heading">
+            <span>TECHNOLOGIES I WORK WITH</span>
+            <i aria-hidden="true" />
+          </div>
+          <div className="tech-category-grid">
+            {techCategories.map((category, categoryIndex) => (
+              <article className="tech-category" key={category.title}>
+                <div className="tech-category-title">
+                  <span>0{categoryIndex + 1}</span>
+                  <h3>{category.title}</h3>
+                </div>
+                <div className="tech-list">
+                  {category.technologies.map((technology) => (
+                    <div className="tech-item" key={technology.name} title={technology.name}>
+                      <span className="tech-logo-wrap">
+                        <img src={technology.logo} alt="" loading="lazy" />
+                      </span>
+                      <span>{technology.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   )

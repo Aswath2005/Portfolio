@@ -17,7 +17,7 @@ export function Hero() {
       <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
       <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
 
-      <div className="hero-inner relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-between px-6 pb-8 pt-20 lg:px-12 lg:pb-10 lg:pt-24">
+      <div className="hero-inner relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-between px-6 pb-8 pt-20 lg:min-h-[100svh] lg:px-12 lg:pb-10 lg:pt-[11rem]">
         <div className="hero-grid grid items-start gap-10 md:grid-cols-[1.08fr_0.92fr]">
           <div className="hero-copy">
             <motion.div
@@ -74,7 +74,7 @@ export function Hero() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
               <button className="btn-quiet group" onClick={() => handleScroll('contact')}>
-                Start a project
+                Let's Connect
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
             </motion.div>

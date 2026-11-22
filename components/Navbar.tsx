@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useActiveSection } from '@/hooks/useActiveSection'
 
 const navLinks = [
@@ -23,9 +23,16 @@ export function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false)
+    }
 
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('keydown', handleKeyDown)
+    }
   }, [])
 
   const handleNavClick = (href: string) => {
@@ -55,90 +62,63 @@ export function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
-          isScrolled ? 'py-3 backdrop-blur-md' : 'py-4 bg-dark-bg/50 backdrop-blur-sm'
-        }`}
-        style={isScrolled ? { 
-          background: 'var(--navbar-bg)',
-          backgroundImage: 'linear-gradient(to bottom, var(--rgba-light-02), transparent)',
-          borderColor: 'var(--rgba-light-06)',
-        } : {
-          borderColor: 'var(--rgba-light-04)',
-        }}
+        className="fixed left-0 right-0 top-0 z-40 flex justify-center px-4 pt-5 transition-all duration-300 md:pt-7"
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo - "AS" Monogram */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => handleNavClick('home')}
-            className="flex-shrink-0 group focus-ring"
-          >
-            <span
-              className="text-sm font-black font-bebas tracking-[0.18em] transition-all duration-300"
-              style={{ 
-                color: 'var(--text-primary)',
-                fontSize: '1.25rem',
-                fontWeight: 700,
-              }}
-            >
-              ASWATH<span style={{ color: 'var(--coral)' }}>.</span>
-            </span>
-          </motion.button>
-
+        <div
+          className="hidden items-center gap-2 rounded-full border px-2 py-2 shadow-[0_14px_50px_rgba(0,0,0,0.38)] backdrop-blur-xl md:flex"
+          style={{
+            minHeight: '52px',
+            background: 'rgba(12, 14, 23, 0.86)',
+            borderColor: 'rgba(255, 255, 255, 0.10)',
+            backdropFilter: 'blur(18px)',
+          }}
+        >
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+          <div className="flex items-center">
+            {navLinks.filter((link) => ['home', 'projects', 'experience', 'about', 'contact'].includes(link.href)).map((link) => (
               <motion.button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`relative text-xs font-black font-bebas transition-colors cursor-pointer group focus-ring uppercase ${
+                className={`relative cursor-pointer rounded-full px-4 py-2 text-sm transition-colors focus-ring ${
                   activeSection === link.href
                     ? 'text-[var(--text-primary)]'
                     : '[&]:text-[var(--text-tertiary)] hover:[&]:text-[var(--text-primary)]'
                 }`}
                 style={{
-                  letterSpacing: '0.08em',
-                  fontSize: '0.8rem',
+                  background: activeSection === link.href ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
                 }}
               >
                 {link.label}
-                {activeSection === link.href && (
-                  <motion.div 
-                    className="absolute bottom-0 left-0 right-0 w-full h-0.5"
-                    style={{ background: 'var(--coral)' }}
-                    layoutId="activeIndicator"
-                  />
-                )}
               </motion.button>
             ))}
           </div>
+          <a
+            href="/Aswath-SA-Resume.pdf"
+            download="Aswath-S-A-Resume.pdf"
+            className="ml-1 flex h-9 items-center gap-2 rounded-full px-4 text-sm font-medium text-black transition-transform hover:-translate-y-0.5"
+            style={{ background: '#f5f5f7' }}
+          >
+            Resume
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
 
+        <div className="fixed left-4 right-4 top-4 flex h-12 items-center justify-between md:hidden">
+          <button
+            type="button"
+            onClick={() => handleNavClick('home')}
+            className="rounded-full border border-white/10 bg-black/60 px-3 py-2 text-sm font-semibold text-white backdrop-blur-md"
+          >
+            AS<span style={{ color: 'var(--coral)' }}>.</span>
+          </button>
           {/* Mobile Controls */}
-          <div className="md:hidden flex items-center gap-2">
-            {/* Hamburger Menu */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 focus-ring"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
-              ) : (
-                <Menu className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
-              )}
-            </motion.button>
-          </div>
-
-          {/* Hidden Hamburger Menu (for desktop) */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/70 backdrop-blur-md"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? (
               <X className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
@@ -153,11 +133,12 @@ export function Navbar() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? 'auto' : 0 }}
           transition={{ duration: 0.3 }}
-          className={`md:hidden overflow-hidden border-t ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+          className={`fixed left-4 right-4 top-16 overflow-hidden rounded-2xl border md:hidden ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
           style={{
-            background: isScrolled ? 'var(--rgba-light-02)' : 'var(--accent-subtle)',
-            backdropFilter: 'blur(8px)',
-            borderColor: 'var(--rgba-light-06)',
+            background: 'rgba(8, 9, 18, 0.94)',
+            backdropFilter: 'blur(18px)',
+            borderColor: 'rgba(255, 255, 255, 0.09)',
+            boxShadow: '0 18px 60px rgba(0,0,0,0.45)',
           }}
         >
           <div className="px-6 py-6 space-y-2">
@@ -185,17 +166,19 @@ export function Navbar() {
                 {link.label}
               </motion.button>
             ))}
+            <a
+              href="/Aswath-SA-Resume.pdf"
+              download="Aswath-S-A-Resume.pdf"
+              className="mt-3 flex w-full items-center justify-between rounded-xl px-3 py-3 text-sm font-medium text-black"
+              style={{ background: '#f5f5f7' }}
+            >
+              Resume
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
         </motion.div>
       </motion.nav>
 
-      {/* Subtle blur glow below navbar */}
-      <div
-        className="fixed top-[60px] left-0 right-0 z-39 h-px pointer-events-none"
-        style={{
-          background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.03), transparent)',
-        }}
-      />
     </>
   )
 }
