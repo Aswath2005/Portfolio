@@ -23,7 +23,9 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
-      setIsNavbarVisible(window.scrollY < window.innerHeight * 0.72)
+      setIsNavbarVisible(
+        window.innerWidth >= 768 || window.scrollY < window.innerHeight * 0.72
+      )
     }
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsOpen(false)

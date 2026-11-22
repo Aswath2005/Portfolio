@@ -108,6 +108,14 @@ body::before {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .hero-orbit {
+    animation: none !important;
+  }
+
+  .loading-orbit {
+    animation: none !important;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1908,10 +1916,11 @@ html {
 
 .loading-orbit {
   position: absolute;
-  border: 1px solid rgba(124,140,255,0.3);
+  border: 1px solid rgba(124,140,255,0.16);
   border-radius: 50%;
   transform: rotate(-28deg);
-  animation: loading-orbit 5s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(124,140,255,0.12));
+  animation: loading-orbit 16s ease-in-out infinite;
 }
 
 .loading-orbit-one {
@@ -1922,9 +1931,9 @@ html {
 .loading-orbit-two {
   width: 18rem;
   height: 6rem;
-  opacity: 0.45;
+  opacity: 0.36;
   animation-direction: reverse;
-  animation-duration: 4s;
+  animation-duration: 13s;
 }
 
 .loading-progress {
@@ -1996,9 +2005,8 @@ html {
 }
 
 @keyframes loading-orbit {
-  from { transform: rotate(-28deg) scale(1); }
-  50% { transform: rotate(-28deg) scale(1.06); }
-  to { transform: rotate(-28deg) scale(1); }
+  0%, 100% { transform: rotate(-28deg) scale(1); }
+  50% { transform: rotate(-24deg) scale(1.025); }
 }
 
 @keyframes loading-dot {
