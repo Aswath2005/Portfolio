@@ -17,11 +17,13 @@ const navLinks = [
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true)
   const activeSection = useActiveSection()
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+      setIsNavbarVisible(window.scrollY < window.innerHeight * 0.72)
     }
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setIsOpen(false)
@@ -60,9 +62,10 @@ export function Navbar() {
     <>
       <motion.nav
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="fixed left-0 right-0 top-0 z-40 flex justify-center px-4 pt-5 transition-all duration-300 md:pt-7"
+        animate={isNavbarVisible ? { y: 0, opacity: 1 } : { y: -24, opacity: 0 }}
+        transition={{ duration: 0.38, ease: 'easeOut' }}
+        className="fixed left-0 right-0 top-0 z-40 flex justify-center px-4 pt-5 transition-all duration-300 md:pt-7 pointer-events-none"
+        style={{ pointerEvents: isNavbarVisible ? 'auto' : 'none' }}
       >
         <div
           className="hidden items-center gap-2 rounded-full border px-2 py-2 shadow-[0_14px_50px_rgba(0,0,0,0.38)] backdrop-blur-xl md:flex"
@@ -111,21 +114,31 @@ export function Navbar() {
           >
             AS<span style={{ color: 'var(--coral)' }}>.</span>
           </button>
-          {/* Mobile Controls */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/70 backdrop-blur-md"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-          >
-            {isOpen ? (
-              <X className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
-            ) : (
-              <Menu className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
-            )}
-          </motion.button>
+          <div className="flex items-center gap-2">
+            <a
+              href="/Aswath-SA-Resume.pdf"
+              download="Aswath-S-A-Resume.pdf"
+              className="flex h-11 items-center gap-1.5 rounded-full px-3.5 text-xs font-semibold text-black"
+              style={{ background: '#f5f5f7' }}
+            >
+              Resume
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/70 backdrop-blur-md"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? (
+                <X className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
+              ) : (
+                <Menu className="w-6 h-6" style={{ color: 'var(--text-primary)' }} />
+              )}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation Menu */}
